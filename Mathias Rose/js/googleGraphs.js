@@ -6,7 +6,11 @@
       google.charts.setOnLoadCallback(drawChart);
 google.charts.setOnLoadCallback(drawTable);
 google.charts.setOnLoadCallback(drawChart3);
-
+    
+        
+        var løbKm = [1];
+        var cykelKm = [1];
+        var gaaKm = [1];
       // Callback that creates and populates a data table,
       // instantiates the pie chart, passes in the data and
       // draws it.
@@ -14,18 +18,40 @@ google.charts.setOnLoadCallback(drawChart3);
 
         // Create the data table.
         var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Topping');
-        data.addColumn('number', 'Slices');
+        
+        var i;
+        var løbSum = 0;
+        for (i=0; i<løbKm.length; i++)
+            {
+                løbSum += løbKm[i];
+            }
+        var j;
+        var cykelSum = 0;
+        for (j=0; j<cykelKm.length; j++)
+            {
+                cykelSum += cykelKm[j];
+            }
+        var h;
+        var gaaSum = 0;
+        for (h=0; h<gaaKm.length; h++)
+            {
+                gaaSum += gaaKm[h];
+            }
+          
+        data.addColumn('string', 'Aktivitet');
+        data.addColumn('number', 'Længde');
         data.addRows([
-          ['Løb', 3],
-          ['Gå', 1],
-          ['Cykel', 1],
+          ['Løb', løbSum],
+          ['Gå', gaaSum],
+          ['Cykel', cykelSum],
         ]);
           
 
         // Set chart options
           var options = {
-              title:'Din fordeling i km'
+              title:'Din fordeling i km',
+              width:'350',
+              height:'400'
           }
         
 
@@ -37,34 +63,46 @@ google.charts.setOnLoadCallback(drawChart3);
 
      function drawTable() {
         var data1 = new google.visualization.DataTable();
-        data1.addColumn('string', 'Name');
-        data1.addColumn('number', 'Salary');
-        data1.addColumn('boolean', 'Full Time Employee');
+        data1.addColumn('number', 'Uge');
+        data1.addColumn('number', 'Længde');
+        data1.addColumn('number', 'Mål')
+        data1.addColumn('boolean', 'Personligt mål nået');
         data1.addRows([
-          ['Mike',  {v: 10000, f: '$10,000'}, true],
-          ['Jim',   {v:8000,   f: '$8,000'},  false],
-          ['Alice', {v: 12500, f: '$12,500'}, true],
-          ['Bob',   {v: 7000,  f: '$7,000'},  true]
+          [1,  {f: '10 KM'}, 8, true],
+          [2,   {f: '8 KM'}, 10,  false],
+          [3, {f: '10 KM'}, 10, true],
+          [4,   {f: '7 KM'}, 5,  true],
+          [5, {f: '12 KM'}, 10, true],
+          [6,   {f: '7 KM'}, 5,  true]
         ]);
+         
+         var options2 = {
+         width:'400',
+         height:'400'
+        };
 
         var table = new google.visualization.Table(document.getElementById('table_div'));
 
-        table.draw(data1, {showRowNumber: true, width: '100%', height: '100%'});
+        table.draw(data1, options2);
       }
 
 
       function drawChart3() {
         var data3 = google.visualization.arrayToDataTable([
-          ['Year', 'Sales', 'Expenses'],
-          ['2004',  1000,      400],
-          ['2005',  1170,      460],
-          ['2006',  660,       1120],
-          ['2007',  1030,      540]
+          ['Uge', 'Længde', 'Mål'],
+          ['1',  10,      4],
+          ['2',  11,      4],
+          ['3',  6,       11],
+          ['4',  10,      5],
+          ['5',  6,       11],
+          ['6',  10,      5]
         ]);
 
         var options3 = {
-          title: 'Company Performance',
+          title: 'Distance løbet',
           curveType: 'function',
+          width:'400',
+          height:'400',
           legend: { position: 'bottom' }
         };
 

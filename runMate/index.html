@@ -80,6 +80,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 
+                
                
                     
 
@@ -87,10 +88,18 @@
                    
                         <!--<form action="process.php" id="contact-form" method="post" class="contact-form">-->
                 <form id="aktivitetsForm">
-                             <div class="col-xs-12 col-sm-12 col-md-12 col-sm-offset-12 col-md-offset-3">
-                               <p><strong>cykel: </strong></p>
-                                <input type="cykel" id="form-cykel" name="form-cykel" placeholder="Indtast antal km cyklet " required="required">
-                              </div> 
+                    <div class="col-xs-12 col-sm-9 col-md-9 col-sm-offset-12 col-md-offset-3">
+                               
+                                
+                    
+  <input type="radio" name="aktivitetstype" value="lob"> løb<br>
+  <input type="radio" name="aktivitetstype" value="cykel"> cykel<br>
+  <input type="radio" name="aktivitetstype" value="gang"> gang <br>
+                        <input name="distance" placeholder="distance i km">
+                              
+
+</div> 
+                             
                             
                   
                             <div class="col-xs-7 col-sm-offset-5">
@@ -836,6 +845,29 @@
     <script src="js/wow.min.js"></script>
     <!--Main-active-JS-->
     <script src="js/main.js"></script>
+    <script>document.getElementById('aktivitetsForm').addEventListener("submit",function(e) {
+    e.preventDefault(); // before the code
+    
+    /* do what you want with the form */
+    // ajax call 
+    $.ajax({
+        type: "POST",
+        url: "http://localhost:7000/aktivitetstype/"+$('#aktivitetstype').val()+'/'+$('#distance').val(),
+        // serialized fields from the form ... 
+        //data: $("#theForm").serialize(), 
+        success: function (data) {
+            console.log(data);
+            $('body').append('Response from the Java web server:<br>' +
+                        data);
+        },
+        error: function (data) {
+            console.log("error!");
+        },
+    });
+    
+    // Should be triggered on form submit
+    console.log('submitting...');
+  });</script>
 </body>
 
 </html>

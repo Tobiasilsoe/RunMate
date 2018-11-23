@@ -1,11 +1,13 @@
  // Load the Visualization API and the corechart package.
       google.charts.load('current', {'packages':['corechart']});
         google.charts.load('current', {'packages':['table']});
+google.charts.load('current', {'packages':['columnchart']});
 
       // Set a callback to run when the Google Visualization API is loaded.
       google.charts.setOnLoadCallback(drawChart);
 google.charts.setOnLoadCallback(drawTable);
 google.charts.setOnLoadCallback(drawChart3);
+google.charts.setOnLoadCallback(drawChart4);
     
         
         var løbKm = [1];
@@ -110,3 +112,24 @@ google.charts.setOnLoadCallback(drawChart3);
 
         chart3.draw(data3, options3);
       }
+function drawChart4() {
+var data4 = google.visualization.arrayToDataTable([
+        ['Genre', 'Fantasy & Sci Fi', 'Romance', 'Mystery/Crime', 'General',
+         'Western', 'Literature', { role: 'annotation' } ],
+        ['2010', 10, 24, 20, 32, 18, 5, ''],
+        ['2020', 16, 22, 23, 30, 16, 9, ''],
+        ['2030', 28, 19, 29, 30, 12, 13, '']
+      ]);
+
+      var options4 = {
+        width: 600,
+        height: 400,
+        legend: { position: 'top', maxLines: 3 },
+        bar: { groupWidth: '75%' },
+        isStacked: true,
+      }
+        var chart4 = new google.visualization.ColumnChart(document.getElementById('stack_chart'));
+
+        chart4.draw(data4, options4);
+      
+      };

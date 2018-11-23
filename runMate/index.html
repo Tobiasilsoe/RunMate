@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     <!--[if lt IE 9]>
         <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -78,39 +79,19 @@
     <header class="header-area overlay full-height relative v-center" id="home-page">
         <div class="absolute anlge-bg"></div>
         <div class="container">
-            <div class="row justify-content-center">
-                
-                
-               
-                    
-
-      
-                   
-                        <!--<form action="process.php" id="contact-form" method="post" class="contact-form">-->
+            <div class="row justify-content-center">       
+                <!--<form action="process.php" id="contact-form" method="post" class="contact-form">-->
                 <form id="aktivitetsForm">
                     <div class="col-xs-12 col-sm-9 col-md-9 col-sm-offset-12 col-md-offset-3">
-                               
-                                
-                    
-  <input type="radio" name="aktivitetstype" value="lob"> løb<br>
-  <input type="radio" name="aktivitetstype" value="cykel"> cykel<br>
-  <input type="radio" name="aktivitetstype" value="gang"> gang <br>
-                        <input name="distance" placeholder="distance i km">
-                              
-
-</div> 
-                             
-                            
-                  
-                            <div class="col-xs-7 col-sm-offset-5">
-                             <button type="submit" class="button">Submit</button>
-                                </div>
-                                </form>
-                      
-                    
-                 
-                
-                
+                        <input type="radio" name="aktivitetstype" id="aktivitetstype" value="lob"> løb<br>
+                        <input type="radio" name="aktivitetstype" id="aktivitetstype" value="cykel"> cykel<br>
+                        <input type="radio" name="aktivitetstype" id="aktivitetstype" value="gang"> gang <br>
+                        <input name="distance" id="distance" placeholder="distance i km">
+                    </div> 
+                    <div class="col-xs-7 col-sm-offset-5">
+                        <button type="submit" class="button">Submit</button>
+                    </div>
+                </form>                
             </div>
         </div>
     </header>
@@ -123,36 +104,23 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-4">
-                    <div class="box">
-                        <div class="box-icon">
-                            <img src="images/service-icon-1.png" alt="">
-                        </div>
-                        <h4>EASY TO USE</h4>
-                        <p>Lorem ipsum dolor sit amt, consectet adop adipisicing elit, sed do eiusmod tepo raraincididunt ugt labore.</p>
+                    <div id="table_div">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-4">
-                    <div class="box">
-                        <div class="box-icon">
-                            <img src="images/service-icon-2.png" alt="">
-                        </div>
-                        <h4>AWESOEM DESIGN</h4>
-                        <p>Lorem ipsum dolor sit amt, consectet adop adipisicing elit, sed do eiusmod tepo raraincididunt ugt labore.</p>
+                    <div id="chart_div">
+                        
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-4">
-                    <div class="box">
-                        <div class="box-icon">
-                            <img src="images/service-icon-3.png" alt="">
-                        </div>
-                        <h4>EASY TO CUSTOMAIZE</h4>
-                        <p>Lorem ipsum dolor sit amt, consectet adop adipisicing elit, sed do eiusmod tepo raraincididunt ugt labore.</p>
+                    <div id="curve_chart">
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <!--Feature-area/-->
+
 <!--
     <section class="angle-bg sky-bg section-padding">
         <div class="container">
@@ -832,7 +800,7 @@
 -->
 
 
-
+    <script src="js/googleGraphs.js"></script>
     <!--Vendor-JS-->
     <script src="js/vendor/jquery-1.12.4.min.js"></script>
     <script src="js/vendor/bootstrap.min.js"></script>

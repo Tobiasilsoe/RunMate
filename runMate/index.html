@@ -79,19 +79,21 @@
     <header class="header-area overlay full-height relative v-center" id="home-page">
         <div class="absolute anlge-bg"></div>
         <div class="container">
-            <div class="row justify-content-center">   
+            <div class="row justify-content-center">
                 <!--<form action="process.php" id="contact-form" method="post" class="contact-form">-->
                 <form id="aktivitetsForm">
-                    <div class="col-xs-12 col-sm-9 col-md-9 col-sm-offset-12 col-md-offset-3">                  
-                        <input type="radio" name="aktivitetstype" id="aktivitetstype" value="lob"> løb<br>
-                        <input type="radio" name="aktivitetstype" id="aktivitetstype" value="cykel"> cykel<br>
-                        <input type="radio" name="aktivitetstype" id="aktivitetstype" value="gang"> gang <br>
+                    <div class="col-xs-12 col-sm-9 col-md-9 col-sm-offset-12 col-md-offset-3">
+                        <select name="aktivitetstype" id="aktivitetstype">
+                                <option value="gang" selected="selected">Gang</option>
+                                <option value="lob">Løb</option>
+                                <option value="cykle">Cykle</option>
+                        </select>
                         <input name="distance" id="distance" placeholder="distance i km" type="number" step="any">
-                    </div> 
+                    </div>
                     <div class="col-xs-7 col-sm-offset-5">
                         <button type="submit" class="button">Submit</button>
                     </div>
-                </form>   
+                </form>
             </div>
         </div>
     </header>
@@ -99,7 +101,7 @@
 
     <!--Feature-area-->
     <section class="gray-bg section-padding" id="service-page">
-            <div class="container">
+        <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-sm-4">
                     <div id="table_div">
@@ -107,7 +109,7 @@
                 </div>
                 <div class="col-xs-12 col-sm-4">
                     <div id="stack_chart">
-                        
+
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-4">
@@ -119,7 +121,7 @@
     </section>
 
     <!--Feature-area/-->
-<!--
+    <!--
     <section class="angle-bg sky-bg section-padding">
         <div class="container">
             <div class="row">
@@ -250,7 +252,7 @@
     </section>
 -->
 
-<!--
+    <!--
 
     <section class="gray-bg section-padding" id="feature-page">
         <div class="container">
@@ -390,7 +392,7 @@
     </section>
 -->
 
-<!--
+    <!--
 
     <section class="section-padding gray-bg" id="team-page">
         <div class="container">
@@ -469,7 +471,7 @@
 
 -->
 
-<!--
+    <!--
     <section class="testimonial-area section-padding gray-bg overlay">
         <div class="container">
             <div class="row">
@@ -533,7 +535,7 @@
 -->
 
 
-<!--
+    <!--
 
 
 
@@ -592,7 +594,7 @@
 
 -->
 
-<!--
+    <!--
 
 
     <section class="section-padding overlay client-area overlay" id="client-page">
@@ -709,7 +711,7 @@
 
 
 -->
-<!--
+    <!--
 
     <footer class="footer-area relative sky-bg" id="contact-page">
         <div class="absolute footer-bg"></div>
@@ -811,29 +813,32 @@
     <script src="js/wow.min.js"></script>
     <!--Main-active-JS-->
     <script src="js/main.js"></script>
-    <script>document.getElementById('aktivitetsForm').addEventListener("submit",function(e) {
-    e.preventDefault(); // before the code
-    
-    /* do what you want with the form */
-    // ajax call 
-    $.ajax({
-        type: "POST",
-        url: "http://localhost:7000/aktivitetstype/"+$('#aktivitetstype').val()+'/'+$('#distance').val(),
-        // serialized fields from the form ... 
-        //data: $("#theForm").serialize(), 
-        success: function (data) {
-            console.log(data);
-            $('body').append('Response from the Java web server:<br>' +
+    <script>
+        document.getElementById('aktivitetsForm').addEventListener("submit", function(e) {
+            e.preventDefault(); // before the code
+
+            /* do what you want with the form */
+            // ajax call 
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:7000/aktivitetstype/" + $('#aktivitetstype').val() + '/' + $('#distance').val(),
+                // serialized fields from the form ... 
+                //data: $("#theForm").serialize(), 
+                success: function(data) {
+                    console.log(data);
+                    $('body').append('Response from the Java web server:<br>' +
                         data);
-        },
-        error: function (data) {
-            console.log("error!");
-        },
-    });
-    
-    // Should be triggered on form submit
-    console.log('submitting...');
-  });</script>
+                },
+                error: function(data) {
+                    console.log("error!");
+                },
+            });
+
+            // Should be triggered on form submit
+            console.log('submitting...');
+        });
+
+    </script>
 </body>
 
 </html>

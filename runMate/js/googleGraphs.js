@@ -1,4 +1,28 @@
  // Load the Visualization API and the corechart package.
+var arrayAktivitet = [];
+$(document).ready(function () {
+                // Sending data from the client via AJAX
+                $.ajax({
+                	type: "GET",
+                    url: "http://localhost:7000/readaktivitet",
+                    success: function (data) {
+                        console.log(data);
+                        $('body').append('Response from the Java web server:<br>' +
+                                    data);
+
+                        // Possible use of the data
+                        arrayAktivitet = data.substr(8).split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
+                        for (var i=0;i<arrayAktivitet.length;i++){
+                        	console.log( i , arrayAktivitet[i]);
+                        }
+                        console.log(arrayAktivitet.toString());
+                        
+                    },
+                    error: function (data) {
+                        console.log("error!");
+                    },
+                });
+            });
       google.charts.load('current', {'packages':['corechart']});
         google.charts.load('current', {'packages':['table']});
 google.charts.load('current', {'packages':['columnchart']});
@@ -8,6 +32,8 @@ google.charts.load('current', {'packages':['columnchart']});
 google.charts.setOnLoadCallback(drawTable);
 google.charts.setOnLoadCallback(drawChart3);
 google.charts.setOnLoadCallback(drawChart4);
+
+console.log("this is arrayAktivitet:"+ arrayAktivitet);
     
         
         var løbKm = [1];
@@ -64,12 +90,14 @@ google.charts.setOnLoadCallback(drawChart4);
 
 
      function drawTable() {
-        var data1 = new google.visualization.DataTable();
-        data1.addColumn('number', 'Uge');
-        data1.addColumn('number', 'Længde');
-        data1.addColumn('number', 'Mål')
-        data1.addColumn('boolean', 'Personligt mål nået');
-        data1.addRows([
+        //var data 1 = new google.visualization.DataTable();
+        
+        arrayAktivitet = new google.visualization.DataTable();
+        arrayAktivitet.addColumn('number', 'Uge');
+        arrayAktivitet.addColumn('number', 'Længde');
+        arrayAktivitet.addColumn('number', 'Mål')
+        arrayAktivitet.addColumn('boolean', 'Personligt mål nået');
+        arrayAktivitet.addRows([
           [1,  {f: '10 KM'}, 8, true],
           [2,   {f: '8 KM'}, 10,  false],
           [3, {f: '10 KM'}, 10, true],
@@ -85,7 +113,7 @@ google.charts.setOnLoadCallback(drawChart4);
 
         var table = new google.visualization.Table(document.getElementById('table_div'));
 
-        table.draw(data1, options2);
+        table.draw(arrayAktivitet, options2);
       }
 
 

@@ -39,7 +39,7 @@ public class HelloWorld {
 // --- 2. Create Web API to insert and read data from the DB -------------------
         // example1: http://localhost:7000/insert/Andrea
         // example2: http://localhost:7000/read/Andrea
-        String dbUrl = "jdbc:mysql://localhost:6666/semesterprojekt";
+        String dbUrl = "jdbc:mysql://localhost:6666/runmate";
         String dbUser = "sqluser";
         String dbPassword = "sqluserpw";
 
@@ -182,7 +182,7 @@ public class HelloWorld {
             statement = connection.createStatement();
 
             // Result set get the result of the SQL query
-            String selectText = "SELECT * from semesterprojekt.users";
+            String selectText = "SELECT * from runmate.users";
             System.out.println(selectText);
             resultSet = statement.executeQuery(selectText);
 
@@ -233,7 +233,7 @@ public class HelloWorld {
             statement = connection.createStatement();
 
             // Result set get the result of the SQL query
-            String selectText = "SELECT * from semesterprojekt.aktivitet";
+            String selectText = "SELECT * from runmate.aktivitet";
             System.out.println(selectText);
             resultSet = statement.executeQuery(selectText);
 

@@ -69,9 +69,14 @@ input[type=submit] {
 
 <h3>Password Validation</h3>
 <p>Try to submit the form.</p>
+    
+     
+    <form action="login.html">
+    <input type="submit" value="Go to login" />
+</form>
 
 <div class="container">
-  <form id="theForm" > <!--method = "post" action="http://localhost:7000/make-reservation"-->
+  <form id="theForm" action="login.html"> <!--method = "post" action="http://localhost:7000/make-reservation"-->
     <label for="name">Username</label>
     <input type="text" id="name" name="name" required>
 
@@ -89,6 +94,7 @@ input[type=submit] {
   <p id="number" class="invalid">A <b>number</b></p>
   <p id="length" class="invalid">Minimum <b>8 characters</b></p>
 </div>
+   
 				
 <script>
 var myInput = document.getElementById("passwd");

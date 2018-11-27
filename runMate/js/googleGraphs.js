@@ -41,12 +41,12 @@ google.charts.setOnLoadCallback(drawTable);
 google.charts.setOnLoadCallback(drawChart3);
 google.charts.setOnLoadCallback(drawChart4);
 
-console.log("this is arraySktivitet:"+ strinArray.toString());
+//console.log("this is arraySktivitet:"+ strinArray.toString());
     
         
-        var løbKm = [1];
-        var cykelKm = [1];
-        var gaaKm = [1];
+        var løbKm = [1, 2, 11];
+        //var cykelKm = [1,20];
+        var gaaKm = [1, 7];
       // Callback that creates and populates a data table,
       // instantiates the pie chart, passes in the data and
       // draws it.
@@ -63,9 +63,12 @@ console.log("this is arraySktivitet:"+ strinArray.toString());
             }
         var j;
         var cykelSum = 0;
-        for (j=0; j<cykelKm.length; j++)
+        for (j=0; j<strinArray.length; j++)
             {
-                cykelSum += cykelKm[j];
+                var cykelInt = parseInt("" + strinArray[j]);
+                console.log(typeof(cykelInt));
+                console.log(cykelInt);
+                cykelSum += cykelInt;
             }
         var h;
         var gaaSum = 0;
@@ -105,14 +108,17 @@ console.log("this is arraySktivitet:"+ strinArray.toString());
         arrayAktivitet.addColumn('number', 'Længde');
         arrayAktivitet.addColumn('number', 'Mål')
         arrayAktivitet.addColumn('boolean', 'Personligt mål nået');
-        arrayAktivitet.addRows([
+        for (var i = 0; i < strinArray.length; i++){
+            arrayAktivitet.addRows([[i, {f: strinArray[i]}, 5, true], ])
+        }
+        /*arrayAktivitet.addRows([
           [1,  {f: strinArray[3]}, 5, true],
           [2,   {f: '8 KM'}, 10,  false],
           [3, {f: '10 KM'}, 10, true],
           [4,   {f: '7 KM'}, 5,  true],
           [5, {f: '12 KM'}, 10, true],
           [6,   {f: '7 KM'}, 5,  true]
-        ]);
+        ]);*/
          
          var options2 = {
          width:'400',

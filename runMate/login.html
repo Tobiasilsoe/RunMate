@@ -161,11 +161,17 @@ document.getElementById('theForm').addEventListener("submit",function(e) {
                 // Sending data from the client via AJAX
                 $.ajax({
                 	type: "GET",
-                    url: "http://localhost:7000/readlogin/"+$('#name').val(),
+                    url: "http://localhost:7000/readlogin/"+$('#name').val()+'/'+$('#passwd').val(),
                     success: function (data) {
                         console.log(data);
                         $('body').append('Response from the Java web server:<br>' +
                                     data);
+                        console.log(data + "den her");
+                        if(data==""){
+                            console.log("ikke logget ind");
+                        }else{
+                            console.log("virker");
+                        }
 
                         // Possible use of the data
                        /* var arr = data.substr(8).split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator

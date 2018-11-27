@@ -39,7 +39,7 @@ public class HelloWorld {
 // --- 2. Create Web API to insert and read data from the DB -------------------
         // example1: http://localhost:7000/insert/Andrea
         // example2: http://localhost:7000/read/Andrea
-        String dbUrl = "jdbc:mysql://localhost:6666/runmate";
+        String dbUrl = "jdbc:mysql://localhost:3306/runmate";
         String dbUser = "sqluser";
         String dbPassword = "sqluserpw";
 
@@ -82,10 +82,10 @@ public class HelloWorld {
            
         });
          
-             app.get("/readlogin/:name", ctx -> {
+             app.get("/readlogin/:name/:passwd", ctx -> {
             String message
                     = readLogin(dbUrl, dbUser, dbPassword,
-                            ctx.pathParam("name"));
+                            ctx.pathParam("name"), ctx.pathParam("passwd"));
 
             ctx.result(message);
            
@@ -322,7 +322,7 @@ public class HelloWorld {
     }
     
     public static String readLogin(String url, String user, String password,
-            String name) {
+            String name, String passwd) {
         String message = "Data inserted.";
         try {
             // Setup the connection with the DB
@@ -331,7 +331,7 @@ public class HelloWorld {
             // Statements allow to issue SQL queries to the database
             statement = connection.createStatement();
 
-            String selectText = "SELECT id FROM users WHERE navn = '" + name + "';";
+            String selectText = "SELECT id FROM users WHERE navn = '" + name + "'and pw = '" + passwd + "';";
             System.out.println(selectText);
             resultSet = statement.executeQuery(selectText);
             System.out.println("id");

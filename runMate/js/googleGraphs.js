@@ -66,8 +66,6 @@ google.charts.setOnLoadCallback(drawChart4);
         for (j=0; j<strinArray.length; j++)
             {
                 var cykelInt = parseInt("" + strinArray[j]);
-                console.log(typeof(cykelInt));
-                console.log(cykelInt);
                 cykelSum += cykelInt;
             }
         var h;
@@ -109,7 +107,7 @@ google.charts.setOnLoadCallback(drawChart4);
         arrayAktivitet.addColumn('number', 'Mål')
         arrayAktivitet.addColumn('boolean', 'Personligt mål nået');
         for (var i = 0; i < strinArray.length; i++){
-            arrayAktivitet.addRows([[i, {f: strinArray[i]}, 5, true], ])
+            arrayAktivitet.addRows([[i, {f: '' + strinArray[i] + ' KM'}, 5, true], ])
         }
         /*arrayAktivitet.addRows([
           [1,  {f: strinArray[3]}, 5, true],

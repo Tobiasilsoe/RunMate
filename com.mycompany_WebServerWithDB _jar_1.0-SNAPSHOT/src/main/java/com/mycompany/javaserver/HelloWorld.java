@@ -82,6 +82,16 @@ public class HelloWorld {
            
         });
          
+             app.get("/readLogin/:name/:passwd", ctx -> {
+            String message
+                    = readLogin(dbUrl, dbUser, dbPassword,
+                            ctx.pathParam("name"), ctx.pathParam("passwd"));
+
+            ctx.result(message);
+           
+        });
+         
+         
           app.post("/aktivitetstype/:aktivitetstype/:distance", ctx -> {
             String message
                     = InsertAktivitetsFormInDB(dbUrl, dbUser, dbPassword,
@@ -287,6 +297,51 @@ public class HelloWorld {
             String insertText = "INSERT INTO users values (" + "default,'" + name + "','" + passwd+"', 1" + ");";
             System.out.println(insertText);
             statement.executeUpdate(insertText);
+
+        } catch (SQLException ex) {
+            System.out.println("SQLException occurred! " + ex);
+            message = "Error." + ex;
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("SQLException occurred while closing the connection. " + ex);
+                message = "Error." + ex;
+            }
+        }
+
+        return message;
+    }
+    
+    public static String readLogin(String url, String user, String password,
+            String name, String passwd) {
+        String message = "Data inserted.";
+        try {
+            // Setup the connection with the DB
+            connection = DriverManager.getConnection(url, user, password);
+
+            // Statements allow to issue SQL queries to the database
+            statement = connection.createStatement();
+
+            String selectText = "SELECT id FROM users WHERE navn = '" + name + "', pw = '" + passwd + "';";
+            System.out.println(selectText);
+            resultSet = statement.executeQuery(selectText);
+            
+            while (resultSet.next()) {
+                System.out.printf("%s",
+                      
+                        resultSet.getString("id")
+                        
+                );
+            }
 
         } catch (SQLException ex) {
             System.out.println("SQLException occurred! " + ex);

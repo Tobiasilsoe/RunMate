@@ -82,10 +82,10 @@ public class HelloWorld {
            
         });
          
-             app.get("/readLogin/:name/:passwd", ctx -> {
+             app.get("/readlogin/:name", ctx -> {
             String message
                     = readLogin(dbUrl, dbUser, dbPassword,
-                            ctx.pathParam("name"), ctx.pathParam("passwd"));
+                            ctx.pathParam("name"));
 
             ctx.result(message);
            
@@ -322,7 +322,7 @@ public class HelloWorld {
     }
     
     public static String readLogin(String url, String user, String password,
-            String name, String passwd) {
+            String name) {
         String message = "Data inserted.";
         try {
             // Setup the connection with the DB
@@ -331,9 +331,10 @@ public class HelloWorld {
             // Statements allow to issue SQL queries to the database
             statement = connection.createStatement();
 
-            String selectText = "SELECT id FROM users WHERE navn = '" + name + "', pw = '" + passwd + "';";
+            String selectText = "SELECT id FROM users WHERE navn = '" + name + "';";
             System.out.println(selectText);
             resultSet = statement.executeQuery(selectText);
+            System.out.println("id");
             
             while (resultSet.next()) {
                 System.out.printf("%s",

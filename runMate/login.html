@@ -156,22 +156,23 @@ myInput.onkeyup = function() {
   }
 }
 
-$(document).ready(function () {
+document.getElementById('theForm').addEventListener("submit",function(e) {
+    e.preventDefault(); // before the code
                 // Sending data from the client via AJAX
                 $.ajax({
                 	type: "GET",
-                    url: "http://localhost:7000/readLogin"+$('#name').val()+'/'+$('#passwd').val(),
+                    url: "http://localhost:7000/readlogin/"+$('#name').val(),
                     success: function (data) {
                         console.log(data);
                         $('body').append('Response from the Java web server:<br>' +
                                     data);
 
                         // Possible use of the data
-                        var arr = data.substr(8).split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
+                       /* var arr = data.substr(8).split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
                         for (var i=0;i<arr.length;i++){
                         	console.log( i , arr[i]);
                         }
-                        console.log(arr.toString());
+                        console.log(arr.toString());*/
                     },
                     error: function (data) {
                         console.log("error!");

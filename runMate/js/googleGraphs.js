@@ -1,5 +1,6 @@
  // Load the Visualization API and the corechart package.
 var arrayAktivitet = [];
+var strinArray=[] ;
 $(document).ready(function () {
                 // Sending data from the client via AJAX
                 $.ajax({
@@ -17,6 +18,13 @@ $(document).ready(function () {
                         }
                         console.log(arrayAktivitet.toString());
                         
+                        for (var i=0;i<arrayAktivitet.length;i++){
+                            if (i % 2 !== 0) { 
+                        	strinArray.push(arrayAktivitet[i]);}
+                        }
+                        console.log("heey");
+                        console.log(strinArray.toString());
+                        
                     },
                     error: function (data) {
                         console.log("error!");
@@ -33,7 +41,7 @@ google.charts.setOnLoadCallback(drawTable);
 google.charts.setOnLoadCallback(drawChart3);
 google.charts.setOnLoadCallback(drawChart4);
 
-console.log("this is arrayAktivitet:"+ arrayAktivitet);
+console.log("this is arraySktivitet:"+ strinArray.toString());
     
         
         var løbKm = [1];
@@ -98,7 +106,7 @@ console.log("this is arrayAktivitet:"+ arrayAktivitet);
         arrayAktivitet.addColumn('number', 'Mål')
         arrayAktivitet.addColumn('boolean', 'Personligt mål nået');
         arrayAktivitet.addRows([
-          [1,  {f: '10 KM'}, 8, true],
+          [1,  {f: strinArray[3]}, 5, true],
           [2,   {f: '8 KM'}, 10,  false],
           [3, {f: '10 KM'}, 10, true],
           [4,   {f: '7 KM'}, 5,  true],

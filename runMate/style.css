@@ -307,7 +307,9 @@ input:-webkit-autofill:focus {
 .mainmenu-area a {
     color: #ffffff;
 }
-
+.dropDown{
+     color: #000000;
+}
 .mainmenu-area .logo {
     text-transform: uppercase;
     letter-spacing: 2px;

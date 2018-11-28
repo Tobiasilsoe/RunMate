@@ -1,7 +1,10 @@
  // Load the Visualization API and the corechart package.
 var arrayAktivitet = [];
 var cykelArray=[];
-var løbeArray=[];
+var arrayAktivitet2 = [];
+var lobeArray=[];
+var arrayAktivitet3 = [];
+var gaaArray=[];
 $(document).ready(function () {
                 // Sending data from the client via AJAX
                             //CYKEL DATA
@@ -14,7 +17,7 @@ $(document).ready(function () {
                                     data);
 
                         // Possible use of the data
-                        arrayAktivitet = data.substr(0).split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
+                        arrayAktivitet = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
                         for (var i=0;i<arrayAktivitet.length;i++){
                         	console.log( i , arrayAktivitet[i]);
                         }
@@ -24,7 +27,7 @@ $(document).ready(function () {
                             if (i % 2 !== 0) { 
                         	cykelArray.push(arrayAktivitet[i]);}
                         }
-                        console.log("heey");
+                        console.log("hej1");
                         console.log(cykelArray.toString());
                         
                     },
@@ -33,33 +36,61 @@ $(document).ready(function () {
                     },
                 });
                             //LØBE DATA
-                /*$.ajax({
+                $.ajax({
                 	type: "GET",
-                    url: "http://localhost:7000/read_after/" + localStorage.getItem("user"),
+                    url: "http://localhost:7000/read_lob/" + localStorage.getItem("user"),
                     success: function (data) {
                         console.log(data);
                         $('body').append('Response from the Java web server:<br>' +
                                     data);
 
                         // Possible use of the data
-                        arrayAktivitet = data.substr(8).split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
-                        for (var i=0;i<arrayAktivitet.length;i++){
-                        	console.log( i , arrayAktivitet[i]);
+                        arrayAktivitet2 = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
+                        for (var i=0;i<arrayAktivitet2.length;i++){
+                        	console.log( i , arrayAktivitet2[i]);
                         }
-                        console.log(arrayAktivitet.toString());
+                        console.log(arrayAktivitet2.toString());
                         
-                        for (var i=0;i<arrayAktivitet.length;i++){
+                        for (var i=0;i<arrayAktivitet2.length;i++){
                             if (i % 2 !== 0) { 
-                        	cykelArray.push(arrayAktivitet[i]);}
+                        	lobeArray.push(arrayAktivitet2[i]);}
                         }
-                        console.log("heey");
-                        console.log(cykelArray.toString());
+                        console.log("hej2");
+                        console.log(lobeArray.toString());
                         
                     },
                     error: function (data) {
                         console.log("error!");
                     },
-                });*/
+                });
+                            //GÅ DATA
+                $.ajax({
+                	type: "GET",
+                    url: "http://localhost:7000/read_gaa/" + localStorage.getItem("user"),
+                    success: function (data) {
+                        console.log(data);
+                        $('body').append('Response from the Java web server:<br>' +
+                                    data);
+
+                        // Possible use of the data
+                        arrayAktivitet3 = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
+                        for (var i=0;i<arrayAktivitet3.length;i++){
+                        	console.log( i , arrayAktivitet3[i]);
+                        }
+                        console.log(arrayAktivitet3.toString());
+                        
+                        for (var i=0;i<arrayAktivitet3.length;i++){
+                            if (i % 2 !== 0) { 
+                        	gaaArray.push(arrayAktivitet3[i]);}
+                        }
+                        console.log("hej3");
+                        console.log(gaaArray.toString());
+                        
+                    },
+                    error: function (data) {
+                        console.log("error!");
+                    },
+                });
             });
       google.charts.load('current', {'packages':['corechart']});
         google.charts.load('current', {'packages':['table']});
@@ -74,9 +105,9 @@ google.charts.setOnLoadCallback(drawChart4);
 //console.log("this is arraySktivitet:"+ strinArray.toString());
     
         
-        var løbKm = [1, 2, 11];
+        //var løbKm = [1, 2, 11];
         //var cykelKm = [1,20];
-        var gaaKm = [1, 7];
+        //var gaaKm = [1, 7];
       // Callback that creates and populates a data table,
       // instantiates the pie chart, passes in the data and
       // draws it.
@@ -85,11 +116,11 @@ google.charts.setOnLoadCallback(drawChart4);
         // Create the data table.
         var data = new google.visualization.DataTable();
         
-        var i;
-        var løbSum = 0;
-        for (i=0; i<løbKm.length; i++)
+        var lobeSum = 0;
+        for (i=0; i<lobeArray.length; i++)
             {
-                løbSum += løbKm[i];
+                var lobeInt = parseInt("" + lobeArray[i]);
+                lobeSum += lobeInt;
             }
         var j;
         var cykelSum = 0;
@@ -100,15 +131,16 @@ google.charts.setOnLoadCallback(drawChart4);
             }
         var h;
         var gaaSum = 0;
-        for (h=0; h<gaaKm.length; h++)
+        for (h=0; h<gaaArray.length; h++)
             {
-                gaaSum += gaaKm[h];
+                var gaaInt = parseInt("" + gaaArray[h]);
+                gaaSum += gaaInt;
             }
           
         data.addColumn('string', 'Aktivitet');
         data.addColumn('number', 'Længde');
         data.addRows([
-          ['Løb', løbSum],
+          ['Løb', lobeSum],
           ['Gå', gaaSum],
           ['Cykel', cykelSum],
         ]);

@@ -39,7 +39,7 @@ public class HelloWorld {
 // --- 2. Create Web API to insert and read data from the DB -------------------
         // example1: http://localhost:7000/insert/Andrea
         // example2: http://localhost:7000/read/Andrea
-        String dbUrl = "jdbc:mysql://localhost:6666/runmate";
+        String dbUrl = "jdbc:mysql://localhost:3306/runmate";
         String dbUser = "sqluser";
         String dbPassword = "sqluserpw";
 
@@ -56,6 +56,22 @@ public class HelloWorld {
             System.out.println( id );
             ctx.result(
                     readCykelFromID(dbUrl, dbUser, dbPassword, id)
+            );
+        });
+        
+        app.get("/read_lob/:id", ctx -> {
+            int id = Integer.parseInt(ctx.pathParam("id"));
+            System.out.println( id );
+            ctx.result(
+                    readLobFromID(dbUrl, dbUser, dbPassword, id)
+            );
+        });
+        
+        app.get("/read_gaa/:id", ctx -> {
+            int id = Integer.parseInt(ctx.pathParam("id"));
+            System.out.println( id );
+            ctx.result(
+                    readGaaFromID(dbUrl, dbUser, dbPassword, id)
             );
         });
 
@@ -442,7 +458,7 @@ public class HelloWorld {
         return textResult;
     }
     
-    /*public static String readCykelFromID(String url, String user, String password, int id) {
+    public static String readLobFromID(String url, String user, String password, int id) {
         String textResult = "";
         try {
             // Setup the connection with the DB
@@ -452,7 +468,7 @@ public class HelloWorld {
             statement = connection.createStatement();
 
             // Result set get the result of the SQL query
-            String selectText = "SELECT * FROM runmate.aktivitet WHERE aktivitetstype = cykel AND userid = "+id+";";
+            String selectText = "SELECT * FROM runmate.aktivitet WHERE aktivitetstype = 'lob' AND userid = "+id+";";
             System.out.println(selectText);
             resultSet = statement.executeQuery(selectText);
 
@@ -492,7 +508,59 @@ public class HelloWorld {
             textResult = "-nothing found-";
         }
         return textResult;
-    }*/
+    }
+    
+    public static String readGaaFromID(String url, String user, String password, int id) {
+        String textResult = "";
+        try {
+            // Setup the connection with the DB
+            connection = DriverManager.getConnection(url, user, password);
+
+            // Statements allow to issue SQL queries to the database
+            statement = connection.createStatement();
+
+            // Result set get the result of the SQL query
+            String selectText = "SELECT * FROM runmate.aktivitet WHERE aktivitetstype = 'gang' AND userid = "+id+";";
+            System.out.println(selectText);
+            resultSet = statement.executeQuery(selectText);
+
+            // Write result
+            while (resultSet.next()) {
+                System.out.printf("%s | %s ",
+                      
+                        resultSet.getString("aktivitetstype"),
+                        resultSet.getString("distance")
+                        
+                );
+                textResult += 
+                        resultSet.getString("aktivitetstype") + "|"
+                        + resultSet.getString("distance") + "|"
+                        ;
+            }
+           
+        } catch (SQLException ex) {
+            System.out.println("SQLException occurred! " + ex);
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("SQLException occurred while closing the connection. " + ex);
+            }
+        }
+
+        if (textResult.equals("")) {
+            textResult = "-nothing found-";
+        }
+        return textResult;
+    }
 
 }
 

@@ -23,7 +23,7 @@ input[type=submit] {
     top: 50%;
     left: 50%;
     margin-right: -50%;
-    border: 2px solid #92a8d1;
+    border: 2px solid 	#138FC2;
     border-radius: 10px;
     transform: translate(-50%, -50%)
     
@@ -44,7 +44,7 @@ input[type=submit] {
     font-size: 18px;
 }
 /* Style baggrunden */
-.body {background-color: #92a8d1;}
+.body {background-color: 	#138FC2;}
 
 /* Add a green text color and a checkmark when the requirements are right */
 .valid {

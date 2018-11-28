@@ -50,9 +50,18 @@ public class HelloWorld {
 
             ctx.result(message);
         });
+        
+        app.get("/read_after/:id", ctx -> {
+            int id = Integer.parseInt(ctx.pathParam("id"));
+            System.out.println( id );
+            ctx.result(
+                    readFromID(dbUrl, dbUser, dbPassword, id)
+            );
+        });
         /*app.get("/insert/:name/:passwd", ctx -> {
             String message
-                    = readFromAktivitet(dbUrl, dbUser, dbPassword,
+                    = readFrom
+        Aktivitet(dbUrl, dbUser, dbPassword,
                             ctx.pathParam("name"), ctx.pathParam("passwd"));
 
             ctx.result(message);
@@ -408,5 +417,58 @@ public class HelloWorld {
 
         return message;
     }
+    public static String readFromID(String url, String user, String password, int id) {
+        String textResult = "";
+        try {
+            // Setup the connection with the DB
+            connection = DriverManager.getConnection(url, user, password);
+
+            // Statements allow to issue SQL queries to the database
+            statement = connection.createStatement();
+
+            // Result set get the result of the SQL query
+            String selectText = "SELECT * FROM runmate.aktivitet WHERE userid= "+id+";";
+            System.out.println(selectText);
+            resultSet = statement.executeQuery(selectText);
+
+            // Write result
+            // Write result
+            while (resultSet.next()) {
+                System.out.printf("%s | %s ",
+                      
+                        resultSet.getString("aktivitetstype"),
+                        resultSet.getString("distance")
+                        
+                );
+                textResult += 
+                        resultSet.getString("aktivitetstype") + "|"
+                        + resultSet.getString("distance") + "|"
+                        ;
+            }
+           
+        } catch (SQLException ex) {
+            System.out.println("SQLException occurred! " + ex);
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("SQLException occurred while closing the connection. " + ex);
+            }
+        }
+
+        if (textResult.equals("")) {
+            textResult = "-nothing found-";
+        }
+        return textResult;
+    }
 
 }
+

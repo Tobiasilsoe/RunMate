@@ -5,7 +5,7 @@ $(document).ready(function () {
                 // Sending data from the client via AJAX
                 $.ajax({
                 	type: "GET",
-                    url: "http://localhost:7000/readaktivitet",
+                    url: "http://localhost:7000/read_after/" + localStorage.getItem("user"),
                     success: function (data) {
                         console.log(data);
                         $('body').append('Response from the Java web server:<br>' +

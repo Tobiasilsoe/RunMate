@@ -1,9 +1,39 @@
  // Load the Visualization API and the corechart package.
 var arrayAktivitet = [];
-var strinArray=[] ;
+var cykelArray=[];
+var løbeArray=[];
 $(document).ready(function () {
                 // Sending data from the client via AJAX
+                            //CYKEL DATA
                 $.ajax({
+                	type: "GET",
+                    url: "http://localhost:7000/read_cykel/" + localStorage.getItem("user"),
+                    success: function (data) {
+                        console.log(data);
+                        $('body').append('Response from the Java web server:<br>' +
+                                    data);
+
+                        // Possible use of the data
+                        arrayAktivitet = data.substr(0).split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
+                        for (var i=0;i<arrayAktivitet.length;i++){
+                        	console.log( i , arrayAktivitet[i]);
+                        }
+                        console.log(arrayAktivitet.toString());
+                        
+                        for (var i=0;i<arrayAktivitet.length;i++){
+                            if (i % 2 !== 0) { 
+                        	cykelArray.push(arrayAktivitet[i]);}
+                        }
+                        console.log("heey");
+                        console.log(cykelArray.toString());
+                        
+                    },
+                    error: function (data) {
+                        console.log("error!");
+                    },
+                });
+                            //LØBE DATA
+                /*$.ajax({
                 	type: "GET",
                     url: "http://localhost:7000/read_after/" + localStorage.getItem("user"),
                     success: function (data) {
@@ -20,16 +50,16 @@ $(document).ready(function () {
                         
                         for (var i=0;i<arrayAktivitet.length;i++){
                             if (i % 2 !== 0) { 
-                        	strinArray.push(arrayAktivitet[i]);}
+                        	cykelArray.push(arrayAktivitet[i]);}
                         }
                         console.log("heey");
-                        console.log(strinArray.toString());
+                        console.log(cykelArray.toString());
                         
                     },
                     error: function (data) {
                         console.log("error!");
                     },
-                });
+                });*/
             });
       google.charts.load('current', {'packages':['corechart']});
         google.charts.load('current', {'packages':['table']});
@@ -63,9 +93,9 @@ google.charts.setOnLoadCallback(drawChart4);
             }
         var j;
         var cykelSum = 0;
-        for (j=0; j<strinArray.length; j++)
+        for (j=0; j<cykelArray.length; j++)
             {
-                var cykelInt = parseInt("" + strinArray[j]);
+                var cykelInt = parseInt("" + cykelArray[j]);
                 cykelSum += cykelInt;
             }
         var h;
@@ -106,8 +136,8 @@ google.charts.setOnLoadCallback(drawChart4);
         arrayAktivitet.addColumn('number', 'Længde');
         arrayAktivitet.addColumn('number', 'Mål')
         arrayAktivitet.addColumn('boolean', 'Personligt mål nået');
-        for (var i = 0; i < strinArray.length; i++){
-            arrayAktivitet.addRows([[i, {f: '' + strinArray[i] + ' KM'}, 5, true], ])
+        for (var i = 0; i < cykelArray.length; i++){
+            arrayAktivitet.addRows([[i, {f: '' + cykelArray[i] + ' KM'}, 5, true], ])
         }
         /*arrayAktivitet.addRows([
           [1,  {f: strinArray[3]}, 5, true],

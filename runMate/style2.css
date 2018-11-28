@@ -40,6 +40,8 @@ input[type=submit] {
     padding: 10px 35px;
     font-size: 18px;
 }
+/* Style baggrunden */
+body {background-color: #92a8d1;}
 
 /* Add a green text color and a checkmark when the requirements are right */
 .valid {

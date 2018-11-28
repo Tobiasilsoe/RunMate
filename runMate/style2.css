@@ -17,13 +17,13 @@ input[type=submit] {
 
 /* Style the container for inputs */
 .container {
-    background-color: #f1f1f1;
+    background-color: #138FC2;
     padding: 20px;
     position: absolute;
     top: 50%;
     left: 50%;
     margin-right: -50%;
-    border: 2px solid 	#138FC2;
+    border: 2px solid 	#F2FEFE;
     border-radius: 10px;
     transform: translate(-50%, -50%)
     
@@ -32,7 +32,7 @@ input[type=submit] {
 /* The message box is shown when the user clicks on the password field */
 #message {
     display:none;
-    background: #f1f1f1;
+    background: #138FC2;
     color: #000;
     position: relative;
     padding: 20px;
@@ -44,7 +44,7 @@ input[type=submit] {
     font-size: 18px;
 }
 /* Style baggrunden */
-.body {background-color: 	#138FC2;}
+.body {background-color: 	#F2FEFE;}
 
 /* Add a green text color and a checkmark when the requirements are right */
 .valid {
@@ -66,4 +66,8 @@ input[type=submit] {
     position: relative;
     left: -35px;
     content: "✖";
+}
+label{
+    color: white;
+    font-size: 20px;
 }

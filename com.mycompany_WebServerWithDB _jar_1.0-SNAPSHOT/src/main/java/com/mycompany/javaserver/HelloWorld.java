@@ -39,7 +39,7 @@ public class HelloWorld {
 // --- 2. Create Web API to insert and read data from the DB -------------------
         // example1: http://localhost:7000/insert/Andrea
         // example2: http://localhost:7000/read/Andrea
-        String dbUrl = "jdbc:mysql://localhost:3306/runmate";
+        String dbUrl = "jdbc:mysql://localhost:6666/runmate";
         String dbUser = "sqluser";
         String dbPassword = "sqluserpw";
 
@@ -110,10 +110,10 @@ public class HelloWorld {
         });
          
          
-          app.post("/aktivitetstype/:aktivitetstype/:distance", ctx -> {
+          app.post("/aktivitetstype/:id/:aktivitetstype/:distance", ctx -> {
             String message
                     = InsertAktivitetsFormInDB(dbUrl, dbUser, dbPassword,
-                            ctx.pathParam("aktivitetstype"), ctx.pathParam("distance"));
+                           ctx.pathParam("id"), ctx.pathParam("aktivitetstype"), ctx.pathParam("distance"));
 
             ctx.result(message);
            
@@ -370,7 +370,7 @@ public class HelloWorld {
     }
     
     public static String InsertAktivitetsFormInDB(String url, String user, String password,
-            String aktivitetsType, String distance) {
+           String id, String aktivitetsType, String distance) {
         String message = "Data inserted.";
         try {
             // Setup the connection with the DB
@@ -379,7 +379,7 @@ public class HelloWorld {
             // Statements allow to issue SQL queries to the database
             statement = connection.createStatement();
 
-            String insertText = "INSERT INTO aktivitet values (" + "1,'" + aktivitetsType + "','" + distance+"', default" + ");";
+            String insertText = "INSERT INTO aktivitet values (" + id+",'" + aktivitetsType + "','" + distance+"', default" + ");";
             System.out.println(insertText);
             statement.executeUpdate(insertText);
 

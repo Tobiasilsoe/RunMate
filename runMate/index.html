@@ -148,7 +148,7 @@
             // ajax call 
             $.ajax({
                 type: "POST",
-                url: "http://localhost:7000/aktivitetstype/" + $('#aktivitetstype').val() + '/' + $('#distance').val(),
+                url: "http://localhost:7000/aktivitetstype/"+localStorage.getItem("user")+'/'+ $('#aktivitetstype').val() + '/' + $('#distance').val(),
                 // serialized fields from the form ... 
                 //data: $("#theForm").serialize(), 
                 success: function(data) {

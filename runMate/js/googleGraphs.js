@@ -5,6 +5,12 @@ var arrayAktivitet2 = [];
 var lobeArray=[];
 var arrayAktivitet3 = [];
 var gaaArray=[];
+var grpArrayAktivitet = [];
+var grpCykelArray=[];
+var grpCrrayAktivitet2 = [];
+var grpLobeArray=[];
+var grpArrayAktivitet3 = [];
+var grpGaaArray=[];
 $(document).ready(function () {
                 // Sending data from the client via AJAX
                             //CYKEL DATA
@@ -91,6 +97,34 @@ $(document).ready(function () {
                         console.log("error!");
                     },
                 });
+    
+    $.ajax({
+                	type: "GET",
+                    url: "http://localhost:7000/read_cykelgrp/" + localStorage.getItem("user"),
+                    success: function (data) {
+                        console.log(data);
+                        $('body').append('Response from the Java web server:<br>' +
+                                    data);
+
+                        // Possible use of the data
+                        grpArrayAktivitet = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
+                        for (var i=0;i<grpArrayAktivitet.length;i++){
+                        	console.log( i , grpArrayAktivitet[i]);
+                        }
+                        console.log(grpArrayAktivitet.toString());
+                        
+                        for (var i=0;i<grpArrayAktivitet.length;i++){
+                            if (i % 2 !== 0) { 
+                        	grpCykelArray.push(grpArrayAktivitet[i]);}
+                        }
+                        console.log("hejgrp");
+                        console.log(grpCykelArray.toString());
+                        
+                    },
+                    error: function (data) {
+                        console.log("error!");
+                    },
+                });
             });
       google.charts.load('current', {'packages':['corechart']});
         google.charts.load('current', {'packages':['table']});
@@ -101,6 +135,7 @@ google.charts.load('current', {'packages':['columnchart']});
 google.charts.setOnLoadCallback(drawTable);
 google.charts.setOnLoadCallback(drawChart3);
 google.charts.setOnLoadCallback(drawChart4);
+google.charts.setOnLoadCallback(drawChart5);
 
 //console.log("this is arraySktivitet:"+ strinArray.toString());
     
@@ -160,6 +195,7 @@ google.charts.setOnLoadCallback(drawChart4);
       }
 
 
+
      function drawTable() {
         //var data 1 = new google.visualization.DataTable();
         
@@ -188,6 +224,34 @@ google.charts.setOnLoadCallback(drawChart4);
         var table = new google.visualization.Table(document.getElementById('table_div'));
 
         table.draw(arrayAktivitet, options2);
+      }
+ function drawChart5() {
+
+        // Create the data table.
+        var data5 = new google.visualization.DataTable();
+        
+        
+          
+        data5.addColumn('string', 'Aktivitet');
+        data5.addColumn('number', 'Længde');
+        data5.addRows([
+          ['Løb', 1],
+          ['Gå', 1],
+          ['Cykel', 1],
+        ]);
+          
+
+        // Set chart options
+          var options5 = {
+              title:'Din fordeling i km',
+              width:'350',
+              height:'400'
+          }
+        
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div5'));
+        chart.draw(data5, options5);
       }
 
 

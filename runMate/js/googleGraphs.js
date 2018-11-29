@@ -19,8 +19,6 @@ $(document).ready(function () {
                     url: "http://localhost:7000/read_cykel/" + localStorage.getItem("user"),
                     success: function (data) {
                         console.log(data);
-                        $('body').append('Response from the Java web server:<br>' +
-                                    data);
 
                         // Possible use of the data
                         arrayAktivitet = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
@@ -47,8 +45,6 @@ $(document).ready(function () {
                     url: "http://localhost:7000/read_lob/" + localStorage.getItem("user"),
                     success: function (data) {
                         console.log(data);
-                        $('body').append('Response from the Java web server:<br>' +
-                                    data);
 
                         // Possible use of the data
                         arrayAktivitet2 = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
@@ -75,8 +71,6 @@ $(document).ready(function () {
                     url: "http://localhost:7000/read_gaa/" + localStorage.getItem("user"),
                     success: function (data) {
                         console.log(data);
-                        $('body').append('Response from the Java web server:<br>' +
-                                    data);
 
                         // Possible use of the data
                         arrayAktivitet3 = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
@@ -103,8 +97,6 @@ $(document).ready(function () {
                     url: "http://localhost:7000/read_cykelgrp/" + localStorage.getItem("user"),
                     success: function (data) {
                         console.log(data);
-                        $('body').append('Response from the Java web server:<br>' +
-                                    data);
 
                         // Possible use of the data
                         grpArrayAktivitet = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator

@@ -39,13 +39,13 @@ input[type=submit] {
 
 /* Style the container for inputs */
 .container {
-    background-color: #138FC2;
+    background-color: #138Fc999;
     padding: 20px;
     position: absolute;
     top: 50%;
     left: 50%;
     margin-right: -50%;
-    border: 2px solid 	#F2FEFE;
+    border: 2px solid 	#138Fc999;
     border-radius: 10px;
     transform: translate(-50%, -50%)
     
@@ -83,7 +83,7 @@ input[type=submit] {
 /* The message box is shown when the user clicks on the password field */
 #message {
     display:none;
-    background: #138FC2;
+    background: #138Fc999;
     color: #000;
     position: relative;
     padding: 20px;

@@ -61,8 +61,8 @@
             <nav class="collapse navbar-collapse" id="primary-menu">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="#home-page">Inset Data</a></li>
-                    <li><a href="#graph-page">Mine Data</a></li>
                     <li><a href="#map-page">Kort</a></li>
+                    <li><a href="#graph-page">Mine Data</a></li>
                     <li><a href="#price-page">Gruppens placering</a></li>
                     <li><a href="RunMate-Spil/RunMate.apk" download>Download vores spil</a></li>
                     <li><a href="login.html" onclick="LogUd()">Log ud</a></li>
@@ -100,41 +100,18 @@
         </div>
     </header>
     <!--Header-area/-->
-
-    <!--Feature-area-->
-    <section class="gray-bg section-padding" id="graph-page">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-6">
-                    <div id="table_div">
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-6">
-                    <div id="chart_div5">
-                    </div>
-                </div>
-                
-            </div>
-            <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-offset-2">
-                    <div id="chart_div">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!--Map-area-->
+    
+     <!--Map-area-->
     <section class="gray-bg section-padding" id="map-page">
         <div id="map"></div>
-        <h1>Hello</h1>
+        
     </section>
     
         <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 700px;
+        height: 450px;
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
@@ -236,6 +213,30 @@ initMap();
 
     </script>
 
+    <!--chart-area-->
+    <section class="gray-bg section-padding" id="graph-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                    <div id="table_div">
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <div id="chart_div5">
+                    </div>
+                </div>
+                
+            </div>
+            <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-offset-2">
+                    <div id="chart_div">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
     <!--Scripts-->
     <script src="js/googleGraphs.js"></script>
     <!--Vendor-JS-->

@@ -10,7 +10,7 @@ input {
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-radius: 4px 4px 4px 4px;
     box-shadow: 0 -5px 45px rgba(100, 100, 100, 0.2) inset, 0 1px 1px rgba(255, 255, 255, 0.2);
-    color: #FFFFFF;
+    color: #000000;
     font-size: 13px;
     margin-bottom: 10px;
     outline: medium none;
@@ -35,17 +35,26 @@ input[type=submit] {
     text-shadow: 0 1px rgba(0, 0, 0, 0.3);
     width: 100%;
     
+    
+}
+input[type=password] {
+    background-color: white;
+    opacity: 0.85;
+}
+input[type=text] {
+    background-color: white;
+    opacity: 0.85;
 }
 
 /* Style the container for inputs */
 .container {
-    background-color: #138Fc9;
+    background-color: #138Fc999
     padding: 20px;
     position: absolute;
     top: 50%;
     left: 50%;
     margin-right: -50%;
-    border: 2px solid 	#138Fc9;
+    border: 2px solid 	#138Fc999
     border-radius: 10px;
     transform: translate(-50%, -50%)
     

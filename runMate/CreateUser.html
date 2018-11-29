@@ -98,7 +98,7 @@ document.getElementById('theForm').addEventListener("submit",function(e) {
     // ajax call 
     $.ajax({
         type: "POST",
-        url: "http://localhost:7000/make-reservation/"+$('#name').val()+'/'+$('#passwd').val(),
+        url: "http://localhost:7000/create-user/"+$('#name').val()+'/'+$('#passwd').val(),
         // serialized fields from the form ... 
         //data: $("#theForm").serialize(), 
         success: function (data) {

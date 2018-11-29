@@ -39,7 +39,7 @@ public class HelloWorld {
 // --- 2. Create Web API to insert and read data from the DB -------------------
         // example1: http://localhost:7000/insert/Andrea
         // example2: http://localhost:7000/read/Andrea
-        String dbUrl = "jdbc:mysql://localhost:6666/runmate";
+        String dbUrl = "jdbc:mysql://localhost:3306/runmate";
         String dbUser = "sqluser";
         String dbPassword = "sqluserpw";
 
@@ -83,23 +83,18 @@ public class HelloWorld {
             );
         });
 
-        app.get("/read/:name", ctx -> {
-            ctx.result("Result: "
-                    + readFromDB(dbUrl, dbUser, dbPassword, ctx.pathParam("name"))
-            );
-        });
          app.get("/readaktivitet", ctx -> {
             ctx.result("Result: "
                     + readFromAktivitet(dbUrl, dbUser, dbPassword));
         });
         
-         app.get("/read-emails", ctx -> {
+         app.get("/read-users", ctx -> {
             ctx.result("Result: "
-                    + readFromDB1(dbUrl, dbUser, dbPassword)
+                    + readUsersFromDB(dbUrl, dbUser, dbPassword)
             );
         });
          
-         app.post("/make-reservation/:name/:passwd", ctx -> {
+         app.post("/create-user/:name/:passwd", ctx -> {
             String message
                     = InsertInDB(dbUrl, dbUser, dbPassword,
                             ctx.pathParam("name"), ctx.pathParam("passwd"));
@@ -128,66 +123,8 @@ public class HelloWorld {
         });
 
     }
-    
-     public static String readFromDB(String url, String user, String password, String name) {
-        String textResult = "";
-        try {
-            // Setup the connection with the DB
-            connection = DriverManager.getConnection(url, user, password);
 
-            // Statements allow to issue SQL queries to the database
-            statement = connection.createStatement();
-
-            // Result set get the result of the SQL query
-            String selectText = "SELECT * FROM feedback.comments WHERE myuser='" + name + "'";
-            System.out.println(selectText);
-            resultSet = statement.executeQuery(selectText);
-
-            // Write result
-            while (resultSet.next()) {
-                System.out.printf("%d | %s | %s | %s | %s | %tc | %s\n",
-                        resultSet.getInt("id"),
-                        resultSet.getString("myuser"),
-                        resultSet.getString("email"),
-                        resultSet.getString("webpage"),
-                        resultSet.getString("summary"),
-                        resultSet.getDate("datum"),
-                        resultSet.getString("comments")
-                );
-                textResult += resultSet.getInt("id") + "|"
-                        + resultSet.getString("myuser") + "|"
-                        + resultSet.getString("email") + "|"
-                        + resultSet.getString("webpage") + "|"
-                        + resultSet.getString("summary") + "|"
-                        + resultSet.getDate("datum") + "|"
-                        + resultSet.getString("comments");
-            }
-        } catch (SQLException ex) {
-            System.out.println("SQLException occurred! " + ex);
-        } finally {
-            try {
-                if (resultSet != null) {
-                    resultSet.close();
-                }
-                if (statement != null) {
-                    statement.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println("SQLException occurred while closing the connection. " + ex);
-            }
-        }
-
-        if (textResult.equals("")) {
-            textResult = "-nothing found-";
-        }
-        return textResult;
-    }
-
-
-    public static String readFromDB1(String url, String user, String password) {
+    public static String readUsersFromDB(String url, String user, String password) {
         String textResult = "";
         try {
             // Setup the connection with the DB

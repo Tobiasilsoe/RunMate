@@ -65,7 +65,7 @@
                     <li><a href="#feature-page">Gruppe Data</a></li>
                     <li><a href="#price-page">Gruppens placering</a></li>
                     <li><a href="#team-page">Prøv vores spil</a></li>
-                    <li><a href="#faq-page">placeholder</a></li>
+                    <li><a href="login.html" onclick="LogUd()">Log ud</a></li>
                     <li><a href="#blog-page">placeholder</a></li>
                     <li><a href="#contact-page">pla</a></li>
                 </ul>
@@ -139,6 +139,11 @@
     <!--Main-active-JS-->
     <script src="js/main.js"></script>
     <script>
+        
+        function LogUd(){
+            localStorage.removeItem('user');
+            
+        }
         
         
         document.getElementById('aktivitetsForm').addEventListener("submit", function(e) {

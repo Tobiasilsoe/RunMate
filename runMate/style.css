@@ -183,18 +183,20 @@ input:-webkit-autofill:focus {
     background-color: #f2fefe;
 }
 
-.logo{
-  width:100%;
-  height: 100%;
+/*.logo{
+  width:auto;
+  height: auto;
   opacity: 0.2;
-  background-image: url("../runMate/images/man-running-cartoon-vector-15516004.jpg");
-  background-position: center;
-  background-repeat: no-repeat;  
+    background-repeat: no-repeat;  
+
   position:fixed;
+    bottom: 20%;
+    left: 40%;
   z-index: -10;
-transform: scale(0.8, 0.8);
--ms-transform: scale(0.8, 0.8);
--webkit-transform: scale(0.8, 0.8);
+    transform: scale(1.5, 1.5);
+-ms-transform: scale(1.5, 1.5);
+-webkit-transform: scale(1.5, 1.5);
+
 }
 
 .logoHjornet{
@@ -206,7 +208,7 @@ transform: scale(0.8, 0.8);
   height: 62px;
   opacity: 1;
   z-index: 10;
-}
+}*/
 
 /**
 *Default Button

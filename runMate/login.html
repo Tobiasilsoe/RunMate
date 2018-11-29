@@ -59,8 +59,6 @@ document.getElementById('theForm').addEventListener("submit",function(e) {
                     url: "http://localhost:7000/readlogin/"+$('#name').val()+'/'+$('#passwd').val(),
                     success: function (data) {
                         console.log(data);
-                        $('body').append('Response from the Java web server:<br>' +
-                                    data);
                         console.log(data + "den her");
                         if(data==""){
                             console.log("ikke logget ind");

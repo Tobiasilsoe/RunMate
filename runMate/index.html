@@ -61,8 +61,8 @@
             <nav class="collapse navbar-collapse" id="primary-menu">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="#home-page">Inset Data</a></li>
-                    <li><a href="#graph-page">Min Data</a></li>
-                    <li><a href="#map-page">Gruppe Data</a></li>
+                    <li><a href="#graph-page">Mine Data</a></li>
+                    <li><a href="#map-page">Kort</a></li>
                     <li><a href="#price-page">Gruppens placering</a></li>
                     <li><a href="#team-page">Prøv vores spil</a></li>
                     <li><a href="login.html" onclick="LogUd()">Log ud</a></li>
@@ -126,8 +126,117 @@
 
     <!--Map-area-->
     <section class="gray-bg section-padding" id="map-page">
+        <div id="map"></div>
+        <h1>Hello</h1>
+    </section>
+    
+        <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 700px;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 700px;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?">
+    </script>	
+  
+   
+    <script>
+var map, polyline, markers = new Array();
 
+function initMap() {
 
+    var mapOptions = {
+        zoom: 10,
+        center: new google.maps.LatLng(55.401520, 10.386518),
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    map = new google.maps.Map(document.getElementById('map'),
+    mapOptions);
+
+    polyline = new google.maps.Polyline({
+        strokeColor: 'red',
+        strokeWeight: 1,
+        map: map
+    });
+
+    google.maps.event.addListener(map, 'click', function (event) {
+
+        addPoint(event.latLng);
+    });
+     //Defining OSM Map Type
+					var osmMapType = new google.maps.ImageMapType({
+   			         	getTileUrl: function(coord, zoom) {
+                    		return "http://tile.openstreetmap.org/" + zoom + "/" + coord.x + "/" + coord.y + ".png";
+                		},
+                		tileSize: new google.maps.Size(256, 256),
+                		name: "OpenStreetMap",
+                		maxZoom: 18
+            		});
+            		
+            		//relate new mapTypeId to the ImageMapType - osmMapType object
+					map.mapTypes.set('OSM', osmMapType);
+					
+					//set this new mapTypeId to be displayed
+					map.setMapTypeId('OSM');   
+          
+}
+
+function removePoint(marker) {
+
+    for (var i = 0; i < markers.length; i++) {
+
+        if (markers[i] === marker) {
+
+            markers[i].setMap(null);
+            markers.splice(i, 1);
+
+            polyline.getPath().removeAt(i);
+            updateLength();
+        }
+    }
+}
+
+function addPoint(latlng) {
+
+    var marker = new google.maps.Marker({
+        position: latlng,
+        map: map
+    });
+
+    markers.push(marker);
+
+    polyline.getPath().setAt(markers.length - 1, latlng);
+        updateLength();
+
+    google.maps.event.addListener(marker, 'click', function (event) {
+        removePoint(marker);
+    });
+}
+        
+    function updateLength() {
+        
+        var path = polyline.getPath();
+          
+        var length = google.maps.geometry.spherical.computeLength(path);
+                //print the length
+				console.log("Polyline Length: " +  length/1000 + " km"); 
+
+        };
+      
+
+initMap();	
+
+    </script>
+
+    <!--Scripts-->
     <script src="js/googleGraphs.js"></script>
     <!--Vendor-JS-->
     <script src="js/vendor/jquery-1.12.4.min.js"></script>

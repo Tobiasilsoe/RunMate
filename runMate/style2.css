@@ -39,13 +39,13 @@ input[type=submit] {
 
 /* Style the container for inputs */
 .container {
-    background-color: #138Fc999;
+    background-color: #138Fc9;
     padding: 20px;
     position: absolute;
     top: 50%;
     left: 50%;
     margin-right: -50%;
-    border: 2px solid 	#138Fc999;
+    border: 2px solid 	#138Fc9;
     border-radius: 10px;
     transform: translate(-50%, -50%)
     
@@ -95,7 +95,10 @@ input[type=submit] {
     font-size: 18px;
 }
 /* Style baggrunden */
-.body {background-color: 	#138Fc999;}
+.body {
+    background-color: 	#138Fc999;
+    font-family: "Open Sans";
+}
 
 /* Add a green text color and a checkmark when the requirements are right */
 .valid {

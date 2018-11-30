@@ -39,7 +39,7 @@ public class HelloWorld {
 // --- 2. Create Web API to insert and read data from the DB -------------------
         // example1: http://localhost:7000/insert/Andrea
         // example2: http://localhost:7000/read/Andrea
-        String dbUrl = "jdbc:mysql://localhost:3306/runmate";
+        String dbUrl = "jdbc:mysql://localhost:6666/runmate";
         String dbUser = "sqluser";
         String dbPassword = "sqluserpw";
 
@@ -410,15 +410,25 @@ public class HelloWorld {
             connection = DriverManager.getConnection(url, user, password);
 
             // Statements allow to issue SQL queries to the database
-            statement = connection.createStatement();
 
             // Result set get the result of the SQL query
             //SELECT @a := gruppe FROM users WHERE id = 1;
 //SELECT aktivitet.aktivitetstype, aktivitet.distance from aktivitet INNER JOIN users ON aktivitet.userid = users.id WHERE users.gruppe LIKE @a AND aktivitet.aktivitetstype = 'gang';
-            String selectText = "SELECT @a := gruppe FROM users WHERE id ="+id+"; "
-            + "SELECT aktivitet.aktivitetstype, aktivitet.distance from aktivitet INNER JOIN users ON aktivitet.userid = users.id WHERE users.gruppe LIKE @a AND aktivitet.aktivitetstype = 'cykel';";
+            String selectText = "SELECT gruppe FROM users WHERE id ="+id+";";
             System.out.println(selectText);
+            statement = connection.createStatement();
             resultSet = statement.executeQuery(selectText);
+            System.out.println("ok so far...");
+            resultSet.next();
+            int gr = resultSet.getInt("gruppe");
+            System.out.println( "group: " + gr );
+                    
+            selectText = "SELECT aktivitet.aktivitetstype, aktivitet.distance FROM aktivitet INNER JOIN users "
+                    +"ON aktivitet.userid = users.id WHERE users.gruppe="+gr+" AND aktivitet.aktivitetstype = 'cykel';" ;
+            System.out.println(selectText);
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(selectText);
+                    
 
             // Write result
             while (resultSet.next()) {

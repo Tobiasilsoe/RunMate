@@ -103,9 +103,10 @@
     
      <!--Map-area-->
     <section class="gray-bg section-padding" id="map-page">
+       <div class="col-xs-12 col-sm-offset-0" align="center">
         <span id="ruteLengde"> </span>
         <div id="map"></div>
-        
+        </div>
     </section>
     
         <style>
@@ -113,16 +114,15 @@
        * element that contains the map. */
       #map {
         height: 450px;
+          width: 90%;
+          
       }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 700px;
-        margin: 0;
-        padding: 0;
-      }
-            
             #ruteLengde{
                 color: #159cc4;
+                font-family: 'Poppins', sans-serif;
+                font-weight: 500;
+                font-size: 30px;
+                line-height: 3;
             }
     </style>
     
@@ -136,7 +136,7 @@ var map, polyline, markers = new Array();
 function initMap() {
 
     var mapOptions = {
-        zoom: 10,
+        zoom: 12,
         center: new google.maps.LatLng(55.401520, 10.386518),
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };

@@ -103,6 +103,7 @@
     
      <!--Map-area-->
     <section class="gray-bg section-padding" id="map-page">
+        <span id="ruteLengde"> </span>
         <div id="map"></div>
         
     </section>
@@ -119,7 +120,12 @@
         margin: 0;
         padding: 0;
       }
+            
+            #ruteLengde{
+                color: #159cc4;
+            }
     </style>
+    
     <script src="https://maps.googleapis.com/maps/api/js?">
     </script>	
   
@@ -203,8 +209,12 @@ function addPoint(latlng) {
         var path = polyline.getPath();
           
         var length = google.maps.geometry.spherical.computeLength(path);
+        console.log(length);
+            
+        length=Math.round(length);
+         console.log(length+"hi");
                 //print the length
-				console.log("Polyline Length: " +  length/1000 + " km"); 
+			$("#ruteLengde").text("Rutens længde er: " + length/1000+ " km "); 
 
         };
       

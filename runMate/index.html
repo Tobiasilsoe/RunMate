@@ -269,33 +269,52 @@ initMap();
             localStorage.removeItem('user');
             
         }
-        
-        
-        document.getElementById('aktivitetsForm').addEventListener("submit", function(e) {
-            e.preventDefault(); // before the code
 
-            /* do what you want with the form */
-            // ajax call 
-            $.ajax({
-                type: "POST",
-                url: "http://localhost:7000/aktivitetstype/"+localStorage.getItem("user")+'/'+ $('#aktivitetstype').val() + '/' + $('#distance').val(),
-                // serialized fields from the form ... 
-                //data: $("#theForm").serialize(), 
-                success: function(data) {
-                    console.log(data);
-                    alert("Sejt gået, dataen er indsendt");
-                    $('#distance').val("");
-                    
-                },
-                error: function(data) {
-                    console.log("error!");
-                },
+        
+var arrayLogInd = [];
+
+document.getElementById('theForm').addEventListener("submit",function(e) {
+    e.preventDefault(); // before the code
+                // Sending data from the client via AJAX
+                $.ajax({
+                	type: "GET",
+                    url: "http://localhost:7000/readlogin/"+$('#name').val()+'/'+$('#passwd').val(),
+                    success: function (data) {
+                        console.log(data);
+                        console.log(data + "den her");
+                        
+                        if(data==""){
+                            console.log("ikke logget ind");
+                            alert("Forkert login");
+                        }else{
+                            console.log("virker");
+                            arrayLogInd = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
+                            for (var i=0;i<arrayLogInd.length;i++){
+                                if (i == 0)
+                                    {
+                                        localStorage.setItem("user", arrayLogInd[i]);
+                                    }
+                                else if (i == 1)
+                                    {
+                                        localStorage.setItem("laere", arrayLogInd[i]);
+                                    }
+                        	   console.log( i , arrayLogInd[i]);
+                            }
+                            window.location.replace("index.html");
+                        }
+
+                        // Possible use of the data
+                       /* var arr = data.substr(8).split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
+                        for (var i=0;i<arr.length;i++){
+                        	console.log( i , arr[i]);
+                        }
+                        console.log(arr.toString());*/
+                    },
+                    error: function (data) {
+                        console.log("error!");
+                    },
+                });
             });
-
-            // Should be triggered on form submit
-            console.log('submitting...');
-        });
-
     </script>
 </body>
 

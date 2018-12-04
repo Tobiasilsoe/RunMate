@@ -182,7 +182,7 @@ max-width: 100%;
 }
 .passcheck{
     top: -20%;
-    left: 102%;
+    left: 103%;
 }
 #arrow{
     display:none;
@@ -191,7 +191,7 @@ max-width: 100%;
     width: 15px;
     height: 15px;
     position: absolute;
-    left: 100.5%;
+    left: 101.5%;
     top: 50%;
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
     border-left: 1px solid rgba(0, 0, 0, 0.3);

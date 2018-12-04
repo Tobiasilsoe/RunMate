@@ -139,6 +139,7 @@ google.charts.setOnLoadCallback(drawChart5);
       // instantiates the pie chart, passes in the data and
       // draws it.
       function drawChart() {
+           setTimeout(drawChart, 3000);
 
         // Create the data table.
         var data = new google.visualization.DataTable();

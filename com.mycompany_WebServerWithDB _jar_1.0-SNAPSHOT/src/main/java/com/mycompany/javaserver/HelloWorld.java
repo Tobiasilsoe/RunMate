@@ -15,6 +15,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
    1. Open http://localhost:7000/ in your browers after running this code!
@@ -28,6 +30,7 @@ public class HelloWorld {
     static ResultSet resultSet = null;
 
     public static void main(String[] args) {
+        
         Javalin app = Javalin.create();
         app.enableCorsForOrigin("*");
         app.start(7000);
@@ -42,6 +45,8 @@ public class HelloWorld {
         String dbUrl = "jdbc:mysql://localhost:6666/runmate";
         String dbUser = "sqluser";
         String dbPassword = "sqluserpw";
+        
+        
 
         app.get("/insert/:name/:passwd", ctx -> {
             String message
@@ -127,6 +132,9 @@ public class HelloWorld {
     public static String readUsersFromDB(String url, String user, String password) {
         String textResult = "";
         try {
+            Thread.sleep(800);
+            System.out.println("hejsa");
+        
             // Setup the connection with the DB
             connection = DriverManager.getConnection(url, user, password);
 
@@ -153,7 +161,10 @@ public class HelloWorld {
             }
         } catch (SQLException ex) {
             System.out.println("SQLException occurred! " + ex);
-        } finally {
+            
+        } catch (InterruptedException ex) {
+            Logger.getLogger(HelloWorld.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {
             try {
                 if (resultSet != null) {
                     resultSet.close();
@@ -354,6 +365,8 @@ public class HelloWorld {
     public static String readCykelFromID(String url, String user, String password, int id) {
         String textResult = "";
         try {
+              Thread.sleep(1600);
+            System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
             // Setup the connection with the DB
             connection = DriverManager.getConnection(url, user, password);
 
@@ -381,6 +394,8 @@ public class HelloWorld {
            
         } catch (SQLException ex) {
             System.out.println("SQLException occurred! " + ex);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(HelloWorld.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 if (resultSet != null) {
@@ -405,7 +420,11 @@ public class HelloWorld {
     
     public static String readCykelFromGruppe(String url, String user, String password, int id) {
         String textResult = "";
+       
         try {
+            Thread.sleep(2000);
+            System.out.println("hejsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            
             // Setup the connection with the DB
             connection = DriverManager.getConnection(url, user, password);
 
@@ -446,6 +465,8 @@ public class HelloWorld {
            
         } catch (SQLException ex) {
             System.out.println("SQLException occurred! " + ex);
+        }catch (InterruptedException ex) {
+            Logger.getLogger(HelloWorld.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 if (resultSet != null) {
@@ -470,7 +491,10 @@ public class HelloWorld {
     
     public static String readLobFromID(String url, String user, String password, int id) {
         String textResult = "";
+        
         try {
+             Thread.sleep(2400);
+            System.out.println("hejsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             // Setup the connection with the DB
             connection = DriverManager.getConnection(url, user, password);
 
@@ -498,6 +522,8 @@ public class HelloWorld {
            
         } catch (SQLException ex) {
             System.out.println("SQLException occurred! " + ex);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(HelloWorld.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
                 if (resultSet != null) {
@@ -523,6 +549,8 @@ public class HelloWorld {
     public static String readGaaFromID(String url, String user, String password, int id) {
         String textResult = "";
         try {
+             Thread.sleep(400);
+            System.out.println("hejsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
             // Setup the connection with the DB
             connection = DriverManager.getConnection(url, user, password);
 
@@ -550,7 +578,9 @@ public class HelloWorld {
            
         } catch (SQLException ex) {
             System.out.println("SQLException occurred! " + ex);
-        } finally {
+        }  catch (InterruptedException ex) {
+            Logger.getLogger(HelloWorld.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {
             try {
                 if (resultSet != null) {
                     resultSet.close();

@@ -167,7 +167,7 @@ max-width: 100%;
     background: #A9A9A9;
     color: #000;
     position:absolute;
-    width: 400px;
+    width: 430px;
     height: 280px;
     padding: 20px;
     margin-top: 10px;
@@ -182,7 +182,21 @@ max-width: 100%;
 }
 .passcheck{
     top: -20%;
-    left: 110%;
+    left: 102%;
+}
+#arrow{
+    display:none;
+    background: #A9A9A9;
+    transform: rotate(45deg);
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    left: 100.5%;
+    top: 50%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    border-left: 1px solid rgba(0, 0, 0, 0.3);
+    
+
 }
 /* Style baggrunden */
 .body {

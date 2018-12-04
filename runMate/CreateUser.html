@@ -33,6 +33,7 @@
   <p id="number" class="invalid">A <b>number</b></p>
   <p id="length" class="invalid">Minimum <b>8 characters</b></p>
 </div>
+      <div id="arrow"></div>
     
     <input type="submit" value="Submit" onclick="myFunction()">
   </form>
@@ -53,12 +54,14 @@ var length = document.getElementById("length");
 // When the user clicks on the password field, show the message box
 myInput.onfocus = function() {
     document.getElementById("message").style.display = "block";
+    document.getElementById("arrow").style.display = "block";
 }
 
 // When the user clicks outside of the password field, hide the message box
-/*myInput.onblur = function() {
+myInput.onblur = function() {
     document.getElementById("message").style.display = "none";
-}*/
+    document.getElementById("arrow").style.display = "none";
+}
 
 // When the user starts to type something inside the password field
 myInput.onkeyup = function() {

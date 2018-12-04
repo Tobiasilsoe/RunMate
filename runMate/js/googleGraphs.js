@@ -14,10 +14,13 @@ var grpGaaArray=[];
 $(document).ready(function () {
                 // Sending data from the client via AJAX
                             //CYKEL DATA
+    function smartRecursion2(){
                 $.ajax({
                 	type: "GET",
                     url: "http://localhost:7000/read_cykel/" + localStorage.getItem("user"),
                     success: function (data) {
+                        arrayAktivitet = [];
+                        cykelArray=[];
                         console.log(data);
 
                         // Possible use of the data
@@ -34,6 +37,7 @@ $(document).ready(function () {
                         console.log("hej1");
                         console.log(cykelArray.toString());
                         
+                        
                     },
                     error: function (data) {
                         console.log("error!");
@@ -44,6 +48,8 @@ $(document).ready(function () {
                 	type: "GET",
                     url: "http://localhost:7000/read_lob/" + localStorage.getItem("user"),
                     success: function (data) {
+                        arrayAktivitet2 = [];
+                        lobeArray=[];
                         console.log(data);
 
                         // Possible use of the data
@@ -70,7 +76,10 @@ $(document).ready(function () {
                 	type: "GET",
                     url: "http://localhost:7000/read_gaa/" + localStorage.getItem("user"),
                     success: function (data) {
+                        arrayAktivitet3 = [];
+                        gaaArray=[];
                         console.log(data);
+                        
 
                         // Possible use of the data
                         arrayAktivitet3 = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
@@ -96,6 +105,8 @@ $(document).ready(function () {
                 	type: "GET",
                     url: "http://localhost:7000/read_cykelgrp/" + localStorage.getItem("user"),
                     success: function (data) {
+                        grpArrayAktivitet = [];
+                        grpCykelArray=[];
                         console.log(data);
 
                         // Possible use of the data
@@ -122,6 +133,8 @@ $.ajax({
                 	type: "GET",
                     url: "http://localhost:7000/read_lobgrp/" + localStorage.getItem("user"),
                     success: function (data) {
+                        grpCrrayAktivitet2 = [];
+                        grpLobeArray=[];
                         console.log(data);
 
                         // Possible use of the data
@@ -147,6 +160,8 @@ $.ajax({
                 	type: "GET",
                     url: "http://localhost:7000/read_gaagrp/" + localStorage.getItem("user"),
                     success: function (data) {
+                        grpArrayAktivitet3 = [];
+                        grpGaaArray=[];
                         console.log(data);
 
                         // Possible use of the data
@@ -168,6 +183,9 @@ $.ajax({
                         console.log("error!");
                     },
                 });
+        setTimeout(smartRecursion2,28000);
+    }
+    smartRecursion2();
             });
       google.charts.load('current', {'packages':['corechart']});
         google.charts.load('current', {'packages':['table']});

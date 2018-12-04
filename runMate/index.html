@@ -89,6 +89,7 @@
                                 <option value="cykel">Cykle</option>
                         </select>
                         <input class="sortTekst" name="distance" id="distance" placeholder="distance i km" type="number" step="any">
+                        
                     </div>
                     
                     <div class="col-xs-12 col-sm-offset-0" align="center">
@@ -281,6 +282,7 @@ initMap();
                 //data: $("#theForm").serialize(), 
                 success: function(data) {
                     console.log(data);
+                    alert("Sejt gået, dataen er indsendt");
                 },
                 error: function(data) {
                     console.log("error!");

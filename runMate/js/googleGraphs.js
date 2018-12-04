@@ -218,34 +218,6 @@ google.charts.setOnLoadCallback(drawChart5);
 
         table.draw(arrayAktivitet, options2);
       }
- function drawChart5() {
-
-        // Create the data table.
-        var data5 = new google.visualization.DataTable();
-        
-        
-          
-        data5.addColumn('string', 'Aktivitet');
-        data5.addColumn('number', 'Længde');
-        data5.addRows([
-          ['Løb', 1],
-          ['Gå', 1],
-          ['Cykel', 1],
-        ]);
-          
-
-        // Set chart options
-          var options5 = {
-              title:'Din fordeling i km',
-              width:'350',
-              height:'400'
-          }
-        
-
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div5'));
-        chart.draw(data5, options5);
-      }
 
 
       function drawChart3() {
@@ -291,4 +263,39 @@ var data4 = google.visualization.arrayToDataTable([
 
         chart4.draw(data4, options4);
       
+      }
+
+ function drawChart5() {
+     setTimeout(drawChart5, 3000);
+
+        // Create the data table.
+        var data5 = new google.visualization.DataTable();
+        
+        var cykelSumGrp = 0;
+        for (j=0; j<grpCykelArray.length; j++)
+            {
+                var cykelGrpInt = parseInt("" + grpCykelArray[j]);
+                cykelSumGrp += cykelGrpInt;
+            }
+          
+        data5.addColumn('string', 'Aktivitet');
+        data5.addColumn('number', 'Længde');
+        data5.addRows([
+          ['Løb', 1],
+          ['Gå', 1],
+          ['Cykel', cykelSumGrp],
+        ]);
+          
+
+        // Set chart options
+          var options5 = {
+              title:'Din gruppes fordeling i km',
+              width:'350',
+              height:'400'
+          }
+        
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div5'));
+        chart.draw(data5, options5);
       };

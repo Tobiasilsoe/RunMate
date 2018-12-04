@@ -72,7 +72,7 @@ input {
 
 /* Style the submit button */
 input[type=submit] {
-    background: linear-gradient(to bottom, #28AE7B 0px, #37BC61 100%) repeat scroll 0 0 transparent;
+    background: linear-gradient(to bottom, #37BC61 0px, #28AE7B 100%) repeat scroll 0 0 transparent;
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-bottom: 1px solid rgba(0, 0, 0, 0.55);
     border-radius: 6px 6px 6px 6px;

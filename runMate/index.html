@@ -53,6 +53,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <img src="../runMate/images/runningManRediHvid.PNG" class="logoHjornet">
                 <a href="#" class="navbar-brand logo">
                     <h2>Runmate</h2>
                 </a>
@@ -72,7 +73,7 @@
         </div>
     </div>
     <!--Mainmenu-area/-->
-<img src="../runMate/images/runningManRediHvid.PNG" class="logoHjornet">
+
 
 
     <!--Header-area-->
@@ -283,6 +284,8 @@ initMap();
                 success: function(data) {
                     console.log(data);
                     alert("Sejt gået, dataen er indsendt");
+                    $('#distance').val("");
+                    
                 },
                 error: function(data) {
                     console.log("error!");

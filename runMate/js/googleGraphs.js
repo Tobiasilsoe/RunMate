@@ -174,11 +174,16 @@ $.ajax({
 google.charts.load('current', {'packages':['columnchart']});
 
       // Set a callback to run when the Google Visualization API is loaded.
-      google.charts.setOnLoadCallback(drawChart);
+function smartRecursion(){
+
+google.charts.setOnLoadCallback(drawChart);
 google.charts.setOnLoadCallback(drawTable);
 google.charts.setOnLoadCallback(drawChart3);
 google.charts.setOnLoadCallback(drawChart4);
 google.charts.setOnLoadCallback(drawChart5);
+    setTimeout(smartRecursion, 30000);
+}
+smartRecursion();
 
 //console.log("this is arraySktivitet:"+ strinArray.toString());
     

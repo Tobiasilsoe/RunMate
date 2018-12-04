@@ -3,6 +3,9 @@
 <head>
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="style2.css">
    
 </head>
@@ -23,8 +26,10 @@
     <input type="text" id="name" name="name" required>
 
     <label for="passwd">Password</label>
-    <input type="password" id="passwd" name="passwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
-    
+    <input type="password" id="passwd" name="passwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required class="passcheck">
+    <div passcheck="popover" title="Hallo there">
+      
+      </div>
     <input type="submit" value="Submit" onclick="myFunction()">
   </form>
     <form action="login.html">
@@ -124,6 +129,9 @@ document.getElementById('theForm').addEventListener("submit",function(e) {
    function myFunction() {
     alert("Du er nu oprettet");
 }
+    $(document).ready(function(){
+    $('.passcheck').popover({title: "Header", content: "Blabla", trigger: "focus"});  
+});
 
 </script>
 

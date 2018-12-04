@@ -117,7 +117,6 @@ $(document).ready(function () {
                         console.log("error!");
                     },
                 });
-            });
 
 $.ajax({
                 	type: "GET",
@@ -144,7 +143,6 @@ $.ajax({
                         console.log("error!");
                     },
                 });
-            });
 $.ajax({
                 	type: "GET",
                     url: "http://localhost:7000/read_gaagrp/" + localStorage.getItem("user"),
@@ -324,18 +322,35 @@ var data4 = google.visualization.arrayToDataTable([
         // Create the data table.
         var data5 = new google.visualization.DataTable();
         
+        var j = 0;
         var cykelSumGrp = 0;
         for (j=0; j<grpCykelArray.length; j++)
             {
                 var cykelGrpInt = parseInt("" + grpCykelArray[j]);
                 cykelSumGrp += cykelGrpInt;
             }
+     
+        var i = 0;
+        var lobSumGrp = 0;
+        for (i=0; i<grpLobeArray.length; i++)
+            {
+                var lobGrpInt = parseInt("" + grpLobeArray[i]);
+                lobSumGrp += lobGrpInt;
+            }
+     
+        var h = 0;
+        var gaaSumGrp = 0;
+        for (h=0; h<grpGaaArray.length; h++)
+            {
+                var gaaGrpInt = parseInt("" + grpGaaArray[h]);
+                gaaSumGrp += gaaGrpInt;
+            }
           
         data5.addColumn('string', 'Aktivitet');
         data5.addColumn('number', 'Længde');
         data5.addRows([
-          ['Løb', 1],
-          ['Gå', 1],
+          ['Løb', lobSumGrp],
+          ['Gå', gaaSumGrp],
           ['Cykel', cykelSumGrp],
         ]);
           

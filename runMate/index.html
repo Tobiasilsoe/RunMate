@@ -64,7 +64,7 @@
                     <li class="active"><a href="#home-page">Indset Data</a></li>
                     <li><a href="#map-page">Kort</a></li>
                     <li><a href="#graph-page">Mine Data</a></li>
-                    <li><a href="#price-page">Gruppens placering</a></li>
+                    <li id="laererKnap"><a href="#price-page">Gruppens placering</a></li>
                     <li><a href="RunMate-Spil/RunMate.apk" download>Download vores spil</a></li>
                     <li><a href="login.html" onclick="LogUd()">Log ud</a></li>
                    
@@ -294,6 +294,15 @@ document.getElementById('aktivitetsForm').addEventListener("submit", function(e)
 
             // Should be triggered on form submit
             console.log('submitting...');
+        });
+        $(document).ready(function () {
+        if(localStorage.getItem("laere")!=0){
+         $('#laererKnap').show();
+         console.log("show");
+          }else{
+        $('#laererKnap').hide();
+          console.log("hide");
+          }
         });
 
     </script>

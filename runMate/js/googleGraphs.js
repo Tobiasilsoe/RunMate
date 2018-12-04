@@ -196,8 +196,8 @@ function smartRecursion(){
 
 google.charts.setOnLoadCallback(drawChart);
 google.charts.setOnLoadCallback(drawTable);
-google.charts.setOnLoadCallback(drawChart3);
-google.charts.setOnLoadCallback(drawChart4);
+//google.charts.setOnLoadCallback(drawChart3);
+//google.charts.setOnLoadCallback(drawChart4);
 google.charts.setOnLoadCallback(drawChart5);
     setTimeout(smartRecursion, 30000);
 }
@@ -264,6 +264,7 @@ smartRecursion();
 
 
      function drawTable() {
+         setTimeout(drawTable,3000);
         //var data 1 = new google.visualization.DataTable();
         
         arrayAktivitet = new google.visualization.DataTable();

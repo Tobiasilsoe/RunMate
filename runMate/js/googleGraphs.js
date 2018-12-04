@@ -118,6 +118,59 @@ $(document).ready(function () {
                     },
                 });
             });
+
+$.ajax({
+                	type: "GET",
+                    url: "http://localhost:7000/read_lobgrp/" + localStorage.getItem("user"),
+                    success: function (data) {
+                        console.log(data);
+
+                        // Possible use of the data
+                        grpArrayAktivitet = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
+                        for (var i=0;i<grpArrayAktivitet.length;i++){
+                        	console.log( i , grpArrayAktivitet[i]);
+                        }
+                        console.log(grpArrayAktivitet.toString());
+                        
+                        for (var i=0;i<grpArrayAktivitet.length;i++){
+                            if (i % 2 !== 0) { 
+                        	grpLobeArray.push(grpArrayAktivitet[i]);}
+                        }
+                        console.log("hejgrp2");
+                        console.log(grpLobeArray.toString());
+                        
+                    },
+                    error: function (data) {
+                        console.log("error!");
+                    },
+                });
+            });
+$.ajax({
+                	type: "GET",
+                    url: "http://localhost:7000/read_gaagrp/" + localStorage.getItem("user"),
+                    success: function (data) {
+                        console.log(data);
+
+                        // Possible use of the data
+                        grpArrayAktivitet = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
+                        for (var i=0;i<grpArrayAktivitet.length;i++){
+                        	console.log( i , grpArrayAktivitet[i]);
+                        }
+                        console.log(grpArrayAktivitet.toString());
+                        
+                        for (var i=0;i<grpArrayAktivitet.length;i++){
+                            if (i % 2 !== 0) { 
+                        	grpGaaArray.push(grpArrayAktivitet[i]);}
+                        }
+                        console.log("hejgrp3");
+                        console.log(grpGaaArray.toString());
+                        
+                    },
+                    error: function (data) {
+                        console.log("error!");
+                    },
+                });
+            });
       google.charts.load('current', {'packages':['corechart']});
         google.charts.load('current', {'packages':['table']});
 google.charts.load('current', {'packages':['columnchart']});

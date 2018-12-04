@@ -112,11 +112,11 @@ $(document).ready(function () {
                         // Possible use of the data
                         aktiviGaa = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
                         for (var i=0;i<aktiviGaa.length;i++){
-                        	console.log( i , aktivigaa[i]);
+                        	console.log( i , aktiviGaa[i]);
                         }
                         console.log(aktiviGaa.toString());
                         
-                        for (var i=0;i<aktivigaa.length;i++){
+                        for (var i=0;i<aktiviGaa.length;i++){
                             if (i % 2 !== 0) { 
                         	gaa.push(aktiviGaa[i]);}
                         }
@@ -145,10 +145,10 @@ $(document).ready(function () {
                         
                         for (var i=0;i<grpAktiviCykel.length;i++){
                             if (i % 2 !== 0) { 
-                        	grpcykel.push(grpAktiviCykel[i]);}
+                        	grpCykel.push(grpAktiviCykel[i]);}
                         }
                         console.log("hejgrp");
-                        console.log(grpCykelArray.toString());
+                        console.log(grpCykel.toString());
                         
                     },
                     error: function (data) {

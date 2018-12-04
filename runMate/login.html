@@ -58,7 +58,7 @@ var length = document.getElementById("length");
 
 
   
- 
+ var arrayLogInd = [];
 
 document.getElementById('theForm').addEventListener("submit",function(e) {
     e.preventDefault(); // before the code
@@ -69,12 +69,24 @@ document.getElementById('theForm').addEventListener("submit",function(e) {
                     success: function (data) {
                         console.log(data);
                         console.log(data + "den her");
+                        
                         if(data==""){
                             console.log("ikke logget ind");
                             alert("Forkert login");
                         }else{
                             console.log("virker");
-                            localStorage.setItem("user",data);
+                            arrayLogInd = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
+                            for (var i=0;i<arrayLogInd.length;i++){
+                                if (i == 0)
+                                    {
+                                        localStorage.setItem("user", arrayLogInd[i]);
+                                    }
+                                else if (i == 1)
+                                    {
+                                        localStorage.setItem("laere", arrayLogInd[i]);
+                                    }
+                        	   console.log( i , arrayLogInd[i]);
+                            }
                             window.location.replace("index.html");
                         }
 

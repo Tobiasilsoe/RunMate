@@ -42,7 +42,7 @@ public class HelloWorld {
 // --- 2. Create Web API to insert and read data from the DB -------------------
         // example1: http://localhost:7000/insert/Andrea
         // example2: http://localhost:7000/read/Andrea
-        String dbUrl = "jdbc:mysql://localhost:6666/runmate";
+        String dbUrl = "jdbc:mysql://localhost:3306/runmate";
         String dbUser = "sqluser";
         String dbPassword = "sqluserpw";
         
@@ -263,7 +263,7 @@ public class HelloWorld {
             // Statements allow to issue SQL queries to the database
             statement = connection.createStatement();
 
-            String insertText = "INSERT INTO users values (" + "default,'" + name + "','" + passwd+"', 1" + ");";
+            String insertText = "INSERT INTO users values (" + "default,'" + name + "','" + passwd+"', 1, 0);";
             System.out.println(insertText);
             statement.executeUpdate(insertText);
 
@@ -301,20 +301,21 @@ public class HelloWorld {
             // Statements allow to issue SQL queries to the database
             statement = connection.createStatement();
 
-            String selectText = "SELECT id FROM users WHERE navn = '" + name + "'and pw = '" + passwd + "';";
+            String selectText = "SELECT id, laerer FROM users WHERE navn = '" + name + "'and pw = '" + passwd + "';";
             System.out.println(selectText);
             resultSet = statement.executeQuery(selectText);
             System.out.println("id");
             
             while (resultSet.next()) {
-                System.out.printf("%s",
+                System.out.printf("%s | %s",
                       
-                        resultSet.getString("id")
+                        resultSet.getString("id"),
+                        resultSet.getString("laerer")
                         
                 );
                 textResult += 
-                        resultSet.getString("id")
-                      
+                        resultSet.getString("id") + "|"
+                        + resultSet.getString("laerer")
                         ;
             }
 

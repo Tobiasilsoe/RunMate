@@ -232,7 +232,9 @@ input:-webkit-autofill:focus {
     background-color: #37BC61;
     -webkit-transition: 0.3s;
     transition: 0.3s;
-    border: none;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
     -webkit-box-shadow: 2px 5px 20px -5px rgba(0, 0, 0, 0.1);
     box-shadow: 2px 5px 20px -5px rgba(0, 0, 0, 0.1);
 }
@@ -347,6 +349,22 @@ input:-webkit-autofill:focus {
 }
 .sortTekst{
      color: #000000;
+}
+.formOverskrift {
+    text-align: center;
+    font-size: 26px;
+    color: white;
+}
+.aktivitetsForm {
+    background-color: rgba(51, 204, 51, 0.5);
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    border: 2px solid 	#138Fc999
+    border-radius: 10px;
+    transform: translate(-50%, -50%)
 }
 .mainmenu-area .logo {
     text-transform: uppercase;

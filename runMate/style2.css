@@ -155,25 +155,38 @@ max-width: 100%;
     height: auto;
   font-size: 80px;
   position: absolute;
-    top: 30%;
+    top: 20%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%)
+}
+.overskrift h3{
+    width: auto;
+    height: auto;
+  font-size: 80px;
+  position: absolute;
+    top: 110%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) 
 }
 
 /* The message box is shown when the user clicks on the password field */
 #message {
     display:none;
-    background: #A9A9A9;
+    background: white;
     color: #000;
     position:absolute;
-    width: 430px;
+    width: 310px;
     height: 280px;
     padding: 20px;
     margin-top: 10px;
     border: 1px solid rgba(0, 0, 0, 0.3);
     border-bottom: 1px solid rgba(0, 0, 0, 0.55);
     border-radius: 10px 10px 10px 10px;
+    -webkit-box-shadow: 11px 18px 29px 2px rgba(0,0,0,0.75);
+-moz-box-shadow: 11px 18px 29px 2px rgba(0,0,0,0.75);
+box-shadow: 11px 18px 29px 2px rgba(0,0,0,0.75);
 }
 
 #message p {
@@ -186,7 +199,7 @@ max-width: 100%;
 }
 #arrow{
     display:none;
-    background: #A9A9A9;
+    background: white;
     transform: rotate(45deg);
     width: 15px;
     height: 15px;
@@ -206,24 +219,26 @@ max-width: 100%;
 
 /* Add a green text color and a checkmark when the requirements are right */
 .valid {
-    color: green;
+    color: black;
 }
 
 .valid:before {
-    position: relative;
+    position:relative;
     left: -25px;
     content: "✔";
+    color: green;
 }
 
 /* Add a red text color and an "x" when the requirements are wrong */
 .invalid {
-    color: red;
+    color: black;
 }
 
 .invalid:before {
-    position: relative;
+    position:relative;
     left: -25px;
     content: "✖";
+    color: red;
 }
 label{
     color: white;

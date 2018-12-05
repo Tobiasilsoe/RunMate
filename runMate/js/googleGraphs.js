@@ -478,7 +478,7 @@ function drawChart6() {
     for (var i = 0; i < 2; i++){
          console.log("autzzzen");
          console.log(Number(cykle[1])); console.log(Number(cykle[1]));
-            data6.addRows([[{v: [i, 0, 0], f: i +" km"}, Number(cykle[i]),Number(cykle[i])],])
+            data6.addRows([[{v: [i, 0, 0], f: i +" uge"}, Number(cykle[i]),Number(cykle[i])],])
     }
     /*
  console.log("mayhias gaa"); console.log(gaa[1]); console.log("mayhias lobe"); console.log(lobe[1]); console.log("mayhias cykle"); console.log(cykle[1]);

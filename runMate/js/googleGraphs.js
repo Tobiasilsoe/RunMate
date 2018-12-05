@@ -58,6 +58,7 @@ $(document).ready(function () {
                 	type: "GET",
                     url: "http://localhost:7000/read_cykel/" + localStorage.getItem("user"),
                     success: function (data) {
+                         cykle = [];
                         console.log(data);
 
                         // Possible use of the data
@@ -83,6 +84,7 @@ $(document).ready(function () {
                     url: "http://localhost:7000/read_cykeldat/" + localStorage.getItem("user"),
                     success: function (data) {
                         console.log(data);
+                        datoCykel = [];
 
                         // Possible use of the data
                        datoAktiviCykel = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
@@ -108,7 +110,7 @@ $(document).ready(function () {
                 	type: "GET",
                     url: "http://localhost:7000/read_lob/" + localStorage.getItem("user"),
                     success: function (data) {
-                       
+                       lobe = [];
                         console.log(data);
 
                         // Possible use of the data
@@ -135,7 +137,7 @@ $(document).ready(function () {
                 	type: "GET",
                     url: "http://localhost:7000/read_gaa/" + localStorage.getItem("user"),
                     success: function (data) {
-                    
+                        gaa = [];
                         console.log(data);
                         
 
@@ -163,7 +165,7 @@ $(document).ready(function () {
                 	type: "GET",
                     url: "http://localhost:7000/read_cykelgrp/" + localStorage.getItem("user"),
                     success: function (data) {
-                      
+                      grpCykel = [];
                         console.log(data);
 
                         // Possible use of the data
@@ -190,7 +192,7 @@ $.ajax({
                 	type: "GET",
                     url: "http://localhost:7000/read_lobgrp/" + localStorage.getItem("user"),
                     success: function (data) {
-                       
+                       grpLobe = [];
                         console.log(data);
 
                         // Possible use of the data
@@ -216,6 +218,7 @@ $.ajax({
                 	type: "GET",
                     url: "http://localhost:7000/read_gaagrp/" + localStorage.getItem("user"),
                     success: function (data) {
+                        grpGaa = [];
                         console.log(data);
 
                         // Possible use of the data

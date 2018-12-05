@@ -64,6 +64,14 @@ public class HelloWorld {
             );
         });
         
+        app.get("/read_cykeldat/:id", ctx -> {
+            int id = Integer.parseInt(ctx.pathParam("id"));
+            System.out.println( id );
+            ctx.result(
+                    readDatoCykelFromID(dbUrl, dbUser, dbPassword, id)
+            );
+        });
+        
         app.get("/read_cykelgrp/:id", ctx -> {
             int id = Integer.parseInt(ctx.pathParam("id"));
             System.out.println( id );
@@ -406,6 +414,62 @@ public class HelloWorld {
                 textResult += 
                         resultSet.getString("aktivitetstype") + "|"
                         + resultSet.getString("distance") + "|"
+                        ;
+            }
+           
+        } catch (SQLException ex) {
+            System.out.println("SQLException occurred! " + ex);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(HelloWorld.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("SQLException occurred while closing the connection. " + ex);
+            }
+        }
+
+        if (textResult.equals("")) {
+            textResult = "-nothing found-";
+        }
+        return textResult;
+    }
+    
+    public static String readDatoCykelFromID(String url, String user, String password, int id) {
+        String textResult = "";
+        try {
+              Thread.sleep(1600);
+            System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+            // Setup the connection with the DB
+            connection = DriverManager.getConnection(url, user, password);
+
+            // Statements allow to issue SQL queries to the database
+            statement = connection.createStatement();
+
+            // Result set get the result of the SQL query
+            String selectText = "SELECT datediff(aktivitet.tidspunkt, starttidspunkt.start_tid) as dato FROM aktivitet, starttidspunkt WHERE aktivitet.userid ="+id+" AND aktivitet.aktivitetstype = 'cykel';";
+            System.out.println(selectText);
+            resultSet = statement.executeQuery(selectText);
+
+            // Write result
+            while (resultSet.next()) {
+                System.out.printf("%s",
+                      
+                        resultSet.getString("dato")
+                       
+                        
+                );
+                textResult += 
+                        resultSet.getString("dato") 
+                       
                         ;
             }
            

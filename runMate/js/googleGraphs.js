@@ -34,6 +34,10 @@ table['grpGaa'] = [];
     grpGaa = table['grpGaa'];
 table['grpArrayAktivitetGaa']= [];
     grpAktiviGaa = table['grpArrayAktivitetGaa']= [];
+table['datoArrayAktivitetCykel']= [];
+    datoAktiviCykel = table['datoArrayAktivitetCykel']= [];
+table['datoCykel']= [];
+    datoCykel = table['datoCykel']= [];
 
 
 /*
@@ -73,6 +77,32 @@ $(document).ready(function () {
                         console.log("error!");
                     },
                 });
+        // dato for cykel
+        $.ajax({
+                	type: "GET",
+                    url: "http://localhost:7000/read_cykeldat/" + localStorage.getItem("user"),
+                    success: function (data) {
+                        console.log(data);
+
+                        // Possible use of the data
+                       datoAktiviCykel = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
+                        for (var i=0;i<datoAktiviCykel.length;i++){
+                        	console.log( i , datoAktiviCykel[i]);
+                            console.log("dette er datoen:");
+                        }
+                        
+                        for (var i=0;i<datoAktiviCykel.length;i++){
+                             
+                        	datoCykel.push(datoAktiviCykel[i]);}
+                        
+   
+                        
+                    },
+                    error: function (data) {
+                        console.log("error!");
+                    },
+                });
+        
                             //LØBE DATA
                 $.ajax({
                 	type: "GET",

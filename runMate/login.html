@@ -6,12 +6,15 @@
     <link rel="stylesheet" href="style2.css">
     
 </head>
+<div>
 <body class="body">
   <div class="pic">
     
        <img src="../runMate/images/runningManRediSort.PNG"  class="logo">
     </div>
-<div class="overskrift">
+<div class="logo"></div>
+<div class="container1" >
+    <div class="overskrift">
     <h2 >
     Runmate
     </h2>
@@ -19,9 +22,6 @@
     Log ind
     </h3>
 </div>
-
-<div class="logo"></div>
-<div class="container1" >
   <form id="theForm" > <!--method = "post" action="http://localhost:7000/make-reservation"-->
     <label for="name">Username</label>
     <input type="text" id="name" name="name" required>
@@ -39,7 +39,7 @@
 </form>
 </div>
  
-
+    
     
 
 <div id="message">
@@ -48,8 +48,11 @@
   <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
   <p id="number" class="invalid">A <b>number</b></p>
   <p id="length" class="invalid">Minimum <b>8 characters</b></p>
-</div>
-				
+</div>    				
+</body>
+    </div>    
+    
+    
 <script>
 var myInput = document.getElementById("passwd");
 var letter = document.getElementById("letter");
@@ -106,7 +109,5 @@ document.getElementById('theForm').addEventListener("submit",function(e) {
                 });
             });
 
-</script>
-
-</body>
+</script>    
 </html>

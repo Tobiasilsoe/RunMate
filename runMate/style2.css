@@ -153,9 +153,9 @@ max-width: 100%;
 .overskrift{
     width: auto;
     height: auto;
-  font-size: 80px;
-  position: absolute;
-    top: 20%;
+    font-size: 80px;
+    position: absolute;
+    top: -60%;
     left: 50%;
     margin-right: -50%;
     transform: translate(-50%, -50%)
@@ -163,8 +163,8 @@ max-width: 100%;
 .overskrift h3{
     width: auto;
     height: auto;
-  font-size: 80px;
-  position: absolute;
+    font-size: 80px;
+    position: absolute;
     top: 110%;
     left: 50%;
     margin-right: -50%;

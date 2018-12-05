@@ -463,12 +463,12 @@ public class HelloWorld {
             while (resultSet.next()) {
                 System.out.printf("%s",
                       
-                        resultSet.getString("dato")
+                        resultSet.getString("dato") + "|"
                        
                         
                 );
                 textResult += 
-                        resultSet.getString("dato") 
+                        resultSet.getString("dato") + "|"
                        
                         ;
             }

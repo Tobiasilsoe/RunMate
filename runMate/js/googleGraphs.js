@@ -517,6 +517,9 @@ function drawChart6() {
         document.getElementById('chart_div6'));
 
       chart.draw(data6, options6);
-  
+  console.log("kwaaaabbeena");
+    console.log(datoCykel);
+     console.log("kwaaaabbeena");
+    console.log(datoAktiviCykel);
     }
 

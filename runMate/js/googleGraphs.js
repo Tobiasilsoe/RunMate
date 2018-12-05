@@ -70,6 +70,7 @@ $(document).ready(function () {
                         for (var i=0;i<aktiviCykel.length;i++){
                             if (i % 2 !== 0) { 
                         	cykle.push(aktiviCykel[i]);}
+                            
                         }
    
                         
@@ -260,7 +261,7 @@ google.charts.setOnLoadCallback(drawChart4);
 google.charts.setOnLoadCallback(drawChart5);
 google.charts.setOnLoadCallback(drawChart6);
     
-    setTimeout(smartRecursion, 30000);
+    setTimeout(smartRecursion, 40000);
 }
 smartRecursion();
 
@@ -452,31 +453,70 @@ var data = google.visualization.arrayToDataTable([
 
 google.charts.load('current', {packages: ['corechart', 'bar']});
 
-
 function drawChart6() {
-      var data6 = google.visualization.arrayToDataTable([
-        ['Uge', '2010 Population', '2000 Population'],
-        ['1', 8175000, 8008000],
-        ['2', 3792000, 3694000],
-        ['Chicago, IL', 2695000, 2896000],
-        ['Houston, TX', 2099000, 1953000],
-        ['Philadelphia, PA', 1526000, 1517000]
+    setTimeout(drawChart6, 5000);
+    
+      var data6 = new google.visualization.DataTable();
+      data6.addColumn('timeofday', 'Time of Day');
+      data6.addColumn('number', 'løbe');
+      data6.addColumn('number', 'Energy Level');
+    
+    
+    
+   /* for (var i = 0; i < cykle.length; i++){
+         aktiviCykel.addRows([[i, {f: '' + cykle[i] + ' KM'}, 5, true], ])
+        }
+        arrayAktivitet.addRows([
+          [1,  {f: strinArray[3]}, 5, true],
+          [2,   {f: '8 KM'}, 10,  false],
+          [3, */
+    
+ for (var i = 0; i < cykle.length; i++){
+            aktiviCykel.addRows([[i, {f: '' + cykle[i] + ' KM'}, 5, true], ])
+        }
+  
+    for (var i = 0; i < 2; i++){
+         console.log("autzzzen");
+         console.log(Number(cykle[1])); console.log(Number(cykle[1]));
+            data6.addRows([[{v: [i, 0, 0], f: i +" km"}, Number(cykle[i]),Number(cykle[i])],])
+    }
+    /*
+ console.log("mayhias gaa"); console.log(gaa[1]); console.log("mayhias lobe"); console.log(lobe[1]); console.log("mayhias cykle"); console.log(cykle[1]);
+    console.log("autzen");
+   
+    
+    console.log(typeof(Number(cykle[1])));
+    console.log(typeof(1));
+      data6.addRows([
+        [{v: [8, 0, 0], f: '8 am'},Number(gaa[1]) , Number(cykle[0])],
+        [{v: [9, 0, 0], f: '9 am'}, 2, 2],
+        [{v: [10, 0, 0], f:'10 am'}, 3, 1],
+        [{v: [11, 0, 0], f: '11 am'}, 4, 2.25],
+        [{v: [12, 0, 0], f: '12 pm'}, 5, 2.25],
+        [{v: [13, 0, 0], f: '1 pm'}, 6, 3],
+        [{v: [14, 0, 0], f: '2 pm'}, 7, 4],
+        [{v: [15, 0, 0], f: '3 pm'}, 8, 5.25],
+        [{v: [16, 0, 0], f: '4 pm'}, 9, 7.5],
+        [{v: [17, 0, 0], f: '5 pm'}, 15, 10],
       ]);
-
+*/
       var options6 = {
-        title: 'hfjaskhfjkds',
-       width:'350',
-              height:'350',    
+        title: 'Motion i løbet af forløbet',
+            width:'450',
+            height:'450',
         hAxis: {
-          title: 'Total Population',
-          minValue: 0
+          title: 'Time of Day',
+          format: 'h:mm a',
         },
         vAxis: {
-          title: 'City'
+          title: 'Rating (scale of 1-20)'
         }
       };
 
-      var chart6 = new google.visualization.BarChart(document.getElementById('chart_div6'));
-      chart6.draw(data6, options6);
+      var chart = new google.visualization.ColumnChart(
+        document.getElementById('chart_div6'));
+
+      chart.draw(data6, options6);
+  
     }
 

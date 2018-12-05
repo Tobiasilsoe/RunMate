@@ -97,7 +97,8 @@ $(document).ready(function () {
                              
                         	datoCykel.push(datoAktiviCykel[i]);}
                         
-   
+   console.log("hjkjkl");
+console.log(datoCykel);                        
                         
                     },
                     error: function (data) {
@@ -247,6 +248,7 @@ $.ajax({
       google.charts.load('current', {'packages':['corechart']});
         google.charts.load('current', {'packages':['table']});
 google.charts.load('current', {'packages':['columnchart']});
+google.charts.load('current', {packages: ['corechart', 'bar']});
 
       // Set a callback to run when the Google Visualization API is loaded.
 function smartRecursion(){
@@ -254,8 +256,10 @@ function smartRecursion(){
 google.charts.setOnLoadCallback(drawChart);
 google.charts.setOnLoadCallback(drawTable);
 //google.charts.setOnLoadCallback(drawChart3);
-//google.charts.setOnLoadCallback(drawChart4);
+google.charts.setOnLoadCallback(drawChart4);
 google.charts.setOnLoadCallback(drawChart5);
+google.charts.setOnLoadCallback(drawChart6);
+    
     setTimeout(smartRecursion, 30000);
 }
 smartRecursion();
@@ -376,7 +380,7 @@ smartRecursion();
         chart3.draw(data3, options3);
       }
 function drawChart4() {
-var data4 = google.visualization.arrayToDataTable([
+var data = google.visualization.arrayToDataTable([
         ['Genre', 'Fantasy & Sci Fi', 'Romance', 'Mystery/Crime', 'General',
          'Western', 'Literature', { role: 'annotation' } ],
         ['2010', 10, 24, 20, 32, 18, 5, ''],
@@ -384,16 +388,13 @@ var data4 = google.visualization.arrayToDataTable([
         ['2030', 28, 19, 29, 30, 12, 13, '']
       ]);
 
-      var options4 = {
+      var options = {
         width: 600,
         height: 400,
         legend: { position: 'top', maxLines: 3 },
         bar: { groupWidth: '75%' },
         isStacked: true,
-      }
-        var chart4 = new google.visualization.ColumnChart(document.getElementById('stack_chart'));
-
-        chart4.draw(data4, options4);
+      };
       
       }
 
@@ -448,3 +449,34 @@ var data4 = google.visualization.arrayToDataTable([
         var chart = new google.visualization.PieChart(document.getElementById('chart_div5'));
         chart.draw(data5, options5);
       };
+
+google.charts.load('current', {packages: ['corechart', 'bar']});
+
+
+function drawChart6() {
+      var data6 = google.visualization.arrayToDataTable([
+        ['Uge', '2010 Population', '2000 Population'],
+        ['1', 8175000, 8008000],
+        ['2', 3792000, 3694000],
+        ['Chicago, IL', 2695000, 2896000],
+        ['Houston, TX', 2099000, 1953000],
+        ['Philadelphia, PA', 1526000, 1517000]
+      ]);
+
+      var options6 = {
+        title: 'hfjaskhfjkds',
+       width:'350',
+              height:'350',    
+        hAxis: {
+          title: 'Total Population',
+          minValue: 0
+        },
+        vAxis: {
+          title: 'City'
+        }
+      };
+
+      var chart6 = new google.visualization.BarChart(document.getElementById('chart_div6'));
+      chart6.draw(data6, options6);
+    }
+

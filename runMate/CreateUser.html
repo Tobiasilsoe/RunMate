@@ -117,6 +117,8 @@ document.getElementById('theForm').addEventListener("submit",function(e) {
         //data: $("#theForm").serialize(), 
         success: function (data) {
             console.log(data);
+            alert("Du er nu oprettet");
+       window.location.replace("login.html");
         },
         error: function (data) {
             console.log("error!");
@@ -127,7 +129,7 @@ document.getElementById('theForm').addEventListener("submit",function(e) {
     console.log('submitting...');
   });
    function myFunction() {
-    alert("Du er nu oprettet");
+    
 }
 
 

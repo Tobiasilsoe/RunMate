@@ -176,6 +176,7 @@ $(document).ready(function () {
                         console.log("error!");
                     },
                 });
+        
                 // dato for gruppe gang
         $.ajax({
                 	type: "GET",
@@ -186,9 +187,7 @@ $(document).ready(function () {
 
                         // Possible use of the data
                        grpdatoAktiviGaa = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
-                        for (var i=0;i<grpdatoAktiviGaa.length;i++){
-                        	
-                        }
+                       
                         
                         for (var i=0;i<grpdatoAktiviGaa.length;i++){
                             grpdatoGaa.push(grpdatoAktiviGaa[i]);}                       
@@ -503,27 +502,27 @@ function drawChart6() {
     }
     
     for (var i = 0; i < lobe.length; i++){
-        if (grpdatoAktiviLobe[i] <= 6){
+        if (datoLobe[i] <= 6){
             var datoLobeInt1 = parseInt("" + lobe[i]);
             datoLobeSum.uge1 += datoLobeInt1;
         }
-        else if (grpdatoAktiviLobe[i] <= 13 && grpdatoAktiviLobe[i] >= 7){
+        else if (datoLobe[i] <= 13 && datoLobe[i] >= 7){
             var datoLobeInt2 = parseInt("" + lobe[i]);
             datoLobeSum.uge2 += datoLobeInt2;
         }
-        else if (grpdatoAktiviLobe[i] <= 20 && grpdatoAktiviLobe[i] >= 14){
+        else if (datoLobe[i] <= 20 && datoLobe[i] >= 14){
             var datoLobeInt3 = parseInt("" + lobe[i]);
             datoLobeSum.uge3 += datoLobeInt3;
         }
-        else if (grpdatoAktiviLobe[i] <= 27 && grpdatoAktiviLobe[i] >= 21){
+        else if (datoLobe[i] <= 27 && datoLobe[i] >= 21){
             var datoLobeInt4 = parseInt("" + lobe[i]);
             datoLobeSum.uge4 += datoLobeInt4;
         }
-        else if (grpdatoAktiviLobe[i] <= 34 && grpdatoAktiviLobe[i] >= 28){
+        else if (datoLobe[i] <= 34 && datoLobe[i] >= 28){
             var datoLobeInt5 = parseInt("" + lobe[i]);
             datoLobeSum.uge5 += datoLobeInt5;
         }
-        else if (grpdatoAktiviLobe[i] <= 41 && grpdatoAktiviLobe[i] >= 35){
+        else if (datoLobe[i] <= 41 && datoLobe[i] >= 35){
             var datoLobeInt6 = parseInt("" + lobe[i]);
             datoLobeSum.uge6 += datoLobeInt6;
         }

@@ -173,7 +173,7 @@ public class HelloWorld {
         String textResult = "";
         try {
             Thread.sleep(600);
-            System.out.println("hejsa");
+            
         
             // Setup the connection with the DB
             connection = DriverManager.getConnection(url, user, password);
@@ -407,7 +407,7 @@ public class HelloWorld {
         String textResult = "";
         try {
               Thread.sleep(1400);
-            System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+           
             // Setup the connection with the DB
             connection = DriverManager.getConnection(url, user, password);
 
@@ -463,7 +463,7 @@ public class HelloWorld {
         String textResult = "";
         try {
               Thread.sleep(2600);
-            System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+           
             // Setup the connection with the DB
             connection = DriverManager.getConnection(url, user, password);
 
@@ -519,7 +519,7 @@ public class HelloWorld {
         String textResult = "";
         try {
               Thread.sleep(2200);
-            System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+           
             // Setup the connection with the DB
             connection = DriverManager.getConnection(url, user, password);
 
@@ -575,7 +575,7 @@ public class HelloWorld {
         String textResult = "";
         try {
               Thread.sleep(1600);
-            System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+         
             // Setup the connection with the DB
             connection = DriverManager.getConnection(url, user, password);
 
@@ -632,7 +632,7 @@ public class HelloWorld {
        
         try {
             Thread.sleep(2000);
-            System.out.println("hejsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            
             
             // Setup the connection with the DB
             connection = DriverManager.getConnection(url, user, password);
@@ -646,11 +646,10 @@ public class HelloWorld {
             System.out.println(selectText);
             statement = connection.createStatement();
             resultSet = statement.executeQuery(selectText);
-            System.out.println("ok so far...");
+           
             resultSet.next();
             int gr = resultSet.getInt("gruppe");
-            System.out.println( "group: " + gr );
-                    
+         
             selectText = "SELECT aktivitet.aktivitetstype, aktivitet.distance FROM aktivitet INNER JOIN users "
                     +"ON aktivitet.userid = users.id WHERE users.gruppe="+gr+" AND aktivitet.aktivitetstype = 'cykel';" ;
             System.out.println(selectText);
@@ -703,7 +702,7 @@ public class HelloWorld {
        
         try {
             Thread.sleep(1900);
-            System.out.println("hejsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            
             
             // Setup the connection with the DB
             connection = DriverManager.getConnection(url, user, password);
@@ -717,10 +716,10 @@ public class HelloWorld {
             System.out.println(selectText);
             statement = connection.createStatement();
             resultSet = statement.executeQuery(selectText);
-            System.out.println("ok so far...");
+            
             resultSet.next();
             int gr = resultSet.getInt("gruppe");
-            System.out.println( "group: " + gr );
+        
                     
             selectText = "SELECT aktivitet.aktivitetstype, aktivitet.distance FROM aktivitet INNER JOIN users "
                     +"ON aktivitet.userid = users.id WHERE users.gruppe="+gr+" AND aktivitet.aktivitetstype = 'lob';" ;
@@ -774,7 +773,7 @@ public class HelloWorld {
        
         try {
             Thread.sleep(1800);
-            System.out.println("hejsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+           
             
             // Setup the connection with the DB
             connection = DriverManager.getConnection(url, user, password);
@@ -788,10 +787,10 @@ public class HelloWorld {
             System.out.println(selectText);
             statement = connection.createStatement();
             resultSet = statement.executeQuery(selectText);
-            System.out.println("ok so far...");
+          
             resultSet.next();
             int gr = resultSet.getInt("gruppe");
-            System.out.println( "group: " + gr );
+            
                     
             selectText = "SELECT aktivitet.aktivitetstype, aktivitet.distance FROM aktivitet INNER JOIN users "
                     +"ON aktivitet.userid = users.id WHERE users.gruppe="+gr+" AND aktivitet.aktivitetstype = 'gang';" ;
@@ -845,7 +844,7 @@ public class HelloWorld {
         
         try {
              Thread.sleep(2400);
-            System.out.println("hejsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+          
             // Setup the connection with the DB
             connection = DriverManager.getConnection(url, user, password);
 
@@ -901,7 +900,7 @@ public class HelloWorld {
         String textResult = "";
         try {
              Thread.sleep(400);
-            System.out.println("hejsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            
             // Setup the connection with the DB
             connection = DriverManager.getConnection(url, user, password);
 

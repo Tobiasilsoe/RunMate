@@ -225,7 +225,7 @@ box-shadow: 11px 18px 29px 2px rgba(0,0,0,0.75);
 .valid:before {
     position:relative;
     left: -25px;
-    content: "✔";
+    content: "\2713";
     color: green;
 }
 
@@ -237,7 +237,7 @@ box-shadow: 11px 18px 29px 2px rgba(0,0,0,0.75);
 .invalid:before {
     position:relative;
     left: -25px;
-    content: "✖";
+    content:"\2716";
     color: red;
 }
 label{

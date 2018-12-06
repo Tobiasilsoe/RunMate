@@ -255,9 +255,6 @@ $.ajax({
 function smartRecursion(){
 
 google.charts.setOnLoadCallback(drawChart);
-//google.charts.setOnLoadCallback(drawTable);
-//google.charts.setOnLoadCallback(drawChart3);
-//google.charts.setOnLoadCallback(drawChart4);
 google.charts.setOnLoadCallback(drawChart5);
 google.charts.setOnLoadCallback(drawChart6);
     
@@ -380,7 +377,7 @@ smartRecursion();
         chart.draw(data5, options5);
       };
 
-//google.charts.load('current', {packages: ['corechart', 'bar']}); skal denne med?
+
 
 function drawChart6() {
     setTimeout(drawChart6, 5000);
@@ -390,34 +387,18 @@ function drawChart6() {
       data6.addColumn('number', 'løbe');
       data6.addColumn('number', 'Energy Level');
     
-    
-
-
     for (var i = 0; i < 2; i++){
-         //console.log("autzzzen");
-         //console.log(Number(cykle[1])); console.log(Number(cykle[1]));
-            data6.addRows([[{v: [i, 0, 0], f: i +" uge"}, Number(cykle[i]),Number(cykle[i])],])
+                    data6.addRows([[{v: [i, 0, 0], f: i +" uge"}, Number(cykle[i]),Number(cykle[i])],])
     }
     options6 = {
         title: 'Motion i løbet af forløbet',
             width:'450',
-            height:'450',
-        hAxis: {
-          title: 'Time of Day',
-          format: 'h:mm a',
-        },
-        vAxis: {
-          title: 'Rating (scale of 1-20)'
-        }
-      };
+            height:'450'   
+    };
 
       var chart = new google.visualization.ColumnChart(
-        document.getElementById('chart_div6'));
-
+      document.getElementById('chart_div6'));
       chart.draw(data6, options6);
-  /*console.log("kwaaaabbeena");
-    console.log(datoCykel);
-     console.log("kwaaaabbeena");
-    console.log(datoAktiviCykel);*/
+
     }
 

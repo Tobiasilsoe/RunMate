@@ -247,17 +247,17 @@ $.ajax({
     smartRecursion2();
             });
       google.charts.load('current', {'packages':['corechart']});
-        google.charts.load('current', {'packages':['table']});
+        //google.charts.load('current', {'packages':['table']});
 google.charts.load('current', {'packages':['columnchart']});
-google.charts.load('current', {packages: ['corechart', 'bar']});
+//google.charts.load('current', {packages: ['corechart', 'bar']});
 
       // Set a callback to run when the Google Visualization API is loaded.
 function smartRecursion(){
 
 google.charts.setOnLoadCallback(drawChart);
-google.charts.setOnLoadCallback(drawTable);
+//google.charts.setOnLoadCallback(drawTable);
 //google.charts.setOnLoadCallback(drawChart3);
-google.charts.setOnLoadCallback(drawChart4);
+//google.charts.setOnLoadCallback(drawChart4);
 google.charts.setOnLoadCallback(drawChart5);
 google.charts.setOnLoadCallback(drawChart6);
     
@@ -325,79 +325,8 @@ smartRecursion();
 
 
 
-     function drawTable() {
-         setTimeout(drawTable,3000);
-        //var data 1 = new google.visualization.DataTable();
-        
-        aktiviCykel = new google.visualization.DataTable();
-        aktiviCykel.addColumn('number', 'Uge');
-        aktiviCykel.addColumn('number', 'Længde');
-        aktiviCykel.addColumn('number', 'Mål')
-        aktiviCykel.addColumn('boolean', 'Personligt mål nået');
-        for (var i = 0; i < cykle.length; i++){
-            aktiviCykel.addRows([[i, {f: '' + cykle[i] + ' KM'}, 5, true], ])
-        }
-        /*arrayAktivitet.addRows([
-          [1,  {f: strinArray[3]}, 5, true],
-          [2,   {f: '8 KM'}, 10,  false],
-          [3, {f: '10 KM'}, 10, true],
-          [4,   {f: '7 KM'}, 5,  true],
-          [5, {f: '12 KM'}, 10, true],
-          [6,   {f: '7 KM'}, 5,  true]
-        ]);*/
-         
-         var options2 = {
-         width:'400',
-         height:'400'
-        };
 
-        var table = new google.visualization.Table(document.getElementById('table_div'));
-
-        table.draw(aktiviCykel, options2);
-      }
-
-
-      function drawChart3() {
-        var data3 = google.visualization.arrayToDataTable([
-          ['Uge', 'Længde', 'Mål'],
-          ['1',  10,      4],
-          ['2',  11,      4],
-          ['3',  6,       11],
-          ['4',  10,      5],
-          ['5',  6,       11],
-          ['6',  10,      5]
-        ]);
-
-        var options3 = {
-          title: 'Distance løbet',
-          curveType: 'function',
-          width:'400',
-          height:'400',
-          legend: { position: 'bottom' }
-        };
-
-        var chart3 = new google.visualization.LineChart(document.getElementById('curve_chart'));
-
-        chart3.draw(data3, options3);
-      }
-function drawChart4() {
-var data = google.visualization.arrayToDataTable([
-        ['Genre', 'Fantasy & Sci Fi', 'Romance', 'Mystery/Crime', 'General',
-         'Western', 'Literature', { role: 'annotation' } ],
-        ['2010', 10, 24, 20, 32, 18, 5, ''],
-        ['2020', 16, 22, 23, 30, 16, 9, ''],
-        ['2030', 28, 19, 29, 30, 12, 13, '']
-      ]);
-
-      var options = {
-        width: 600,
-        height: 400,
-        legend: { position: 'top', maxLines: 3 },
-        bar: { groupWidth: '75%' },
-        isStacked: true,
-      };
       
-      }
 
  function drawChart5() {
      setTimeout(drawChart5, 3000);
@@ -451,7 +380,7 @@ var data = google.visualization.arrayToDataTable([
         chart.draw(data5, options5);
       };
 
-google.charts.load('current', {packages: ['corechart', 'bar']});
+//google.charts.load('current', {packages: ['corechart', 'bar']}); skal denne med?
 
 function drawChart6() {
     setTimeout(drawChart6, 5000);
@@ -462,45 +391,14 @@ function drawChart6() {
       data6.addColumn('number', 'Energy Level');
     
     
-    
-   /* for (var i = 0; i < cykle.length; i++){
-         aktiviCykel.addRows([[i, {f: '' + cykle[i] + ' KM'}, 5, true], ])
-        }
-        arrayAktivitet.addRows([
-          [1,  {f: strinArray[3]}, 5, true],
-          [2,   {f: '8 KM'}, 10,  false],
-          [3, */
-    
- for (var i = 0; i < cykle.length; i++){
-            aktiviCykel.addRows([[i, {f: '' + cykle[i] + ' KM'}, 5, true], ])
-        }
-  
+
+
     for (var i = 0; i < 2; i++){
-         console.log("autzzzen");
-         console.log(Number(cykle[1])); console.log(Number(cykle[1]));
+         //console.log("autzzzen");
+         //console.log(Number(cykle[1])); console.log(Number(cykle[1]));
             data6.addRows([[{v: [i, 0, 0], f: i +" uge"}, Number(cykle[i]),Number(cykle[i])],])
     }
-    /*
- console.log("mayhias gaa"); console.log(gaa[1]); console.log("mayhias lobe"); console.log(lobe[1]); console.log("mayhias cykle"); console.log(cykle[1]);
-    console.log("autzen");
-   
-    
-    console.log(typeof(Number(cykle[1])));
-    console.log(typeof(1));
-      data6.addRows([
-        [{v: [8, 0, 0], f: '8 am'},Number(gaa[1]) , Number(cykle[0])],
-        [{v: [9, 0, 0], f: '9 am'}, 2, 2],
-        [{v: [10, 0, 0], f:'10 am'}, 3, 1],
-        [{v: [11, 0, 0], f: '11 am'}, 4, 2.25],
-        [{v: [12, 0, 0], f: '12 pm'}, 5, 2.25],
-        [{v: [13, 0, 0], f: '1 pm'}, 6, 3],
-        [{v: [14, 0, 0], f: '2 pm'}, 7, 4],
-        [{v: [15, 0, 0], f: '3 pm'}, 8, 5.25],
-        [{v: [16, 0, 0], f: '4 pm'}, 9, 7.5],
-        [{v: [17, 0, 0], f: '5 pm'}, 15, 10],
-      ]);
-*/
-      var options6 = {
+    options6 = {
         title: 'Motion i løbet af forløbet',
             width:'450',
             height:'450',
@@ -517,9 +415,9 @@ function drawChart6() {
         document.getElementById('chart_div6'));
 
       chart.draw(data6, options6);
-  console.log("kwaaaabbeena");
+  /*console.log("kwaaaabbeena");
     console.log(datoCykel);
      console.log("kwaaaabbeena");
-    console.log(datoAktiviCykel);
+    console.log(datoAktiviCykel);*/
     }
 

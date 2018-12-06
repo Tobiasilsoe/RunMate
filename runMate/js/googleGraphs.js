@@ -271,8 +271,18 @@ smartRecursion();
       // Callback that creates and populates a data table,
       // instantiates the pie chart, passes in the data and
       // draws it.
+startFunctions();
+
+function startFunctions(){
+    setTimeout(drawChart, 3000);
+    setTimeout(drawChart5, 4000);
+    setTimeout(drawChart6, 5000);
+    
+}
+
       function drawChart() {
-           setTimeout(drawChart, 3000);
+         
+          
 
         // Create the data table.
         var data = new google.visualization.DataTable();
@@ -326,7 +336,7 @@ smartRecursion();
       
 
  function drawChart5() {
-     setTimeout(drawChart5, 3000);
+     
 
         // Create the data table.
         var data5 = new google.visualization.DataTable();
@@ -380,7 +390,7 @@ smartRecursion();
 
 
 function drawChart6() {
-    setTimeout(drawChart6, 5000);
+    
     
       var data6 = new google.visualization.DataTable();
       data6.addColumn('timeofday', 'Time of Day');

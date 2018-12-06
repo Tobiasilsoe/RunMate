@@ -98,6 +98,8 @@ input[type=text] {
 
 /* Style the container for inputs */
 .container1 {
+    width: auto;
+    height: auto;
     background-color: #138Fc999
     padding: 20px;
     position: absolute;
@@ -163,7 +165,7 @@ max-width: 100%;
 .overskrift h3{
     width: auto;
     height: auto;
-    font-size: 80px;
+    font-size: 70px;
     position: absolute;
     top: 110%;
     left: 50%;

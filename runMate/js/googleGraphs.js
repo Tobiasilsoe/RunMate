@@ -388,34 +388,32 @@ function startFunctions(){
       };
 
 
-
 function drawChart6() {
-    
-    
+
       var data6 = new google.visualization.DataTable();
       data6.addColumn('timeofday', 'Time of Day');
       data6.addColumn('number', 'løbe');
       data6.addColumn('number', 'Energy Level');
     
-    var datoCykelSum1 = 0;
-    var datoCykelSum2 = 0;
+    var datoCykelSum = {uge1:0,uge2:0 };
+    
     
     for (var i = 0; i < cykle.length; i++){
         if (datoCykel[i] <= 6){
             var datoCykelInt1 = parseInt("" + cykle[i]);
-            datoCykelSum1 += datoCykelInt1;
-            console.log("Cykel sum 1 = " + datoCykelSum1);
+            datoCykelSum.uge1 += datoCykelInt1;
+            console.log("Cykel sum 1 = " + datoCykelSum.uge1);
         }
         else if (datoCykel[i] <= 13 && datoCykel[i] >= 7){
             var datoCykelInt2 = parseInt("" + cykle[i]);
-            datoCykelSum2 += datoCykelInt2;
-            console.log("Cykel sum 2 = " + datoCykelSum2);
+            datoCykelSum.uge2 += datoCykelInt2;
+            console.log("Cykel sum 2 = " + datoCykelSum.uge2);
         }
     }
     
     data6.addRows([
-        [{v: [1, 0, 0], f: "Uge 1"}, Number(datoCykelSum1), Number(datoCykelSum1)],
-        [{v: [2, 0, 0], f: "Uge 2"}, Number(datoCykelSum2), Number(datoCykelSum2)]
+        [{v: [1, 0, 0], f: "Uge 1"}, Number(datoCykelSum.uge1), Number(datoCykelSum.uge1)],
+        [{v: [2, 0, 0], f: "Uge 2"}, Number(datoCykelSum.uge2), Number(datoCykelSum.uge2)]
     ]);
     
     options6 = {

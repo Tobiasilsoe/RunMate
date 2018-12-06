@@ -23,6 +23,7 @@ table['grpGaa'] = [];
     grpGaa = table['grpGaa'];
 table['grpArrayAktivitetGaa']= [];
     grpAktiviGaa = table['grpArrayAktivitetGaa']= [];
+
 table['datoArrayAktivitetCykel']= [];
     datoAktiviCykel = table['datoArrayAktivitetCykel']= [];
 table['datoCykel']= [];
@@ -35,6 +36,19 @@ table['datoArrayAktivitetGaa']= [];
     datoAktiviGaa = table['datoArrayAktivitetGaa']= [];
 table['datoGaa']= [];
     datoGaa = table['datoGaa']= [];
+
+table['datoArrayAktivitetCykel']= [];
+    grpdatoAktiviCykel = table['grpdatoArrayAktivitetCykel']= [];
+table['grpdatoCykel']= [];
+    grpdatoCykel = table['grpdatoCykel']= [];
+table['grpdatoArrayAktivitetLobe']= [];
+    grpdatoAktiviLobe = table['grpdatoArrayAktivitetLobe']= [];
+table['grpdatoLobe']= [];
+    grpdatoLobe = table['grpdatoLobe']= [];
+table['grpdatoArrayAktivitetGaa']= [];
+    grpdatoAktiviGaa = table['grpdatoArrayAktivitetGaa']= [];
+table['grpdatoGaa']= [];
+    grpdatoGaa = table['grpdatoGaa']= [];
 
 $(document).ready(function () {
                 // Sending data from the client via AJAX
@@ -63,6 +77,7 @@ $(document).ready(function () {
                         console.log("error!");
                     },
                 });
+        
         // dato for cykel
         $.ajax({
                 	type: "GET",
@@ -121,6 +136,68 @@ $(document).ready(function () {
                         console.log("error!");
                     },
                 });
+        
+         // dato for gruppecykel
+        $.ajax({
+                	type: "GET",
+                    url: "http://localhost:7000/read_grpcykeldat/" + localStorage.getItem("user"),
+                    success: function (data) {
+                      
+                        grpdatoCykel = [];
+
+                        // Possible use of the data
+                       grpdatoAktiviCykel = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
+                      
+                        
+                        for (var i=0;i<grpdatoAktiviCykel.length;i++){
+                            grpdatoCykel.push(grpdatoAktiviCykel[i]);} 
+                        
+                    },
+                    error: function (data) {
+                        console.log("error!");
+                    },
+                });
+                // dato for gruppeløb
+        $.ajax({
+                	type: "GET",
+                    url: "http://localhost:7000/read_lobedat/" + localStorage.getItem("user"),
+                    success: function (data) {
+                      
+                        grpdatoLobe = [];
+
+                        // Possible use of the data
+                       grpdatoAktiviLobe = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
+                      
+                         console.log(grpdatoAktiviLobe);
+                        for (var i=0;i<grpdatoAktiviLobe.length;i++){
+                            grpdatoLobe.push(grpdatoAktiviLobe[i]);}     
+                    }, 
+                    error: function (data) {
+                        console.log("error!");
+                    },
+                });
+                // dato for gruppe gang
+        $.ajax({
+                	type: "GET",
+                    url: "http://localhost:7000/read_gaadat/" + localStorage.getItem("user"),
+                    success: function (data) {
+                        
+                        grpdatoGaa = [];
+
+                        // Possible use of the data
+                       grpdatoAktiviGaa = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
+                        for (var i=0;i<grpdatoAktiviGaa.length;i++){
+                        	
+                        }
+                        
+                        for (var i=0;i<grpdatoAktiviGaa.length;i++){
+                            grpdatoGaa.push(grpdatoAktiviGaa[i]);}                       
+                    },
+                    error: function (data) {
+                        console.log("error!");
+                    },
+                });
+       
         
                             //LØBE DATA
                 $.ajax({
@@ -240,8 +317,8 @@ $.ajax({
       // Set a callback to run when the Google Visualization API is loaded.
 function smartRecursion(){
 
-google.charts.setOnLoadCallback(drawChart);
-google.charts.setOnLoadCallback(drawChart5);
+google.charts.setOnLoadCallback(drawChart7);
+google.charts.setOnLoadCallback(drawChart8);
 google.charts.setOnLoadCallback(drawChart6);
     
     setTimeout(smartRecursion, 40000);
@@ -255,9 +332,9 @@ smartRecursion();
 startFunctions();
 
 function startFunctions(){
-    setTimeout(drawChart, 3000);
-    setTimeout(drawChart5, 4000);
-    setTimeout(drawChart7, 5000);
+    setTimeout(drawChart7, 3000);
+    setTimeout(drawChart8, 4000);
+    setTimeout(drawChart6, 5000);
     
 }
 
@@ -312,7 +389,7 @@ function startFunctions(){
 
 
       
-
+/*
  function drawChart5() {
      
 
@@ -365,9 +442,94 @@ function startFunctions(){
         chart.draw(data5, options5);
       };
 
-
+*/
 function drawChart6() {
+    var datoCykelSum = {uge1:0, uge2:0, uge3:0, uge4:0, uge5:0, uge6:0};
+    var datoLobeSum = {uge1:0, uge2:0, uge3:0, uge4:0, uge5:0, uge6:0};
+    var datoGaaSum = {uge1:0, uge2:0, uge3:0, uge4:0, uge5:0, uge6:0};
 
+    for (var i = 0; i < cykle.length; i++){
+        if (datoCykel[i] <= 6){
+            var datoCykelInt1 = parseInt("" + cykle[i]);
+            datoCykelSum.uge1 += datoCykelInt1;
+        }
+        else if (datoCykel[i] <= 13 && datoCykel[i] >= 7){
+            var datoCykelInt2 = parseInt("" + cykle[i]);
+            datoCykelSum.uge2 += datoCykelInt2;
+        }
+        else if (datoCykel[i] <= 20 && datoCykel[i] >= 14){
+            var datoCykelInt3 = parseInt("" + cykle[i]);
+            datoCykelSum.uge3 += datoCykelInt3;
+        }
+        else if (datoCykel[i] <= 27 && datoCykel[i] >= 21){
+            var datoCykelInt4 = parseInt("" + cykle[i]);
+            datoCykelSum.uge4 += datoCykelInt4;
+        }
+        else if (datoCykel[i] <= 34 && datoCykel[i] >= 28){
+            var datoCykelInt5 = parseInt("" + cykle[i]);
+            datoCykelSum.uge5 += datoCykelInt5;
+        }
+        else if (datoCykel[i] <= 41 && datoCykel[i] >= 35){
+            var datoCykelInt6 = parseInt("" + cykle[i]);
+            datoCykelSum.uge6 += datoCykelInt6;
+        }
+    }
+    
+    for (var i = 0; i < gaa.length; i++){
+        if (datoGaa[i] <= 6){
+            var datoGaaInt1 = parseInt("" + gaa[i]);
+            datoGaaSum.uge1 += datoGaaInt1;
+        }
+        else if (datoGaa[i] <= 13 && datoGaa[i] >= 7){
+            var datoGaaInt2 = parseInt("" + gaa[i]);
+            datoGaaSum.uge2 += datoGaaInt2;
+        }
+        else if (datoGaa[i] <= 20 && datoGaa[i] >= 14){
+            var datoGaaInt3 = parseInt("" + gaa[i]);
+            datoGaaSum.uge3 += datoGaaInt3;
+        }
+        else if (datoGaa[i] <= 27 && datoGaa[i] >= 21){
+            var datoGaaInt4 = parseInt("" + gaa[i]);
+            datoGaaSum.uge4 += datoGaaInt4;
+        }
+        else if (datoGaa[i] <= 34 && datoGaa[i] >= 28){
+            var datoGaaInt5 = parseInt("" + gaa[i]);
+            datoGaaSum.uge5 += datoGaaInt5;
+        }
+        else if (datoGaa[i] <= 41 && datoGaa[i] >= 35){
+            var datoGaaInt6 = parseInt("" + gaa[i]);
+            datoGaaSum.uge6 += datoGaaInt6;
+        }
+    }
+    
+    for (var i = 0; i < lobe.length; i++){
+        if (grpdatoAktiviLobe[i] <= 6){
+            var datoLobeInt1 = parseInt("" + lobe[i]);
+            datoLobeSum.uge1 += datoLobeInt1;
+        }
+        else if (grpdatoAktiviLobe[i] <= 13 && grpdatoAktiviLobe[i] >= 7){
+            var datoLobeInt2 = parseInt("" + lobe[i]);
+            datoLobeSum.uge2 += datoLobeInt2;
+        }
+        else if (grpdatoAktiviLobe[i] <= 20 && grpdatoAktiviLobe[i] >= 14){
+            var datoLobeInt3 = parseInt("" + lobe[i]);
+            datoLobeSum.uge3 += datoLobeInt3;
+        }
+        else if (grpdatoAktiviLobe[i] <= 27 && grpdatoAktiviLobe[i] >= 21){
+            var datoLobeInt4 = parseInt("" + lobe[i]);
+            datoLobeSum.uge4 += datoLobeInt4;
+        }
+        else if (grpdatoAktiviLobe[i] <= 34 && grpdatoAktiviLobe[i] >= 28){
+            var datoLobeInt5 = parseInt("" + lobe[i]);
+            datoLobeSum.uge5 += datoLobeInt5;
+        }
+        else if (grpdatoAktiviLobe[i] <= 41 && grpdatoAktiviLobe[i] >= 35){
+            var datoLobeInt6 = parseInt("" + lobe[i]);
+            datoLobeSum.uge6 += datoLobeInt6;
+        }
+    }
+
+    
       var data6 = new google.visualization.DataTable();
       data6.addColumn('timeofday', 'Time of Day');
       data6.addColumn('number', 'Cykel');
@@ -385,7 +547,7 @@ function drawChart6() {
     ]);
     
     options6 = {
-        title: 'Motion i løbet af forløbet',
+        title: 'Motion i løbet af forløbet i km.',
             width:'450',
             height:'450'
         //isStacked: true
@@ -401,7 +563,6 @@ function drawChart6() {
       
 
       function drawChart7() {
-      
     var datoCykelSum = {uge1:0, uge2:0, uge3:0, uge4:0, uge5:0, uge6:0};
     var datoLobeSum = {uge1:0, uge2:0, uge3:0, uge4:0, uge5:0, uge6:0};
     var datoGaaSum = {uge1:0, uge2:0, uge3:0, uge4:0, uge5:0, uge6:0};
@@ -485,29 +646,147 @@ function drawChart6() {
             var datoLobeInt6 = parseInt("" + lobe[i]);
             datoLobeSum.uge6 += datoLobeInt6;
         }
-    }
-        
+    }  
         var data7 = google.visualization.arrayToDataTable([
-        ['uge', 'cykel', 'løbe','gå'],
+        ['Uge', 'Cykel', 'Løbe','Gå'],
             
-        ['1', Number(datoCykelSum.uge1), Number(datoLobeSum.uge1), Number(datoGaaSum.uge1)],
-        [ '2',Number(datoCykelSum.uge1)+Number(datoCykelSum.uge2),Number(datoLobeSum.uge1)+ Number(datoLobeSum.uge2), Number(datoGaaSum.uge1)+Number(datoGaaSum.uge2)],
-        [ '3',Number(datoCykelSum.uge1)+Number(datoCykelSum.uge2)+Number(datoCykelSum.uge3), Number(datoLobeSum.uge1)+ Number(datoLobeSum.uge2)+Number(datoLobeSum.uge3), Number(datoGaaSum.uge1)+Number(datoGaaSum.uge2)+Number(datoGaaSum.uge3)],
-        [ '4',Number(datoCykelSum.uge1)+Number(datoCykelSum.uge2)+Number(datoCykelSum.uge3)+Number(datoCykelSum.uge4), Number(datoLobeSum.uge1)+ Number(datoLobeSum.uge2)+Number(datoLobeSum.uge3)+Number(datoLobeSum.uge4), Number(datoGaaSum.uge1)+Number(datoGaaSum.uge2)+Number(datoGaaSum.uge3)+Number(datoGaaSum.uge4)],
-        [ '5',Number(datoCykelSum.uge1)+Number(datoCykelSum.uge2)+Number(datoCykelSum.uge3)+Number(datoCykelSum.uge4)+Number(datoCykelSum.uge5), Number(datoLobeSum.uge1)+ Number(datoLobeSum.uge2)+Number(datoLobeSum.uge3)+Number(datoLobeSum.uge4)+Number(datoLobeSum.uge5), Number(datoGaaSum.uge1)+Number(datoGaaSum.uge2)+Number(datoGaaSum.uge3)+Number(datoGaaSum.uge4)+Number(datoGaaSum.uge5)],
-        [ '6',Number(datoCykelSum.uge1)+Number(datoCykelSum.uge2)+Number(datoCykelSum.uge3)+Number(datoCykelSum.uge4)+Number(datoCykelSum.uge5)+Number(datoCykelSum.uge6), Number(datoLobeSum.uge1)+ Number(datoLobeSum.uge2)+Number(datoLobeSum.uge3)+Number(datoLobeSum.uge4)+Number(datoLobeSum.uge5)+Number(datoLobeSum.uge6), Number(Number(datoGaaSum.uge1)+Number(datoGaaSum.uge2)+Number(datoGaaSum.uge3)+Number(datoGaaSum.uge4)+Number(datoGaaSum.uge5)+datoGaaSum.uge6)]
+        ['Uge 1', Number(datoCykelSum.uge1), Number(datoLobeSum.uge1), Number(datoGaaSum.uge1)],
+        [ 'Uge 2',Number(datoCykelSum.uge1)+Number(datoCykelSum.uge2),Number(datoLobeSum.uge1)+ Number(datoLobeSum.uge2), Number(datoGaaSum.uge1)+Number(datoGaaSum.uge2)],
+        [ 'Uge 3',Number(datoCykelSum.uge1)+Number(datoCykelSum.uge2)+Number(datoCykelSum.uge3), Number(datoLobeSum.uge1)+ Number(datoLobeSum.uge2)+Number(datoLobeSum.uge3), Number(datoGaaSum.uge1)+Number(datoGaaSum.uge2)+Number(datoGaaSum.uge3)],
+        [ 'Uge 4',Number(datoCykelSum.uge1)+Number(datoCykelSum.uge2)+Number(datoCykelSum.uge3)+Number(datoCykelSum.uge4), Number(datoLobeSum.uge1)+ Number(datoLobeSum.uge2)+Number(datoLobeSum.uge3)+Number(datoLobeSum.uge4), Number(datoGaaSum.uge1)+Number(datoGaaSum.uge2)+Number(datoGaaSum.uge3)+Number(datoGaaSum.uge4)],
+        [ 'Uge 5',Number(datoCykelSum.uge1)+Number(datoCykelSum.uge2)+Number(datoCykelSum.uge3)+Number(datoCykelSum.uge4)+Number(datoCykelSum.uge5), Number(datoLobeSum.uge1)+ Number(datoLobeSum.uge2)+Number(datoLobeSum.uge3)+Number(datoLobeSum.uge4)+Number(datoLobeSum.uge5), Number(datoGaaSum.uge1)+Number(datoGaaSum.uge2)+Number(datoGaaSum.uge3)+Number(datoGaaSum.uge4)+Number(datoGaaSum.uge5)],
+        [ 'Uge 6',Number(datoCykelSum.uge1)+Number(datoCykelSum.uge2)+Number(datoCykelSum.uge3)+Number(datoCykelSum.uge4)+Number(datoCykelSum.uge5)+Number(datoCykelSum.uge6), Number(datoLobeSum.uge1)+ Number(datoLobeSum.uge2)+Number(datoLobeSum.uge3)+Number(datoLobeSum.uge4)+Number(datoLobeSum.uge5)+Number(datoLobeSum.uge6), Number(datoGaaSum.uge1)+Number(datoGaaSum.uge2)+Number(datoGaaSum.uge3)+Number(datoGaaSum.uge4)+Number(datoGaaSum.uge5)+Number(datoGaaSum.uge6)]
     ]);
         var options7 = {
-          title: 'Company Performance',
+          title: 'Motion i løbet af forløbet i km.',
             width:'450',
             height:'450',
           curveType: 'function',
-          legend: { position: 'bottom' }
+          legend: { position: 'bottom' },
         };
 
-        var chart = new google.visualization.LineChart(document.getElementById('chart_div6'));
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div7'));
 
         chart.draw(data7, options7);
+      }
+
+      
+ 
+            
+      function drawChart8() {
+    var grpdatoCykelSum = {uge1:0, uge2:0, uge3:0, uge4:0, uge5:0, uge6:0};
+    var grpdatoLobeSum = {uge1:0, uge2:0, uge3:0, uge4:0, uge5:0, uge6:0};
+    var grpdatoGaaSum = {uge1:0, uge2:0, uge3:0, uge4:0, uge5:0, uge6:0};
+
+    for (var i = 0; i < cykle.length; i++){
+        if (grpdatoCykel[i] <= 6){
+            var grpdatoCykelInt1 = parseInt("" + grpCykel[i]);
+            grpdatoCykelSum.uge1 += grpdatoCykelInt1;
+        }
+        else if (grpdatoCykel[i] <= 13 && cykle[i] >= 7){
+            var grpdatoCykelInt2 = parseInt("" + grpCykel[i]);
+            grpdatoCykelSum.uge2 += grpdatoCykelInt2;
+        }
+        else if (grpdatoCykel[i] <= 20 && grpdatoCykel[i] >= 14){
+            var grpdatoCykelInt3 = parseInt("" + grpCykel[i]);
+            grpdatoCykelSum.uge3 += grpdatoCykelInt3;
+        }
+        else if (grpdatoCykel[i] <= 27 && grpdatoCykel[i] >= 21){
+            var grpdatoCykelInt4 = parseInt("" + grpCykel[i]);
+            grpdatoCykelSum.uge4 += grpdatoCykelInt4;
+        }
+        else if (grpdatoCykel[i] <= 34 && grpdatoCykel[i] >= 28){
+            var grpdatoCykelInt5 = parseInt("" + grpCykel[i]);
+            grpdatoCykelSum.uge5 += grpdatoCykelInt5;
+        }
+        else if (grpdatoCykel[i] <= 41 && grpdatoCykel[i] >= 35){
+            var grpdatoCykelInt6 = parseInt("" + grpCykel[i]);
+            grpdatoCykelSum.uge6 += grpdatoCykelInt6;
+        }
+    }
+      
+    for (var i = 0; i < gaa.length; i++){
+        if (grpdatoGaa[i] <= 6){
+            var grpdatoGaaInt1 = parseInt("" + grpGaa[i]);
+            grpdatoGaaSum.uge1 += grpdatoGaaInt1;
+            
+        }
+        
+        else if (grpdatoGaa[i] <= 13 && grpdatoGaa[i] >= 7){
+            var grpdatoGaaInt2 = parseInt("" + grpGaa[i]);
+            grpdatoGaaSum.uge2 += grpdatoGaaInt2;
+           
+        }
+        else if (grpdatoGaa[i] <= 20 && grpdatoGaa[i] >= 14){
+            var grpdatoGaaInt3 = parseInt("" + grpGaa[i]);
+            grpdatoGaaSum.uge3 += grpdatoGaaInt3;
+            
+        }
+        else if (grpdatoGaa[i] <= 27 && grpdatoGaa[i] >= 21){
+            var grpdatoGaaInt4 = parseInt("" + grpGaa[i]);
+            grpdatoGaaSum.uge4 += grpdatoGaaInt4;
+            
+        }
+        else if (grpdatoGaa[i] <= 34 && grpdatoGaa[i] >= 28){
+            var grpdatoGaaInt5 = parseInt("" + grpGaa[i]);
+            grpdatoGaaSum.uge5 += grpdatoGaaInt5;
+           
+        }
+        else if (grpdatoGaa[i] <= 41 && grpdatoGaa[i] >= 35){
+            var grpdatoGaaInt6 = parseInt("" + grpGaa[i]);
+            grpdatoGaaSum.uge6 += grpdatoGaaInt6;
+            }
+    }
+          
+          
+    for (var i = 0; i < lobe.length; i++){
+        if (grpdatoLobe[i] <= 6){
+            var datoLobeInt1 = parseInt("" + grpLobe[i]);
+            grpdatoLobeSum.uge1 += datoLobeInt1;
+        }
+        else if (grpdatoLobe[i] <= 13 && grpdatoLobe[i] >= 7){
+            var datoLobeInt2 = parseInt("" + grpLobe[i]);
+            grpdatoLobeSum.uge2 += datoLobeInt2;
+        }
+        else if (grpdatoLobe[i] <= 20 && grpdatoLobe[i] >= 14){
+            var datoLobeInt3 = parseInt("" + grpLobe[i]);
+            grpdatoLobeSum.uge3 += datoLobeInt3;
+        }
+        else if (grpdatoLobe[i] <= 27 && grpdatoLobe[i] >= 21){
+            var datoLobeInt4 = parseInt("" + grpLobe[i]);
+            grpdatoLobeSum.uge4 += datoLobeInt4;
+        }
+        else if (grpdatoLobe[i] <= 34 && grpdatoLobe[i] >= 28){
+            var datoLobeInt5 = parseInt("" + grpLobe[i]);
+            grpdatoLobeSum.uge5 += datoLobeInt5;
+        }
+        else if (grpdatoLobe[i] <= 41 && grpdatoLobe[i] >= 35){
+            var datoLobeInt6 = parseInt("" + grpLobe[i]);
+            grpdatoLobeSum.uge6 += datoLobeInt6;
+        }
+    }  
+          
+        var data8 = google.visualization.arrayToDataTable([
+        ['Uge', 'Cykel', 'Løbe','Gå'],
+            
+        ['Uge 1', Number(grpdatoCykelSum.uge1), Number(grpdatoLobeSum.uge1), Number(grpdatoGaaSum.uge1)],
+        [ 'Uge 2',Number(grpdatoCykelSum.uge1)+Number(grpdatoCykelSum.uge2),Number(grpdatoLobeSum.uge1)+ Number(grpdatoLobeSum.uge2), Number(grpdatoGaaSum.uge1)+Number(grpdatoGaaSum.uge2)],
+        [ 'Uge 3',Number(grpdatoCykelSum.uge1)+Number(grpdatoCykelSum.uge2)+Number(grpdatoCykelSum.uge3), Number(grpdatoLobeSum.uge1)+ Number(grpdatoLobeSum.uge2)+Number(grpdatoLobeSum.uge3), Number(grpdatoGaaSum.uge1)+Number(grpdatoGaaSum.uge2)+Number(grpdatoGaaSum.uge3)],
+        [ 'Uge 4',Number(grpdatoCykelSum.uge1)+Number(grpdatoCykelSum.uge2)+Number(grpdatoCykelSum.uge3)+Number(grpdatoCykelSum.uge4), Number(grpdatoLobeSum.uge1)+ Number(grpdatoLobeSum.uge2)+Number(grpdatoLobeSum.uge3)+Number(grpdatoLobeSum.uge4), Number(grpdatoGaaSum.uge1)+Number(grpdatoGaaSum.uge2)+Number(grpdatoGaaSum.uge3)+Number(grpdatoGaaSum.uge4)],
+        [ 'Uge 5',Number(grpdatoCykelSum.uge1)+Number(grpdatoCykelSum.uge2)+Number(grpdatoCykelSum.uge3)+Number(grpdatoCykelSum.uge4)+Number(grpdatoCykelSum.uge5), Number(grpdatoLobeSum.uge1)+ Number(grpdatoLobeSum.uge2)+Number(grpdatoLobeSum.uge3)+Number(grpdatoLobeSum.uge4)+Number(grpdatoLobeSum.uge5), Number(grpdatoGaaSum.uge1)+Number(grpdatoGaaSum.uge2)+Number(grpdatoGaaSum.uge3)+Number(grpdatoGaaSum.uge4)+Number(grpdatoGaaSum.uge5)],
+        [ 'Uge 6',Number(grpdatoCykelSum.uge1)+Number(grpdatoCykelSum.uge2)+Number(grpdatoCykelSum.uge3)+Number(grpdatoCykelSum.uge4)+Number(grpdatoCykelSum.uge5)+Number(grpdatoCykelSum.uge6), Number(grpdatoLobeSum.uge1)+ Number(grpdatoLobeSum.uge2)+Number(grpdatoLobeSum.uge3)+Number(grpdatoLobeSum.uge4)+Number(grpdatoLobeSum.uge5)+Number(grpdatoLobeSum.uge6), Number(grpdatoGaaSum.uge1)+Number(grpdatoGaaSum.uge2)+Number(grpdatoGaaSum.uge3)+Number(grpdatoGaaSum.uge4)+Number(grpdatoGaaSum.uge5)+Number(grpdatoGaaSum.uge6)]
+    ]);
+        var options8 = {
+          title: 'Gruppens motion i løbet af forløbet i km.',
+            width:'450',
+            height:'450',
+          curveType: 'function',
+          legend: { position: 'bottom' },
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div8'));
+
+        chart.draw(data8, options8);
       }
 
 

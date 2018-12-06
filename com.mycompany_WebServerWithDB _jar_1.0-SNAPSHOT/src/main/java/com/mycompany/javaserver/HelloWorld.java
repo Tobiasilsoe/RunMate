@@ -88,6 +88,30 @@ public class HelloWorld {
             );
         });
         
+        app.get("/read_grpcykeldat/:id", ctx -> {
+            int id = Integer.parseInt(ctx.pathParam("id"));
+            System.out.println( id );
+            ctx.result(
+                    readDatoCykelFromGruppe(dbUrl, dbUser, dbPassword, id)
+            );
+        });
+        
+        app.get("/read_grplobedat/:id", ctx -> {
+            int id = Integer.parseInt(ctx.pathParam("id"));
+            System.out.println( id );
+            ctx.result(
+                    readDatoLobFromGruppe(dbUrl, dbUser, dbPassword, id)
+            );
+        });
+        
+        app.get("/read_grpgaadat/:id", ctx -> {
+            int id = Integer.parseInt(ctx.pathParam("id"));
+            System.out.println( id );
+            ctx.result(
+                    readDatoGaaFromGruppe(dbUrl, dbUser, dbPassword, id)
+            );
+        });
+        
         app.get("/read_cykelgrp/:id", ctx -> {
             int id = Integer.parseInt(ctx.pathParam("id"));
             System.out.println( id );
@@ -627,76 +651,6 @@ public class HelloWorld {
         return textResult;
     }
     
-    public static String readCykelFromGruppe(String url, String user, String password, int id) {
-        String textResult = "";
-       
-        try {
-            Thread.sleep(2000);
-            
-            
-            // Setup the connection with the DB
-            connection = DriverManager.getConnection(url, user, password);
-
-            // Statements allow to issue SQL queries to the database
-
-            // Result set get the result of the SQL query
-            //SELECT @a := gruppe FROM users WHERE id = 1;
-//SELECT aktivitet.aktivitetstype, aktivitet.distance from aktivitet INNER JOIN users ON aktivitet.userid = users.id WHERE users.gruppe LIKE @a AND aktivitet.aktivitetstype = 'gang';
-            String selectText = "SELECT gruppe FROM users WHERE id ="+id+";";
-            System.out.println(selectText);
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery(selectText);
-           
-            resultSet.next();
-            int gr = resultSet.getInt("gruppe");
-         
-            selectText = "SELECT aktivitet.aktivitetstype, aktivitet.distance FROM aktivitet INNER JOIN users "
-                    +"ON aktivitet.userid = users.id WHERE users.gruppe="+gr+" AND aktivitet.aktivitetstype = 'cykel';" ;
-            System.out.println(selectText);
-            statement = connection.createStatement();
-            resultSet = statement.executeQuery(selectText);
-                    
-
-            // Write result
-            while (resultSet.next()) {
-                System.out.printf("%s | %s ",
-                      
-                        resultSet.getString("aktivitetstype"),
-                        resultSet.getString("distance")
-                        
-                );
-                textResult += 
-                        resultSet.getString("aktivitetstype") + "|"
-                        + resultSet.getString("distance") + "|"
-                        ;
-            }
-           
-        } catch (SQLException ex) {
-            System.out.println("SQLException occurred! " + ex);
-        }catch (InterruptedException ex) {
-            Logger.getLogger(HelloWorld.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                if (resultSet != null) {
-                    resultSet.close();
-                }
-                if (statement != null) {
-                    statement.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println("SQLException occurred while closing the connection. " + ex);
-            }
-        }
-
-        if (textResult.equals("")) {
-            textResult = "-nothing found-";
-        }
-        return textResult;
-    }
-    
     public static String readLobFromGruppe(String url, String user, String password, int id) {
         String textResult = "";
        
@@ -809,6 +763,288 @@ public class HelloWorld {
                 );
                 textResult += 
                         resultSet.getString("aktivitetstype") + "|"
+                        + resultSet.getString("distance") + "|"
+                        ;
+            }
+           
+        } catch (SQLException ex) {
+            System.out.println("SQLException occurred! " + ex);
+        }catch (InterruptedException ex) {
+            Logger.getLogger(HelloWorld.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("SQLException occurred while closing the connection. " + ex);
+            }
+        }
+
+        if (textResult.equals("")) {
+            textResult = "-nothing found-";
+        }
+        return textResult;
+    }
+    
+    
+    
+    public static String readCykelFromGruppe(String url, String user, String password, int id) {
+        String textResult = "";
+       
+        try {
+            Thread.sleep(2000);
+            
+            
+            // Setup the connection with the DB
+            connection = DriverManager.getConnection(url, user, password);
+
+            // Statements allow to issue SQL queries to the database
+
+            // Result set get the result of the SQL query
+            //SELECT @a := gruppe FROM users WHERE id = 1;
+//SELECT aktivitet.aktivitetstype, aktivitet.distance from aktivitet INNER JOIN users ON aktivitet.userid = users.id WHERE users.gruppe LIKE @a AND aktivitet.aktivitetstype = 'gang';
+            String selectText = "SELECT gruppe FROM users WHERE id ="+id+";";
+            System.out.println(selectText);
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(selectText);
+           
+            resultSet.next();
+            int gr = resultSet.getInt("gruppe");
+         
+            selectText = "SELECT aktivitet.aktivitetstype, aktivitet.distance FROM aktivitet INNER JOIN users "
+                    +"ON aktivitet.userid = users.id WHERE users.gruppe="+gr+" AND aktivitet.aktivitetstype = 'cykel';" ;
+            System.out.println(selectText);
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(selectText);
+                    
+
+            // Write result
+            while (resultSet.next()) {
+                System.out.printf("%s | %s ",
+                      
+                        resultSet.getString("aktivitetstype"),
+                        resultSet.getString("distance")
+                        
+                );
+                textResult += 
+                        resultSet.getString("aktivitetstype") + "|"
+                        + resultSet.getString("distance") + "|"
+                        ;
+            }
+           
+        } catch (SQLException ex) {
+            System.out.println("SQLException occurred! " + ex);
+        }catch (InterruptedException ex) {
+            Logger.getLogger(HelloWorld.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("SQLException occurred while closing the connection. " + ex);
+            }
+        }
+
+        if (textResult.equals("")) {
+            textResult = "-nothing found-";
+        }
+        return textResult;
+    }
+    public static String readDatoCykelFromGruppe(String url, String user, String password, int id) {
+        String textResult = "";
+       
+        try {
+            Thread.sleep(2000);
+            
+            
+            // Setup the connection with the DB
+            connection = DriverManager.getConnection(url, user, password);
+
+            // Statements allow to issue SQL queries to the database
+
+            // Result set get the result of the SQL query
+            //SELECT @a := gruppe FROM users WHERE id = 1;
+//SELECT aktivitet.aktivitetstype, aktivitet.distance from aktivitet INNER JOIN users ON aktivitet.userid = users.id WHERE users.gruppe LIKE @a AND aktivitet.aktivitetstype = 'gang';
+            String selectText = "SELECT gruppe FROM users WHERE id ="+id+";";
+            System.out.println(selectText);
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(selectText);
+           
+            resultSet.next();
+            int gr = resultSet.getInt("gruppe");
+         
+            selectText = "SELECT datediff(aktivitet.tidspunkt, starttidspunkt.start_tid) as dato, aktivitet.distance FROM starttidspunkt, aktivitet INNER JOIN users" +
+"                    ON aktivitet.userid = users.id WHERE users.gruppe="+gr+" AND aktivitet.aktivitetstype = 'cykel';" ;
+            System.out.println(selectText);
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(selectText);
+                    
+
+            // Write result
+            while (resultSet.next()) {
+                System.out.printf("%s | %s ",
+                      
+                        resultSet.getString("dato"),
+                        resultSet.getString("distance")
+                        
+                );
+                textResult += 
+                        resultSet.getString("dato") + "|"
+                        + resultSet.getString("distance") + "|"
+                        ;
+            }
+           
+        } catch (SQLException ex) {
+            System.out.println("SQLException occurred! " + ex);
+        }catch (InterruptedException ex) {
+            Logger.getLogger(HelloWorld.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("SQLException occurred while closing the connection. " + ex);
+            }
+        }
+
+        if (textResult.equals("")) {
+            textResult = "-nothing found-";
+        }
+        return textResult;
+    }
+    public static String readDatoLobFromGruppe(String url, String user, String password, int id) {
+        String textResult = "";
+       
+        try {
+            Thread.sleep(1900);
+            
+            
+            // Setup the connection with the DB
+            connection = DriverManager.getConnection(url, user, password);
+
+            // Statements allow to issue SQL queries to the database
+
+            // Result set get the result of the SQL query
+            //SELECT @a := gruppe FROM users WHERE id = 1;
+//SELECT aktivitet.aktivitetstype, aktivitet.distance from aktivitet INNER JOIN users ON aktivitet.userid = users.id WHERE users.gruppe LIKE @a AND aktivitet.aktivitetstype = 'gang';
+            String selectText = "SELECT gruppe FROM users WHERE id ="+id+";";
+            System.out.println(selectText);
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(selectText);
+            
+            resultSet.next();
+            int gr = resultSet.getInt("gruppe");
+        
+                    
+            selectText = "SELECT datediff(aktivitet.tidspunkt, starttidspunkt.start_tid) as dato, aktivitet.distance FROM starttidspunkt, aktivitet INNER JOIN users" +
+"                    ON aktivitet.userid = users.id WHERE users.gruppe="+gr+" AND aktivitet.aktivitetstype = 'lob';" ;
+            System.out.println(selectText);
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(selectText);
+                    
+
+            // Write result
+            while (resultSet.next()) {
+                System.out.printf("%s | %s ",
+                      
+                        resultSet.getString("dato"),
+                        resultSet.getString("distance")
+                        
+                );
+                textResult += 
+                        resultSet.getString("dato") + "|"
+                        + resultSet.getString("distance") + "|"
+                        ;
+            }
+           
+        } catch (SQLException ex) {
+            System.out.println("SQLException occurred! " + ex);
+        }catch (InterruptedException ex) {
+            Logger.getLogger(HelloWorld.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("SQLException occurred while closing the connection. " + ex);
+            }
+        }
+
+        if (textResult.equals("")) {
+            textResult = "-nothing found-";
+        }
+        return textResult;
+    }
+    
+    public static String readDatoGaaFromGruppe(String url, String user, String password, int id) {
+        String textResult = "";
+       
+        try {
+            Thread.sleep(1800);
+           
+            
+            // Setup the connection with the DB
+            connection = DriverManager.getConnection(url, user, password);
+
+            // Statements allow to issue SQL queries to the database
+
+            // Result set get the result of the SQL query
+            //SELECT @a := gruppe FROM users WHERE id = 1;
+//SELECT aktivitet.aktivitetstype, aktivitet.distance from aktivitet INNER JOIN users ON aktivitet.userid = users.id WHERE users.gruppe LIKE @a AND aktivitet.aktivitetstype = 'gang';
+            String selectText = "SELECT gruppe FROM users WHERE id ="+id+";";
+            System.out.println(selectText);
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(selectText);
+          
+            resultSet.next();
+            int gr = resultSet.getInt("gruppe");
+            
+                    
+           selectText = "SELECT datediff(aktivitet.tidspunkt, starttidspunkt.start_tid) as dato, aktivitet.distance FROM starttidspunkt, aktivitet INNER JOIN users" +
+"                    ON aktivitet.userid = users.id WHERE users.gruppe="+gr+" AND aktivitet.aktivitetstype = 'gang';" ;
+             System.out.println(selectText);
+            statement = connection.createStatement();
+            resultSet = statement.executeQuery(selectText);
+                    
+
+            // Write result
+            while (resultSet.next()) {
+                System.out.printf("%s | %s ",
+                      
+                        resultSet.getString("dato"),
+                        resultSet.getString("distance")
+                        
+                );
+                textResult += 
+                        resultSet.getString("dato") + "|"
                         + resultSet.getString("distance") + "|"
                         ;
             }

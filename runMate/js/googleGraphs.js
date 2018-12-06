@@ -247,7 +247,7 @@ $.ajax({
     smartRecursion2();
             });
       google.charts.load('current', {'packages':['corechart', 'columnchart']});
-        //google.charts.load('current', {'packages':['table']});
+//google.charts.load('current', {'packages':['table']});
 //google.charts.load('current', {'packages':['columnchart']});
 //google.charts.load('current', {packages: ['corechart', 'bar']});
 

@@ -257,7 +257,7 @@ startFunctions();
 function startFunctions(){
     setTimeout(drawChart, 3000);
     setTimeout(drawChart5, 4000);
-    setTimeout(drawChart6, 5000);
+    setTimeout(drawChart7, 5000);
     
 }
 
@@ -374,11 +374,38 @@ function drawChart6() {
       data6.addColumn('number', 'Løb');
     data6.addColumn('number', 'Gå');
     
+    
+    data6.addRows([
+        [{v: [1, 0, 0], f: "Uge 1"}, Number(datoCykelSum.uge1), Number(datoLobeSum.uge1), Number(datoGaaSum.uge1)],
+        [{v: [2, 0, 0], f: "Uge 2"}, Number(datoCykelSum.uge2), Number(datoLobeSum.uge2), Number(datoGaaSum.uge2)],
+        [{v: [3, 0, 0], f: "Uge 3"}, Number(datoCykelSum.uge3), Number(datoLobeSum.uge3), Number(datoGaaSum.uge3)],
+        [{v: [4, 0, 0], f: "Uge 4"}, Number(datoCykelSum.uge4), Number(datoLobeSum.uge4), Number(datoGaaSum.uge4)],
+        [{v: [5, 0, 0], f: "Uge 5"}, Number(datoCykelSum.uge5), Number(datoLobeSum.uge5), Number(datoGaaSum.uge5)],
+        [{v: [6, 0, 0], f: "Uge 6"}, Number(datoCykelSum.uge6), Number(datoLobeSum.uge6), Number(datoGaaSum.uge6)]
+    ]);
+    
+    options6 = {
+        title: 'Motion i løbet af forløbet',
+            width:'450',
+            height:'450'
+        //isStacked: true
+    };
+
+      var chart = new google.visualization.ColumnChart(
+      document.getElementById('chart_div6'));
+      chart.draw(data6, options6);
+
+    }
+
+
+      
+
+      function drawChart7() {
+      
     var datoCykelSum = {uge1:0, uge2:0, uge3:0, uge4:0, uge5:0, uge6:0};
     var datoLobeSum = {uge1:0, uge2:0, uge3:0, uge4:0, uge5:0, uge6:0};
     var datoGaaSum = {uge1:0, uge2:0, uge3:0, uge4:0, uge5:0, uge6:0};
-    
-    
+
     for (var i = 0; i < cykle.length; i++){
         if (datoCykel[i] <= 6){
             var datoCykelInt1 = parseInt("" + cykle[i]);
@@ -459,25 +486,28 @@ function drawChart6() {
             datoLobeSum.uge6 += datoLobeInt6;
         }
     }
-    
-    data6.addRows([
-        [{v: [1, 0, 0], f: "Uge 1"}, Number(datoCykelSum.uge1), Number(datoLobeSum.uge1), Number(datoGaaSum.uge1)],
-        [{v: [2, 0, 0], f: "Uge 2"}, Number(datoCykelSum.uge2), Number(datoLobeSum.uge2), Number(datoGaaSum.uge2)],
-        [{v: [3, 0, 0], f: "Uge 3"}, Number(datoCykelSum.uge3), Number(datoLobeSum.uge3), Number(datoGaaSum.uge3)],
-        [{v: [4, 0, 0], f: "Uge 4"}, Number(datoCykelSum.uge4), Number(datoLobeSum.uge4), Number(datoGaaSum.uge4)],
-        [{v: [5, 0, 0], f: "Uge 5"}, Number(datoCykelSum.uge5), Number(datoLobeSum.uge5), Number(datoGaaSum.uge5)],
-        [{v: [6, 0, 0], f: "Uge 6"}, Number(datoCykelSum.uge6), Number(datoLobeSum.uge6), Number(datoGaaSum.uge6)]
+        
+        var data7 = google.visualization.arrayToDataTable([
+        ['uge', 'cykel', 'løbe','gå'],
+            
+        ['1', Number(datoCykelSum.uge1), Number(datoLobeSum.uge1), Number(datoGaaSum.uge1)],
+        [ '2',Number(datoCykelSum.uge1)+Number(datoCykelSum.uge2),Number(datoLobeSum.uge1)+ Number(datoLobeSum.uge2), Number(datoGaaSum.uge1)+Number(datoGaaSum.uge2)],
+        [ '3',Number(datoCykelSum.uge1)+Number(datoCykelSum.uge2)+Number(datoCykelSum.uge3), Number(datoLobeSum.uge1)+ Number(datoLobeSum.uge2)+Number(datoLobeSum.uge3), Number(datoGaaSum.uge1)+Number(datoGaaSum.uge2)+Number(datoGaaSum.uge3)],
+        [ '4',Number(datoCykelSum.uge1)+Number(datoCykelSum.uge2)+Number(datoCykelSum.uge3)+Number(datoCykelSum.uge4), Number(datoLobeSum.uge1)+ Number(datoLobeSum.uge2)+Number(datoLobeSum.uge3)+Number(datoLobeSum.uge4), Number(datoGaaSum.uge1)+Number(datoGaaSum.uge2)+Number(datoGaaSum.uge3)+Number(datoGaaSum.uge4)],
+        [ '5',Number(datoCykelSum.uge1)+Number(datoCykelSum.uge2)+Number(datoCykelSum.uge3)+Number(datoCykelSum.uge4)+Number(datoCykelSum.uge5), Number(datoLobeSum.uge1)+ Number(datoLobeSum.uge2)+Number(datoLobeSum.uge3)+Number(datoLobeSum.uge4)+Number(datoLobeSum.uge5), Number(datoGaaSum.uge1)+Number(datoGaaSum.uge2)+Number(datoGaaSum.uge3)+Number(datoGaaSum.uge4)+Number(datoGaaSum.uge5)],
+        [ '6',Number(datoCykelSum.uge1)+Number(datoCykelSum.uge2)+Number(datoCykelSum.uge3)+Number(datoCykelSum.uge4)+Number(datoCykelSum.uge5)+Number(datoCykelSum.uge6), Number(datoLobeSum.uge1)+ Number(datoLobeSum.uge2)+Number(datoLobeSum.uge3)+Number(datoLobeSum.uge4)+Number(datoLobeSum.uge5)+Number(datoLobeSum.uge6), Number(Number(datoGaaSum.uge1)+Number(datoGaaSum.uge2)+Number(datoGaaSum.uge3)+Number(datoGaaSum.uge4)+Number(datoGaaSum.uge5)+datoGaaSum.uge6)]
     ]);
-    
-    options6 = {
-        title: 'Motion i løbet af forløbet',
+        var options7 = {
+          title: 'Company Performance',
             width:'450',
-            height:'450'   
-    };
+            height:'450',
+          curveType: 'function',
+          legend: { position: 'bottom' }
+        };
 
-      var chart = new google.visualization.ColumnChart(
-      document.getElementById('chart_div6'));
-      chart.draw(data6, options6);
+        var chart = new google.visualization.LineChart(document.getElementById('chart_div6'));
 
-    }
+        chart.draw(data7, options7);
+      }
+
 

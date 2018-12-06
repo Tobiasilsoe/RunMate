@@ -178,7 +178,7 @@ input:-webkit-autofill:focus {
     text-align: center;
     line-height: 2.5em;
     background-color: #ffffff;
-    color: #138fc2;
+    color: #37BC61;
     border-radius: 100px;
     -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.1);
@@ -186,7 +186,7 @@ input:-webkit-autofill:focus {
 }
 
 .social-menu li a:hover {
-    background-color: #138fc2;
+    background-color: #37BC61;
     color: #ffffff;
     -webkit-box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.1);
     box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, 0.1);
@@ -258,11 +258,11 @@ input:-webkit-autofill:focus {
 .button.white,
 .button:hover {
     background-color: #ffffff;
-    color: #138fc2;
+    color: #37BC61;
 }
 
 .button.white:hover {
-    background-color: #2f60c3;
+    background-color: #37BC61;
     color: #ffffff;
 }
 
@@ -756,7 +756,7 @@ input:-webkit-autofill:focus {
     width: 100px;
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
-    background-color: #55A2BE;
+    background-color: #37BC61;
     color: #ffffff;
     border-radius: 0 0 50% 50%;
     padding-bottom: 5px;

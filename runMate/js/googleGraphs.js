@@ -328,10 +328,7 @@ function startFunctions(){
 }
 
       function drawChart() {
-         
-          
-
-        // Create the data table.
+          // Create the data table.
         var data = new google.visualization.DataTable();
         
         var lobeSum = 0;
@@ -358,9 +355,9 @@ function startFunctions(){
         data.addColumn('string', 'Aktivitet');
         data.addColumn('number', 'Længde');
         data.addRows([
+          ['Cykel', cykelSum],
           ['Løb', lobeSum],
           ['Gå', gaaSum],
-          ['Cykel', cykelSum],
         ]);
           
 
@@ -415,9 +412,9 @@ function startFunctions(){
         data5.addColumn('string', 'Aktivitet');
         data5.addColumn('number', 'Længde');
         data5.addRows([
+          ['Cykel', cykelSumGrp],
           ['Løb', lobSumGrp],
           ['Gå', gaaSumGrp],
-          ['Cykel', cykelSumGrp],
         ]);
           
 
@@ -441,7 +438,7 @@ function drawChart6() {
       data6.addColumn('timeofday', 'Time of Day');
       data6.addColumn('number', 'Cykel');
       data6.addColumn('number', 'Løb');
-    data6.addColumn('number', 'Gang');
+    data6.addColumn('number', 'Gå');
     
     var datoCykelSum = {uge1:0, uge2:0, uge3:0, uge4:0, uge5:0, uge6:0};
     var datoLobeSum = {uge1:0, uge2:0, uge3:0, uge4:0, uge5:0, uge6:0};

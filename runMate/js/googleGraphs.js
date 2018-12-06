@@ -246,9 +246,9 @@ $.ajax({
     }
     smartRecursion2();
             });
-      google.charts.load('current', {'packages':['corechart']});
+      google.charts.load('current', {'packages':['corechart', 'columnchart']});
         //google.charts.load('current', {'packages':['table']});
-google.charts.load('current', {'packages':['columnchart']});
+//google.charts.load('current', {'packages':['columnchart']});
 //google.charts.load('current', {packages: ['corechart', 'bar']});
 
       // Set a callback to run when the Google Visualization API is loaded.

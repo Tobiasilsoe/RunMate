@@ -157,7 +157,8 @@ input:-webkit-autofill:focus {
 }
 
 .section-padding {
-    padding: 95px 0;
+    padding: 40px;
+    padding-top: 95px;
 }
 
 .social-menu {

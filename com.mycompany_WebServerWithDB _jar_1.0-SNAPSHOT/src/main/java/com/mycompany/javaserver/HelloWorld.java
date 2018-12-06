@@ -172,7 +172,7 @@ public class HelloWorld {
     public static String readUsersFromDB(String url, String user, String password) {
         String textResult = "";
         try {
-            Thread.sleep(800);
+            Thread.sleep(600);
             System.out.println("hejsa");
         
             // Setup the connection with the DB
@@ -406,7 +406,7 @@ public class HelloWorld {
     public static String readCykelFromID(String url, String user, String password, int id) {
         String textResult = "";
         try {
-              Thread.sleep(1600);
+              Thread.sleep(1400);
             System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
             // Setup the connection with the DB
             connection = DriverManager.getConnection(url, user, password);
@@ -462,7 +462,7 @@ public class HelloWorld {
     public static String readDatoCykelFromID(String url, String user, String password, int id) {
         String textResult = "";
         try {
-              Thread.sleep(1600);
+              Thread.sleep(2600);
             System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
             // Setup the connection with the DB
             connection = DriverManager.getConnection(url, user, password);
@@ -518,7 +518,7 @@ public class HelloWorld {
     public static String readDatoLobFromID(String url, String user, String password, int id) {
         String textResult = "";
         try {
-              Thread.sleep(1600);
+              Thread.sleep(2200);
             System.out.println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
             // Setup the connection with the DB
             connection = DriverManager.getConnection(url, user, password);

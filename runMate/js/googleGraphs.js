@@ -387,9 +387,27 @@ function drawChart6() {
       data6.addColumn('number', 'løbe');
       data6.addColumn('number', 'Energy Level');
     
-    for (var i = 0; i < 2; i++){
-                    data6.addRows([[{v: [i, 0, 0], f: i +" uge"}, Number(cykle[i]),Number(cykle[i])],])
+    var datoCykelSum1 = 0;
+    var datoCykelSum2 = 0;
+    
+    for (var i = 0; i < cykle.length; i++){
+        if (datoCykel[i] <= 6){
+            var datoCykelInt1 = parseInt("" + cykle[i]);
+            datoCykelSum1 += datoCykelInt1;
+            console.log("Cykel sum 1 = " + datoCykelSum1);
+        }
+        else if (datoCykel[i] <= 13 && datoCykel[i] >= 7){
+            var datoCykelInt2 = parseInt("" + cykle[i]);
+            datoCykelSum2 += datoCykelInt2;
+            console.log("Cykel sum 2 = " + datoCykelSum2);
+        }
     }
+    
+    data6.addRows([
+        [{v: [1, 0, 0], f: "Uge 1"}, Number(datoCykelSum1), Number(datoCykelSum1)],
+        [{v: [2, 0, 0], f: "Uge 2"}, Number(datoCykelSum2), Number(datoCykelSum2)]
+    ]);
+    
     options6 = {
         title: 'Motion i løbet af forløbet',
             width:'450',

@@ -1,14 +1,3 @@
-/*var table = {};
-table['cycle'] = [];
-//table['cycle'].push(1,2,3,4);
-console.log( table['cycle'] );
-table['running'] = [];
-table['running'].push(10,20,30,40,50);
-console.log( table['running'] ); 
-console.log( table['running'].length );*/
-
-// Load the Visualization API and the corechart package.
-
 var table = {};
 table['cykle'] = [];
     cykle = table['cykle'];
@@ -47,16 +36,6 @@ table['datoArrayAktivitetGaa']= [];
 table['datoGaa']= [];
     datoGaa = table['datoGaa']= [];
 
-
-/*
-function display(t,activity){
-    for (var i=0;i<t[activity].length;i++)
-        console.log( t[activity][i] );
-}
-display( table, 'cykle');
-display( table, 'lobe');
-*/
-
 $(document).ready(function () {
                 // Sending data from the client via AJAX
     
@@ -67,13 +46,10 @@ $(document).ready(function () {
                     url: "http://localhost:7000/read_cykel/" + localStorage.getItem("user"),
                     success: function (data) {
                          cykle = [];
-                        console.log(data);
+                        
 
                         // Possible use of the data
                        aktiviCykel = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
-                        for (var i=0;i<aktiviCykel.length;i++){
-                        	console.log( i , aktiviCykel[i]);
-                        }
                         
                         for (var i=0;i<aktiviCykel.length;i++){
                             if (i % 2 !== 0) { 
@@ -92,15 +68,12 @@ $(document).ready(function () {
                 	type: "GET",
                     url: "http://localhost:7000/read_cykeldat/" + localStorage.getItem("user"),
                     success: function (data) {
-                        console.log(data);
+                      
                         datoCykel = [];
 
                         // Possible use of the data
                        datoAktiviCykel = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
-                        for (var i=0;i<datoAktiviCykel.length;i++){
-                        	console.log( i , datoAktiviCykel[i]);
-                            console.log("dette er datoen:");
-                        }
+                      
                         
                         for (var i=0;i<datoAktiviCykel.length;i++){
                             datoCykel.push(datoAktiviCykel[i]);}                       
@@ -114,16 +87,12 @@ $(document).ready(function () {
                 	type: "GET",
                     url: "http://localhost:7000/read_lobedat/" + localStorage.getItem("user"),
                     success: function (data) {
-                        console.log(data);
+                       
                         datoLobe = [];
 
                         // Possible use of the data
                        datoAktiviLobe = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
-                        for (var i=0;i<datoAktiviLobe.length;i++){
-                        	console.log( i , datoAktiviLobe[i]);
-                            console.log("dette er datoen:");
-                        }
-                        
+                      
                         for (var i=0;i<datoAktiviLobe.length;i++){
                             datoLobe.push(datoAktiviLobe[i]);}                       
                     },
@@ -136,14 +105,13 @@ $(document).ready(function () {
                 	type: "GET",
                     url: "http://localhost:7000/read_gaadat/" + localStorage.getItem("user"),
                     success: function (data) {
-                        console.log(data);
+                        
                         datoGaa = [];
 
                         // Possible use of the data
                        datoAktiviGaa = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
                         for (var i=0;i<datoAktiviGaa.length;i++){
-                        	console.log( i , datoAktiviGaa[i]);
-                            console.log("dette er datoen:");
+                        	
                         }
                         
                         for (var i=0;i<datoAktiviGaa.length;i++){
@@ -160,21 +128,17 @@ $(document).ready(function () {
                     url: "http://localhost:7000/read_lob/" + localStorage.getItem("user"),
                     success: function (data) {
                        lobe = [];
-                        console.log(data);
+                       
 
                         // Possible use of the data
                         aktiviLobe = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
-                        for (var i=0;i<aktiviLobe.length;i++){
-                        	console.log( i , aktiviLobe[i]);
-                        }
-                        console.log(aktiviLobe.toString());
+                       
                         
                         for (var i=0;i<aktiviLobe.length;i++){
                             if (i % 2 !== 0) { 
                         	lobe.push(aktiviLobe[i]);}
                         }
-                        console.log("hej2");
-                        console.log(lobe.toString());
+                        
                         
                     },
                     error: function (data) {
@@ -187,22 +151,19 @@ $(document).ready(function () {
                     url: "http://localhost:7000/read_gaa/" + localStorage.getItem("user"),
                     success: function (data) {
                         gaa = [];
-                        console.log(data);
+                       
                         
 
                         // Possible use of the data
                         aktiviGaa = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
-                        for (var i=0;i<aktiviGaa.length;i++){
-                        	console.log( i , aktiviGaa[i]);
-                        }
-                        console.log(aktiviGaa.toString());
+                        
+                       
                         
                         for (var i=0;i<aktiviGaa.length;i++){
                             if (i % 2 !== 0) { 
                         	gaa.push(aktiviGaa[i]);}
                         }
-                        console.log("hej3");
-                        console.log(gaa.toString());
+                       
                         
                     },
                     error: function (data) {
@@ -215,21 +176,16 @@ $(document).ready(function () {
                     url: "http://localhost:7000/read_cykelgrp/" + localStorage.getItem("user"),
                     success: function (data) {
                       grpCykel = [];
-                        console.log(data);
+                        
 
                         // Possible use of the data
                         grpAktiviCykel = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
-                        for (var i=0;i<grpAktiviCykel.length;i++){
-                        	console.log( i , grpAktiviCykel[i]);
-                        }
-                        console.log(grpAktiviCykel.toString());
                         
                         for (var i=0;i<grpAktiviCykel.length;i++){
                             if (i % 2 !== 0) { 
                         	grpCykel.push(grpAktiviCykel[i]);}
                         }
-                        console.log("hejgrp");
-                        console.log(grpCykel.toString());
+                       
                         
                     },
                     error: function (data) {
@@ -242,22 +198,14 @@ $.ajax({
                     url: "http://localhost:7000/read_lobgrp/" + localStorage.getItem("user"),
                     success: function (data) {
                        grpLobe = [];
-                        console.log(data);
+                       
 
                         // Possible use of the data
                         grpAktiviLobe = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
                         for (var i=0;i<grpAktiviLobe.length;i++){
-                        	console.log( i , grpAktiviLobe[i]);
-                        }
-                        console.log(grpAktiviLobe.toString());
-                        
-                        for (var i=0;i<grpAktiviLobe.length;i++){
                             if (i % 2 !== 0) { 
                         	grpLobe.push(grpAktiviLobe[i]);}
                         }
-                        console.log("hejgrp2");
-                        console.log(grpLobe.toString());
-                        
                     },
                     error: function (data) {
                         console.log("error!");
@@ -268,22 +216,17 @@ $.ajax({
                     url: "http://localhost:7000/read_gaagrp/" + localStorage.getItem("user"),
                     success: function (data) {
                         grpGaa = [];
-                        console.log(data);
+                      
 
                         // Possible use of the data
                         grpAktiviGaa = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
-                        for (var i=0;i<grpAktiviGaa.length;i++){
-                        	console.log( i , grpAktiviGaa[i]);
-                        }
-                        console.log(grpAktiviGaa.toString());
+                       
                         
                         for (var i=0;i<grpAktiviGaa.length;i++){
                             if (i % 2 !== 0) { 
                         	grpGaa.push(grpAktiviGaa[i]);}
                         }
-                        console.log("hejgrp3");
-                        console.log(grpGaa.toString());
-                        
+                      
                     },
                     error: function (data) {
                         console.log("error!");
@@ -294,10 +237,6 @@ $.ajax({
     smartRecursion2();
             });
       google.charts.load('current', {'packages':['corechart', 'columnchart']});
-//google.charts.load('current', {'packages':['table']});
-//google.charts.load('current', {'packages':['columnchart']});
-//google.charts.load('current', {packages: ['corechart', 'bar']});
-
       // Set a callback to run when the Google Visualization API is loaded.
 function smartRecursion(){
 
@@ -309,12 +248,7 @@ google.charts.setOnLoadCallback(drawChart6);
 }
 smartRecursion();
 
-//console.log("this is arraySktivitet:"+ strinArray.toString());
-    
-        
-        //var løbKm = [1, 2, 11];
-        //var cykelKm = [1,20];
-        //var gaaKm = [1, 7];
+
       // Callback that creates and populates a data table,
       // instantiates the pie chart, passes in the data and
       // draws it.

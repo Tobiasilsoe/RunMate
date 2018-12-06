@@ -395,11 +395,6 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .aktivitetsForm {
     background-color: #00000099;
-    -webkit-filter: blur(5px);
-  -moz-filter: blur(5px);
-  -o-filter: blur(5px);
-  -ms-filter: blur(5px);
-  filter: blur(5px);
     padding: 10px;
     position: absolute;
     top: 50%;

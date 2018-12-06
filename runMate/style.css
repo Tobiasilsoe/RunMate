@@ -93,6 +93,11 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0px 1000px white inset !important;
 }
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
 
 /**
 *Helper-Classes
@@ -365,24 +370,47 @@ input:-webkit-autofill:focus {
     color: #ffffff;
 }
 .sortTekst{
-     color: #000000;
+    color: #000000;
+    font-size: 20px;
+    
+}
+#aktivitetstype{
+    width: 95px;
+    height: 35px;
+    border-radius: 5px;
+    text-indent: 9px;
+}
+#distance{
+    width: 95px;
+    height: 35px;
+    border-radius: 5px;
+    text-align: center;
+    margin-left: 10px;
 }
 .formOverskrift {
     text-align: center;
     font-size: 35px;
     color: white;
+    
 }
 .aktivitetsForm {
-    background-color: rgba(51, 204, 51, 0.5);
-    padding: 20px;
+    background-color: #00000099;
+    -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+    padding: 10px;
     position: absolute;
     top: 50%;
     left: 50%;
     margin-right: -50%;
-    border: 2px solid 	#138Fc999
-    border-radius: 10px;
-    transform: translate(-50%, -50%)
+    border: 2px solid black;
+    border-radius: 20px;
+    transform: translate(-50%, -50%)   
+        
 }
+
 .mainmenu-area .logo {
     text-transform: uppercase;
     letter-spacing: 2px;

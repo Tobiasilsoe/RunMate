@@ -37,7 +37,7 @@ table['datoArrayAktivitetGaa']= [];
 table['datoGaa']= [];
     datoGaa = table['datoGaa']= [];
 
-table['datoArrayAktivitetCykel']= [];
+table['grpdatoArrayAktivitetCykel']= [];
     grpdatoAktiviCykel = table['grpdatoArrayAktivitetCykel']= [];
 table['grpdatoCykel']= [];
     grpdatoCykel = table['grpdatoCykel']= [];
@@ -125,9 +125,7 @@ $(document).ready(function () {
 
                         // Possible use of the data
                        datoAktiviGaa = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
-                        for (var i=0;i<datoAktiviGaa.length;i++){
-                        	
-                        }
+                        
                         
                         for (var i=0;i<datoAktiviGaa.length;i++){
                             datoGaa.push(datoAktiviGaa[i]);}                       
@@ -160,7 +158,7 @@ $(document).ready(function () {
                 // dato for gruppeløb
         $.ajax({
                 	type: "GET",
-                    url: "http://localhost:7000/read_lobedat/" + localStorage.getItem("user"),
+                    url: "http://localhost:7000/read_grplobedat/" + localStorage.getItem("user"),
                     success: function (data) {
                       
                         grpdatoLobe = [];
@@ -180,7 +178,7 @@ $(document).ready(function () {
                 // dato for gruppe gang
         $.ajax({
                 	type: "GET",
-                    url: "http://localhost:7000/read_gaadat/" + localStorage.getItem("user"),
+                    url: "http://localhost:7000/read_grpgaadat/" + localStorage.getItem("user"),
                     success: function (data) {
                         
                         grpdatoGaa = [];
@@ -320,7 +318,7 @@ google.charts.setOnLoadCallback(drawChart7);
 google.charts.setOnLoadCallback(drawChart8);
 google.charts.setOnLoadCallback(drawChart6);
     
-    setTimeout(smartRecursion, 40000);
+    setTimeout(smartRecursion, 28000);
 }
 smartRecursion();
 
@@ -331,13 +329,13 @@ smartRecursion();
 startFunctions();
 
 function startFunctions(){
-    setTimeout(drawChart7, 3000);
-    setTimeout(drawChart8, 4000);
-    setTimeout(drawChart6, 5000);
+    setTimeout(drawChart7, 5000);
+    setTimeout(drawChart8, 6000);
+    setTimeout(drawChart6, 7000);
     
 }
 
-      function drawChart() {
+      /*function drawChart() {
           // Create the data table.
         var data = new google.visualization.DataTable();
         
@@ -382,7 +380,7 @@ function startFunctions(){
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
         chart.draw(data, options);
-      }
+      }*/
 
 
 
@@ -740,28 +738,28 @@ function drawChart6() {
           
     for (var i = 0; i < lobe.length; i++){
         if (grpdatoLobe[i] <= 6){
-            var datoLobeInt1 = parseInt("" + grpLobe[i]);
-            grpdatoLobeSum.uge1 += datoLobeInt1;
+            var grpdatoLobeInt1 = parseInt("" + grpLobe[i]);
+            grpdatoLobeSum.uge1 += grpdatoLobeInt1;
         }
         else if (grpdatoLobe[i] <= 13 && grpdatoLobe[i] >= 7){
-            var datoLobeInt2 = parseInt("" + grpLobe[i]);
-            grpdatoLobeSum.uge2 += datoLobeInt2;
+            var grpdatoLobeInt2 = parseInt("" + grpLobe[i]);
+            grpdatoLobeSum.uge2 += grpdatoLobeInt2;
         }
         else if (grpdatoLobe[i] <= 20 && grpdatoLobe[i] >= 14){
-            var datoLobeInt3 = parseInt("" + grpLobe[i]);
-            grpdatoLobeSum.uge3 += datoLobeInt3;
+            var grpdatoLobeInt3 = parseInt("" + grpLobe[i]);
+            grpdatoLobeSum.uge3 += grpdatoLobeInt3;
         }
         else if (grpdatoLobe[i] <= 27 && grpdatoLobe[i] >= 21){
-            var datoLobeInt4 = parseInt("" + grpLobe[i]);
-            grpdatoLobeSum.uge4 += datoLobeInt4;
+            var grpdatoLobeInt4 = parseInt("" + grpLobe[i]);
+            grpdatoLobeSum.uge4 += grpdatoLobeInt4;
         }
         else if (grpdatoLobe[i] <= 34 && grpdatoLobe[i] >= 28){
-            var datoLobeInt5 = parseInt("" + grpLobe[i]);
-            grpdatoLobeSum.uge5 += datoLobeInt5;
+            var grpdatoLobeInt5 = parseInt("" + grpLobe[i]);
+            grpdatoLobeSum.uge5 += grpdatoLobeInt5;
         }
         else if (grpdatoLobe[i] <= 41 && grpdatoLobe[i] >= 35){
-            var datoLobeInt6 = parseInt("" + grpLobe[i]);
-            grpdatoLobeSum.uge6 += datoLobeInt6;
+            var grpdatoLobeInt6 = parseInt("" + grpLobe[i]);
+            grpdatoLobeSum.uge6 += grpdatoLobeInt6;
         }
     }  
           

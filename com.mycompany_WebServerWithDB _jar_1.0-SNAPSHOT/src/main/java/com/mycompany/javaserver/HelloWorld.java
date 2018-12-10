@@ -726,7 +726,7 @@ public class HelloWorld {
         String textResult = "";
        
         try {
-            Thread.sleep(1800);
+            Thread.sleep(3200);
            
             
             // Setup the connection with the DB
@@ -868,7 +868,7 @@ public class HelloWorld {
         String textResult = "";
        
         try {
-            Thread.sleep(2000);
+            Thread.sleep(3000);
             
             
             // Setup the connection with the DB
@@ -937,7 +937,7 @@ public class HelloWorld {
         String textResult = "";
        
         try {
-            Thread.sleep(1900);
+            Thread.sleep(3400);
             
             
             // Setup the connection with the DB

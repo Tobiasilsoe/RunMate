@@ -329,9 +329,9 @@ smartRecursion();
 startFunctions();
 
 function startFunctions(){
-    setTimeout(drawChart7, 5000);
-    setTimeout(drawChart8, 6000);
-    setTimeout(drawChart6, 7000);
+    setTimeout(drawChart7, 7000);
+    setTimeout(drawChart8, 8000);
+    setTimeout(drawChart6, 9000);
     
 }
 

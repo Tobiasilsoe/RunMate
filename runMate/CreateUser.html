@@ -18,15 +18,15 @@
     Runmate
     </h2>
     <h3 >
-    Create account
+    Opret bruger
     </h3>
 </div>
 
   <form id="theForm" action="login.html"> <!--method = "post" action="http://localhost:7000/make-reservation"-->
-    <label for="name">Username</label>
+    <label for="name">Brugernavn</label>
     <input type="text" id="name" name="name" required>
 
-    <label for="passwd">Password</label>
+    <label for="passwd">Kodeord</label>
       
     <input type="password" id="passwd" name="passwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required class="passcheck" data-placement="bottom">
     
@@ -39,7 +39,7 @@
 </div>
       <div id="arrow"></div>
     
-    <input type="submit" value="Create account" onclick="myFunction()">
+    <input type="submit" value="Opret account" onclick="myFunction()">
   </form>
     <form action="login.html">
     <input type="submit" value='Gå til "login"' />

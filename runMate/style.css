@@ -69,6 +69,11 @@ h6 {
     margin: 0 0 10px;
     font-weight: 600;
 }
+.overskrift{
+    padding: 20px;
+    padding-top: 30px;
+    color: black;
+}
 
 html,
 body {

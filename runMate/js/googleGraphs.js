@@ -773,7 +773,9 @@ function drawChart6() {
         [ 'Uge 5',Number(grpdatoCykelSum.uge1)+Number(grpdatoCykelSum.uge2)+Number(grpdatoCykelSum.uge3)+Number(grpdatoCykelSum.uge4)+Number(grpdatoCykelSum.uge5), Number(grpdatoLobeSum.uge1)+ Number(grpdatoLobeSum.uge2)+Number(grpdatoLobeSum.uge3)+Number(grpdatoLobeSum.uge4)+Number(grpdatoLobeSum.uge5), Number(grpdatoGaaSum.uge1)+Number(grpdatoGaaSum.uge2)+Number(grpdatoGaaSum.uge3)+Number(grpdatoGaaSum.uge4)+Number(grpdatoGaaSum.uge5)],
         [ 'Uge 6',Number(grpdatoCykelSum.uge1)+Number(grpdatoCykelSum.uge2)+Number(grpdatoCykelSum.uge3)+Number(grpdatoCykelSum.uge4)+Number(grpdatoCykelSum.uge5)+Number(grpdatoCykelSum.uge6), Number(grpdatoLobeSum.uge1)+ Number(grpdatoLobeSum.uge2)+Number(grpdatoLobeSum.uge3)+Number(grpdatoLobeSum.uge4)+Number(grpdatoLobeSum.uge5)+Number(grpdatoLobeSum.uge6), Number(grpdatoGaaSum.uge1)+Number(grpdatoGaaSum.uge2)+Number(grpdatoGaaSum.uge3)+Number(grpdatoGaaSum.uge4)+Number(grpdatoGaaSum.uge5)+Number(grpdatoGaaSum.uge6)]
     ]);
-        var options8 = {
+          console.log("keabena");
+         console.log(Number(grpdatoCykelSum.uge2));
+          var options8 = {
           title: 'Gruppens motion i løbet af forløbet i km.',
             width:'450',
             height:'450',

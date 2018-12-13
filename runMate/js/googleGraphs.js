@@ -544,7 +544,7 @@ function drawChart6() {
     ]);
     
     options6 = {
-        title: 'Motion i løbet af forløbet i km.',
+        title: 'Strækning dækket over hver uge.',
             width:'450',
             height:'450'
         //isStacked: true
@@ -645,7 +645,7 @@ function drawChart6() {
         }
     }  
         var data7 = google.visualization.arrayToDataTable([
-        ['Uge', 'Cykel', 'Løbe','Gå'],
+        ['Uge', 'Cykel', 'Løb','Gå'],
             
         ['Uge 1', Number(datoCykelSum.uge1), Number(datoLobeSum.uge1), Number(datoGaaSum.uge1)],
         [ 'Uge 2',Number(datoCykelSum.uge1)+Number(datoCykelSum.uge2),Number(datoLobeSum.uge1)+ Number(datoLobeSum.uge2), Number(datoGaaSum.uge1)+Number(datoGaaSum.uge2)],
@@ -655,7 +655,7 @@ function drawChart6() {
         [ 'Uge 6',Number(datoCykelSum.uge1)+Number(datoCykelSum.uge2)+Number(datoCykelSum.uge3)+Number(datoCykelSum.uge4)+Number(datoCykelSum.uge5)+Number(datoCykelSum.uge6), Number(datoLobeSum.uge1)+ Number(datoLobeSum.uge2)+Number(datoLobeSum.uge3)+Number(datoLobeSum.uge4)+Number(datoLobeSum.uge5)+Number(datoLobeSum.uge6), Number(datoGaaSum.uge1)+Number(datoGaaSum.uge2)+Number(datoGaaSum.uge3)+Number(datoGaaSum.uge4)+Number(datoGaaSum.uge5)+Number(datoGaaSum.uge6)]
     ]);
         var options7 = {
-          title: 'Motion i løbet af forløbet i km.',
+          title: 'Strækning dækket gennem forløbet.',
             width:'450',
             height:'450',
           curveType: 'function',
@@ -764,7 +764,7 @@ function drawChart6() {
     }  
           
         var data8 = google.visualization.arrayToDataTable([
-        ['Uge', 'Cykel', 'Løbe','Gå'],
+        ['Uge', 'Cykel', 'Løb','Gå'],
             
         ['Uge 1', Number(grpdatoCykelSum.uge1), Number(grpdatoLobeSum.uge1), Number(grpdatoGaaSum.uge1)],
         [ 'Uge 2',Number(grpdatoCykelSum.uge1)+Number(grpdatoCykelSum.uge2),Number(grpdatoLobeSum.uge1)+ Number(grpdatoLobeSum.uge2), Number(grpdatoGaaSum.uge1)+Number(grpdatoGaaSum.uge2)],
@@ -776,7 +776,7 @@ function drawChart6() {
           console.log("keabena");
          console.log(Number(grpdatoCykelSum.uge2));
           var options8 = {
-          title: 'Gruppens motion i løbet af forløbet i km.',
+          title: 'Gruppens strækning dækket gennem forløbet.',
             width:'450',
             height:'450',
           curveType: 'function',

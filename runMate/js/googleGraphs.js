@@ -680,7 +680,7 @@ function drawChart6() {
             var grpdatoCykelInt1 = parseInt("" + grpCykel[i]);
             grpdatoCykelSum.uge1 += grpdatoCykelInt1;
         }
-        else if (grpdatoCykel[i] <= 13 && cykle[i] >= 7){
+        else if (grpdatoCykel[i] <= 13 && grpdatoCykel[i] >= 7){
             var grpdatoCykelInt2 = parseInt("" + grpCykel[i]);
             grpdatoCykelSum.uge2 += grpdatoCykelInt2;
         }
@@ -772,9 +772,10 @@ function drawChart6() {
         [ 'Uge 4',Number(grpdatoCykelSum.uge1)+Number(grpdatoCykelSum.uge2)+Number(grpdatoCykelSum.uge3)+Number(grpdatoCykelSum.uge4), Number(grpdatoLobeSum.uge1)+ Number(grpdatoLobeSum.uge2)+Number(grpdatoLobeSum.uge3)+Number(grpdatoLobeSum.uge4), Number(grpdatoGaaSum.uge1)+Number(grpdatoGaaSum.uge2)+Number(grpdatoGaaSum.uge3)+Number(grpdatoGaaSum.uge4)],
         [ 'Uge 5',Number(grpdatoCykelSum.uge1)+Number(grpdatoCykelSum.uge2)+Number(grpdatoCykelSum.uge3)+Number(grpdatoCykelSum.uge4)+Number(grpdatoCykelSum.uge5), Number(grpdatoLobeSum.uge1)+ Number(grpdatoLobeSum.uge2)+Number(grpdatoLobeSum.uge3)+Number(grpdatoLobeSum.uge4)+Number(grpdatoLobeSum.uge5), Number(grpdatoGaaSum.uge1)+Number(grpdatoGaaSum.uge2)+Number(grpdatoGaaSum.uge3)+Number(grpdatoGaaSum.uge4)+Number(grpdatoGaaSum.uge5)],
         [ 'Uge 6',Number(grpdatoCykelSum.uge1)+Number(grpdatoCykelSum.uge2)+Number(grpdatoCykelSum.uge3)+Number(grpdatoCykelSum.uge4)+Number(grpdatoCykelSum.uge5)+Number(grpdatoCykelSum.uge6), Number(grpdatoLobeSum.uge1)+ Number(grpdatoLobeSum.uge2)+Number(grpdatoLobeSum.uge3)+Number(grpdatoLobeSum.uge4)+Number(grpdatoLobeSum.uge5)+Number(grpdatoLobeSum.uge6), Number(grpdatoGaaSum.uge1)+Number(grpdatoGaaSum.uge2)+Number(grpdatoGaaSum.uge3)+Number(grpdatoGaaSum.uge4)+Number(grpdatoGaaSum.uge5)+Number(grpdatoGaaSum.uge6)]
+           
     ]);
-          console.log("keabena");
-         console.log(Number(grpdatoCykelSum.uge2));
+          console.log(Number(grpdatoCykelSum.uge1));
+         
           var options8 = {
           title: 'Gruppens strækning dækket gennem forløbet.',
             width:'450',

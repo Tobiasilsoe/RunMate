@@ -11,6 +11,7 @@ table['gaa'] = [];
     gaa=table['gaa'];
 table['arrayAktivitetGaa']= [];
     aktiviGaa = table['arrayAktivitetGaa'];
+
 table['grpCykel'] = [];
     grpCykel = table['grpCykel'];
 table['grpArrayAktivitetCykel']= [];
@@ -155,6 +156,9 @@ $(document).ready(function () {
                         console.log("error!");
                     },
                 });
+    
+        
+       
                 // dato for gruppeløb
         $.ajax({
                 	type: "GET",
@@ -166,7 +170,7 @@ $(document).ready(function () {
                         // Possible use of the data
                        grpdatoAktiviLobe = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
                       
-                         console.log(grpdatoAktiviLobe);
+                         
                         for (var i=0;i<grpdatoAktiviLobe.length;i++){
                             grpdatoLobe.push(grpdatoAktiviLobe[i]);}     
                     }, 
@@ -444,7 +448,8 @@ function drawChart6() {
     var datoCykelSum = {uge1:0, uge2:0, uge3:0, uge4:0, uge5:0, uge6:0};
     var datoLobeSum = {uge1:0, uge2:0, uge3:0, uge4:0, uge5:0, uge6:0};
     var datoGaaSum = {uge1:0, uge2:0, uge3:0, uge4:0, uge5:0, uge6:0};
-
+console.log("Kwabena");
+  console.log(datoCykel);  
     for (var i = 0; i < cykle.length; i++){
         if (datoCykel[i] <= 6){
             var datoCykelInt1 = parseInt("" + cykle[i]);
@@ -674,11 +679,12 @@ function drawChart6() {
     var grpdatoCykelSum = {uge1:0, uge2:0, uge3:0, uge4:0, uge5:0, uge6:0};
     var grpdatoLobeSum = {uge1:0, uge2:0, uge3:0, uge4:0, uge5:0, uge6:0};
     var grpdatoGaaSum = {uge1:0, uge2:0, uge3:0, uge4:0, uge5:0, uge6:0};
-
-    for (var i = 0; i < cykle.length; i++){
+         
+    for (var i = 0; i < grpCykel.length; i++){
         if (grpdatoCykel[i] <= 6){
             var grpdatoCykelInt1 = parseInt("" + grpCykel[i]);
             grpdatoCykelSum.uge1 += grpdatoCykelInt1;
+            
         }
         else if (grpdatoCykel[i] <= 13 && grpdatoCykel[i] >= 7){
             var grpdatoCykelInt2 = parseInt("" + grpCykel[i]);
@@ -702,7 +708,7 @@ function drawChart6() {
         }
     }
       
-    for (var i = 0; i < gaa.length; i++){
+    for (var i = 0; i < grpGaa.length; i++){
         if (grpdatoGaa[i] <= 6){
             var grpdatoGaaInt1 = parseInt("" + grpGaa[i]);
             grpdatoGaaSum.uge1 += grpdatoGaaInt1;
@@ -736,7 +742,7 @@ function drawChart6() {
     }
           
           
-    for (var i = 0; i < lobe.length; i++){
+    for (var i = 0; i < grpLobe.length; i++){
         if (grpdatoLobe[i] <= 6){
             var grpdatoLobeInt1 = parseInt("" + grpLobe[i]);
             grpdatoLobeSum.uge1 += grpdatoLobeInt1;
@@ -774,7 +780,8 @@ function drawChart6() {
         [ 'Uge 6',Number(grpdatoCykelSum.uge1)+Number(grpdatoCykelSum.uge2)+Number(grpdatoCykelSum.uge3)+Number(grpdatoCykelSum.uge4)+Number(grpdatoCykelSum.uge5)+Number(grpdatoCykelSum.uge6), Number(grpdatoLobeSum.uge1)+ Number(grpdatoLobeSum.uge2)+Number(grpdatoLobeSum.uge3)+Number(grpdatoLobeSum.uge4)+Number(grpdatoLobeSum.uge5)+Number(grpdatoLobeSum.uge6), Number(grpdatoGaaSum.uge1)+Number(grpdatoGaaSum.uge2)+Number(grpdatoGaaSum.uge3)+Number(grpdatoGaaSum.uge4)+Number(grpdatoGaaSum.uge5)+Number(grpdatoGaaSum.uge6)]
            
     ]);
-          console.log(Number(grpdatoCykelSum.uge1));
+           console.log ("Autzen");
+ console.log(Number(grpdatoGaaSum.uge1)+Number(grpdatoGaaSum.uge2)+Number(grpdatoGaaSum.uge3)+Number(grpdatoGaaSum.uge4)+Number(grpdatoGaaSum.uge5)+Number(grpdatoGaaSum.uge6));
          
           var options8 = {
           title: 'Gruppens strækning dækket gennem forløbet.',

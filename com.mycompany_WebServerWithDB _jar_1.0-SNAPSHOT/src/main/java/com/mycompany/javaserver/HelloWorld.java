@@ -888,7 +888,7 @@ public class HelloWorld {
             resultSet.next();
             int gr = resultSet.getInt("gruppe");
          
-            selectText = "SELECT datediff(aktivitet.tidspunkt, starttidspunkt.start_tid) as dato, aktivitet.distance FROM starttidspunkt, aktivitet INNER JOIN users" +
+            selectText = "SELECT datediff(aktivitet.tidspunkt, starttidspunkt.start_tid) as dato FROM starttidspunkt, aktivitet INNER JOIN users" +
 "                    ON aktivitet.userid = users.id WHERE users.gruppe="+gr+" AND aktivitet.aktivitetstype = 'cykel';" ;
             System.out.println(selectText);
             statement = connection.createStatement();
@@ -897,16 +897,14 @@ public class HelloWorld {
 
             // Write result
             while (resultSet.next()) {
-                System.out.printf("%s | %s ",
+                System.out.printf("%s | ",
                       
-                        resultSet.getString("dato"),
-                        resultSet.getString("distance")
+                        resultSet.getString("dato")
+                        
                         
                 );
                 textResult += 
-                        resultSet.getString("dato") + "|"
-                        + resultSet.getString("distance") + "|"
-                        ;
+                        resultSet.getString("dato") + "|";
             }
            
         } catch (SQLException ex) {
@@ -958,7 +956,7 @@ public class HelloWorld {
             int gr = resultSet.getInt("gruppe");
         
                     
-            selectText = "SELECT datediff(aktivitet.tidspunkt, starttidspunkt.start_tid) as dato, aktivitet.distance FROM starttidspunkt, aktivitet INNER JOIN users" +
+            selectText = "SELECT datediff(aktivitet.tidspunkt, starttidspunkt.start_tid) as dato FROM starttidspunkt, aktivitet INNER JOIN users" +
 "                    ON aktivitet.userid = users.id WHERE users.gruppe="+gr+" AND aktivitet.aktivitetstype = 'lob';" ;
             System.out.println(selectText);
             statement = connection.createStatement();
@@ -967,16 +965,13 @@ public class HelloWorld {
 
             // Write result
             while (resultSet.next()) {
-                System.out.printf("%s | %s ",
+                System.out.printf("%s | ",
                       
-                        resultSet.getString("dato"),
-                        resultSet.getString("distance")
+                        resultSet.getString("dato")
                         
                 );
                 textResult += 
-                        resultSet.getString("dato") + "|"
-                        + resultSet.getString("distance") + "|"
-                        ;
+                        resultSet.getString("dato") + "|";
             }
            
         } catch (SQLException ex) {
@@ -1029,7 +1024,7 @@ public class HelloWorld {
             int gr = resultSet.getInt("gruppe");
             
                     
-           selectText = "SELECT datediff(aktivitet.tidspunkt, starttidspunkt.start_tid) as dato, aktivitet.distance FROM starttidspunkt, aktivitet INNER JOIN users" +
+           selectText = "SELECT datediff(aktivitet.tidspunkt, starttidspunkt.start_tid) as dato FROM starttidspunkt, aktivitet INNER JOIN users" +
 "                    ON aktivitet.userid = users.id WHERE users.gruppe="+gr+" AND aktivitet.aktivitetstype = 'gang';" ;
              System.out.println(selectText);
             statement = connection.createStatement();
@@ -1038,16 +1033,14 @@ public class HelloWorld {
 
             // Write result
             while (resultSet.next()) {
-                System.out.printf("%s | %s ",
+                System.out.printf("%s | ",
                       
-                        resultSet.getString("dato"),
-                        resultSet.getString("distance")
+                        resultSet.getString("dato")
+                       
                         
                 );
                 textResult += 
-                        resultSet.getString("dato") + "|"
-                        + resultSet.getString("distance") + "|"
-                        ;
+                        resultSet.getString("dato") + "|";
             }
            
         } catch (SQLException ex) {

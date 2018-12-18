@@ -21,7 +21,7 @@
     Login
     </h3>
 </div>
-  <form id="theForm" > <!--method = "post" action="http://localhost:7000/make-reservation"-->
+  <form id="theForm" > 
     <label for="name">Brugernavn</label>
     <input type="text" id="name" name="name" required>
 
@@ -95,12 +95,7 @@ document.getElementById('theForm').addEventListener("submit",function(e) {
                             window.location.replace("index.html");
                         }
 
-                        // Possible use of the data
-                       /* var arr = data.substr(8).split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
-                        for (var i=0;i<arr.length;i++){
-                        	console.log( i , arr[i]);
-                        }
-                        console.log(arr.toString());*/
+                       
                     },
                     error: function (data) {
                         console.log("error!");

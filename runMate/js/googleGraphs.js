@@ -64,7 +64,7 @@ $(document).ready(function () {
                         
 
                         // Possible use of the data
-                       aktiviCykel = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
+                       aktiviCykel = data.split('|'); 
                         
                         for (var i=0;i<aktiviCykel.length;i++){
                             if (i % 2 !== 0) { 
@@ -88,7 +88,7 @@ $(document).ready(function () {
                         datoCykel = [];
 
                         // Possible use of the data
-                       datoAktiviCykel = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
+                       datoAktiviCykel = data.split('|'); 
                       
                         
                         for (var i=0;i<datoAktiviCykel.length;i++){
@@ -107,7 +107,7 @@ $(document).ready(function () {
                         datoLobe = [];
 
                         // Possible use of the data
-                       datoAktiviLobe = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
+                       datoAktiviLobe = data.split('|'); 
                       
                         for (var i=0;i<datoAktiviLobe.length;i++){
                             datoLobe.push(datoAktiviLobe[i]);}                       
@@ -125,7 +125,7 @@ $(document).ready(function () {
                         datoGaa = [];
 
                         // Possible use of the data
-                       datoAktiviGaa = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
+                       datoAktiviGaa = data.split('|'); 
                         
                         
                         for (var i=0;i<datoAktiviGaa.length;i++){
@@ -145,8 +145,7 @@ $(document).ready(function () {
                         grpdatoCykel = [];
 
                         // Possible use of the data
-                       grpdatoAktiviCykel = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
-                      
+                       grpdatoAktiviCykel = data.split('|');
                         
                         for (var i=0;i<grpdatoAktiviCykel.length;i++){
                             grpdatoCykel.push(grpdatoAktiviCykel[i]);} 
@@ -168,8 +167,7 @@ $(document).ready(function () {
                         grpdatoLobe = [];
 
                         // Possible use of the data
-                       grpdatoAktiviLobe = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
-                      
+                       grpdatoAktiviLobe = data.split('|'); 
                          
                         for (var i=0;i<grpdatoAktiviLobe.length;i++){
                             grpdatoLobe.push(grpdatoAktiviLobe[i]);}     
@@ -188,8 +186,7 @@ $(document).ready(function () {
                         grpdatoGaa = [];
 
                         // Possible use of the data
-                       grpdatoAktiviGaa = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
-                       
+                       grpdatoAktiviGaa = data.split('|'); 
                         
                         for (var i=0;i<grpdatoAktiviGaa.length;i++){
                             grpdatoGaa.push(grpdatoAktiviGaa[i]);}                       
@@ -209,8 +206,7 @@ $(document).ready(function () {
                        
 
                         // Possible use of the data
-                        aktiviLobe = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
-                       
+                        aktiviLobe = data.split('|'); 
                         
                         for (var i=0;i<aktiviLobe.length;i++){
                             if (i % 2 !== 0) { 
@@ -233,15 +229,12 @@ $(document).ready(function () {
                         
 
                         // Possible use of the data
-                        aktiviGaa = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
-                        
-                       
+                        aktiviGaa = data.split('|'); 
                         
                         for (var i=0;i<aktiviGaa.length;i++){
                             if (i % 2 !== 0) { 
                         	gaa.push(aktiviGaa[i]);}
                         }
-                       
                         
                     },
                     error: function (data) {
@@ -257,13 +250,12 @@ $(document).ready(function () {
                         
 
                         // Possible use of the data
-                        grpAktiviCykel = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
+                        grpAktiviCykel = data.split('|'); 
                         
                         for (var i=0;i<grpAktiviCykel.length;i++){
                             if (i % 2 !== 0) { 
                         	grpCykel.push(grpAktiviCykel[i]);}
                         }
-                       
                         
                     },
                     error: function (data) {
@@ -279,7 +271,8 @@ $.ajax({
                        
 
                         // Possible use of the data
-                        grpAktiviLobe = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
+                        grpAktiviLobe = data.split('|'); 
+                        
                         for (var i=0;i<grpAktiviLobe.length;i++){
                             if (i % 2 !== 0) { 
                         	grpLobe.push(grpAktiviLobe[i]);}
@@ -297,8 +290,7 @@ $.ajax({
                       
 
                         // Possible use of the data
-                        grpAktiviGaa = data.split('|'); // cut first 8 char, then convert to array of strings, using '|' as separator
-                       
+                        grpAktiviGaa = data.split('|'); 
                         
                         for (var i=0;i<grpAktiviGaa.length;i++){
                             if (i % 2 !== 0) { 
@@ -315,12 +307,13 @@ $.ajax({
     smartRecursion2();
             });
       google.charts.load('current', {'packages':['corechart', 'columnchart']});
-      // Set a callback to run when the Google Visualization API is loaded.
+     
 function smartRecursion(){
 
-google.charts.setOnLoadCallback(drawChart7);
-google.charts.setOnLoadCallback(drawChart8);
-google.charts.setOnLoadCallback(drawChart6);
+google.charts.setOnLoadCallback(egenSøjlegraf
+                              );
+google.charts.setOnLoadCallback(gruppeGraf);
+google.charts.setOnLoadCallback(egenGraf);
     
     setTimeout(smartRecursion, 28000);
 }
@@ -328,128 +321,22 @@ smartRecursion();
 
 
       // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
-      // draws it.
+      // instantiates the chart, passes in the data and draws it.
 startFunctions();
 
 function startFunctions(){
-    setTimeout(drawChart7, 7000);
-    setTimeout(drawChart8, 8000);
-    setTimeout(drawChart6, 9000);
+    setTimeout(egenSøjlegraf
+              , 7000);
+    setTimeout(gruppeGraf, 8000);
+    setTimeout(egenGraf, 9000);
     
 }
 
-      /*function drawChart() {
-          // Create the data table.
-        var data = new google.visualization.DataTable();
-        
-        var lobeSum = 0;
-        for (i=0; i<lobe.length; i++)
-            {
-                var lobeInt = parseInt("" + lobe[i]);
-                lobeSum += lobeInt;
-            }
-        var j;
-        var cykelSum = 0;
-        for (j=0; j<cykle.length; j++)
-            {
-                var cykelInt = parseInt("" + cykle[j]);
-                cykelSum += cykelInt;
-            }
-        var h;
-        var gaaSum = 0;
-        for (h=0; h<gaa.length; h++)
-            {
-                var gaaInt = parseInt("" + gaa[h]);
-                gaaSum += gaaInt;
-            }
-          
-        data.addColumn('string', 'Aktivitet');
-        data.addColumn('number', 'Længde');
-        data.addRows([
-          ['Cykel', cykelSum],
-          ['Løb', lobeSum],
-          ['Gå', gaaSum],
-        ]);
-          
-
-        // Set chart options
-          var options = {
-              title:'Din fordeling i km',
-              width:'350',
-              height:'400'
-          }
-        
-
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
-      }*/
-
-
-
-
-      
-/*
- function drawChart5() {
-     
-
-        // Create the data table.
-        var data5 = new google.visualization.DataTable();
-        
-        var j = 0;
-        var cykelSumGrp = 0;
-        for (j=0; j<grpCykel.length; j++)
-            {
-                var cykelGrpInt = parseInt("" + grpCykel[j]);
-                cykelSumGrp += cykelGrpInt;
-            }
-     
-        var i = 0;
-        var lobSumGrp = 0;
-        for (i=0; i<grpLobe.length; i++)
-            {
-                var lobGrpInt = parseInt("" + grpLobe[i]);
-                lobSumGrp += lobGrpInt;
-            }
-     
-        var h = 0;
-        var gaaSumGrp = 0;
-        for (h=0; h<grpGaa.length; h++)
-            {
-                var gaaGrpInt = parseInt("" + grpGaa[h]);
-                gaaSumGrp += gaaGrpInt;
-            }
-          
-        data5.addColumn('string', 'Aktivitet');
-        data5.addColumn('number', 'Længde');
-        data5.addRows([
-          ['Cykel', cykelSumGrp],
-          ['Løb', lobSumGrp],
-          ['Gå', gaaSumGrp],
-        ]);
-          
-
-        // Set chart options
-          var options5 = {
-              title:'Din gruppes fordeling i km',
-              width:'350',
-              height:'400'
-          }
-        
-
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div5'));
-        chart.draw(data5, options5);
-      };
-
-*/
-function drawChart6() {
+function egenGraf() {
     var datoCykelSum = {uge1:0, uge2:0, uge3:0, uge4:0, uge5:0, uge6:0};
     var datoLobeSum = {uge1:0, uge2:0, uge3:0, uge4:0, uge5:0, uge6:0};
     var datoGaaSum = {uge1:0, uge2:0, uge3:0, uge4:0, uge5:0, uge6:0};
-console.log("Kwabena");
-  console.log(datoCykel);  
+  
     for (var i = 0; i < cykle.length; i++){
         if (datoCykel[i] <= 6){
             var datoCykelInt1 = parseInt("" + cykle[i]);
@@ -531,15 +418,14 @@ console.log("Kwabena");
         }
     }
 
+      var data1 = new google.visualization.DataTable();
+      data1.addColumn('timeofday', 'Time of Day');
+      data1.addColumn('number', 'Cykel');
+      data1.addColumn('number', 'Løb');
+    data1.addColumn('number', 'Gå');
     
-      var data6 = new google.visualization.DataTable();
-      data6.addColumn('timeofday', 'Time of Day');
-      data6.addColumn('number', 'Cykel');
-      data6.addColumn('number', 'Løb');
-    data6.addColumn('number', 'Gå');
     
-    
-    data6.addRows([
+    data1.addRows([
         [{v: [1, 0, 0], f: "Uge 1"}, Number(datoCykelSum.uge1), Number(datoLobeSum.uge1), Number(datoGaaSum.uge1)],
         [{v: [2, 0, 0], f: "Uge 2"}, Number(datoCykelSum.uge2), Number(datoLobeSum.uge2), Number(datoGaaSum.uge2)],
         [{v: [3, 0, 0], f: "Uge 3"}, Number(datoCykelSum.uge3), Number(datoLobeSum.uge3), Number(datoGaaSum.uge3)],
@@ -548,23 +434,20 @@ console.log("Kwabena");
         [{v: [6, 0, 0], f: "Uge 6"}, Number(datoCykelSum.uge6), Number(datoLobeSum.uge6), Number(datoGaaSum.uge6)]
     ]);
     
-    options6 = {
+    options1 = {
         title: 'Strækning dækket over hver uge.',
             width:'450',
             height:'450'
-        //isStacked: true
+        
     };
 
       var chart = new google.visualization.ColumnChart(
       document.getElementById('chart_div6'));
-      chart.draw(data6, options6);
+      chart.draw(data1, options1);
 
     }
 
-
-      
-
-      function drawChart7() {
+function egenSøjlegraf() {
     var datoCykelSum = {uge1:0, uge2:0, uge3:0, uge4:0, uge5:0, uge6:0};
     var datoLobeSum = {uge1:0, uge2:0, uge3:0, uge4:0, uge5:0, uge6:0};
     var datoGaaSum = {uge1:0, uge2:0, uge3:0, uge4:0, uge5:0, uge6:0};
@@ -649,7 +532,7 @@ console.log("Kwabena");
             datoLobeSum.uge6 += datoLobeInt6;
         }
     }  
-        var data7 = google.visualization.arrayToDataTable([
+        var data2 = google.visualization.arrayToDataTable([
         ['Uge', 'Cykel', 'Løb','Gå'],
             
         ['Uge 1', Number(datoCykelSum.uge1), Number(datoLobeSum.uge1), Number(datoGaaSum.uge1)],
@@ -659,7 +542,7 @@ console.log("Kwabena");
         [ 'Uge 5',Number(datoCykelSum.uge1)+Number(datoCykelSum.uge2)+Number(datoCykelSum.uge3)+Number(datoCykelSum.uge4)+Number(datoCykelSum.uge5), Number(datoLobeSum.uge1)+ Number(datoLobeSum.uge2)+Number(datoLobeSum.uge3)+Number(datoLobeSum.uge4)+Number(datoLobeSum.uge5), Number(datoGaaSum.uge1)+Number(datoGaaSum.uge2)+Number(datoGaaSum.uge3)+Number(datoGaaSum.uge4)+Number(datoGaaSum.uge5)],
         [ 'Uge 6',Number(datoCykelSum.uge1)+Number(datoCykelSum.uge2)+Number(datoCykelSum.uge3)+Number(datoCykelSum.uge4)+Number(datoCykelSum.uge5)+Number(datoCykelSum.uge6), Number(datoLobeSum.uge1)+ Number(datoLobeSum.uge2)+Number(datoLobeSum.uge3)+Number(datoLobeSum.uge4)+Number(datoLobeSum.uge5)+Number(datoLobeSum.uge6), Number(datoGaaSum.uge1)+Number(datoGaaSum.uge2)+Number(datoGaaSum.uge3)+Number(datoGaaSum.uge4)+Number(datoGaaSum.uge5)+Number(datoGaaSum.uge6)]
     ]);
-        var options7 = {
+        var options2 = {
           title: 'Strækning dækket gennem forløbet.',
             width:'450',
             height:'450',
@@ -669,13 +552,13 @@ console.log("Kwabena");
 
         var chart = new google.visualization.LineChart(document.getElementById('chart_div7'));
 
-        chart.draw(data7, options7);
+        chart.draw(data2, options2);
       }
 
       
  
             
-      function drawChart8() {
+      function gruppeGraf() {
     var grpdatoCykelSum = {uge1:0, uge2:0, uge3:0, uge4:0, uge5:0, uge6:0};
     var grpdatoLobeSum = {uge1:0, uge2:0, uge3:0, uge4:0, uge5:0, uge6:0};
     var grpdatoGaaSum = {uge1:0, uge2:0, uge3:0, uge4:0, uge5:0, uge6:0};
@@ -769,7 +652,7 @@ console.log("Kwabena");
         }
     }  
           
-        var data8 = google.visualization.arrayToDataTable([
+        var data3 = google.visualization.arrayToDataTable([
         ['Uge', 'Cykel', 'Løb','Gå'],
             
         ['Uge 1', Number(grpdatoCykelSum.uge1), Number(grpdatoLobeSum.uge1), Number(grpdatoGaaSum.uge1)],
@@ -780,10 +663,8 @@ console.log("Kwabena");
         [ 'Uge 6',Number(grpdatoCykelSum.uge1)+Number(grpdatoCykelSum.uge2)+Number(grpdatoCykelSum.uge3)+Number(grpdatoCykelSum.uge4)+Number(grpdatoCykelSum.uge5)+Number(grpdatoCykelSum.uge6), Number(grpdatoLobeSum.uge1)+ Number(grpdatoLobeSum.uge2)+Number(grpdatoLobeSum.uge3)+Number(grpdatoLobeSum.uge4)+Number(grpdatoLobeSum.uge5)+Number(grpdatoLobeSum.uge6), Number(grpdatoGaaSum.uge1)+Number(grpdatoGaaSum.uge2)+Number(grpdatoGaaSum.uge3)+Number(grpdatoGaaSum.uge4)+Number(grpdatoGaaSum.uge5)+Number(grpdatoGaaSum.uge6)]
            
     ]);
-           console.log ("Autzen");
- console.log(Number(grpdatoGaaSum.uge1)+Number(grpdatoGaaSum.uge2)+Number(grpdatoGaaSum.uge3)+Number(grpdatoGaaSum.uge4)+Number(grpdatoGaaSum.uge5)+Number(grpdatoGaaSum.uge6));
          
-          var options8 = {
+          var options3 = {
           title: 'Gruppens strækning dækket gennem forløbet.',
             width:'450',
             height:'450',
@@ -793,7 +674,7 @@ console.log("Kwabena");
 
         var chart = new google.visualization.LineChart(document.getElementById('chart_div8'));
 
-        chart.draw(data8, options8);
+        chart.draw(data3, options3);
       }
 
 

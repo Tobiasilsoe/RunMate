@@ -22,7 +22,7 @@
     </h3>
 </div>
 
-  <form id="theForm" action="login.html"> <!--method = "post" action="http://localhost:7000/make-reservation"-->
+  <form id="theForm" action="login.html"> 
     <label for="name">Brugernavn</label>
     <input type="text" id="name" name="name" required>
 
@@ -112,13 +112,12 @@ myInput.onkeyup = function() {
 document.getElementById('theForm').addEventListener("submit",function(e) {
     e.preventDefault(); // before the code
     
-    /* do what you want with the form */
+   
     // ajax call 
     $.ajax({
         type: "POST",
         url: "http://localhost:7000/create-user/"+$('#name').val()+'/'+$('#passwd').val(),
-        // serialized fields from the form ... 
-        //data: $("#theForm").serialize(), 
+        
         success: function (data) {
             console.log(data);
             alert("Du er nu oprettet");
@@ -129,7 +128,7 @@ document.getElementById('theForm').addEventListener("submit",function(e) {
         },
     });
     
-    // Should be triggered on form submit
+    
     console.log('submitting...');
   });
 
